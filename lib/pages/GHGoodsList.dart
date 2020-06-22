@@ -9,7 +9,6 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'dart:convert';
 import '../widget/GHLoading.dart';
 
-
 /// 商品列表
 class GHGoodsList extends StatefulWidget {
   Map arguments;

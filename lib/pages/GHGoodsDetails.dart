@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import '../services/ScreenAdaper.dart';
 import 'package:flutter/gestures.dart';
 import '../services/httptool.dart';
-import '../widget/GHLoading.dart';
-
+import 'dart:convert';
+import '../model/GHGoodDetailsModel.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 class GHGoodsDetails extends StatefulWidget {
   Map arguments;
@@ -17,13 +18,15 @@ class GHGoodsDetails extends StatefulWidget {
 }
 
 class _GHGoodsDetailsState extends State<GHGoodsDetails> {
-
   /// 滚动控制器
   ScrollController _scrollController = new ScrollController();
 
   Color _actionColor;
 
   double _changeHeight = 0;
+
+  /// 商品详情模型
+  var _goodDetailsModel;
 
   @override
   void initState() {
@@ -35,7 +38,6 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
       double _opacity = this._scrollController.offset / height > 1.0
           ? 1.0
           : this._scrollController.offset / height;
-      print(this._scrollController.offset);
       setState(() {
         this._changeHeight = -this._scrollController.offset;
       });
@@ -44,12 +46,15 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   /// 请求数据
   void _loadData() async {
-
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/" +
         "shopGoodsList/${widget.arguments["id"]}";
-
     await HttpRequest.request(url, method: 'GET').then((value) {
-      print(value);
+      var json = jsonEncode(value);
+      GHGoodDetailsModel goodDetailsModel = GHGoodDetailsModel.fromJson(value);
+      setState(() {
+        this._goodDetailsModel = goodDetailsModel;
+      });
+      print(json);
     });
   }
 
@@ -138,7 +143,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   }
 
   /// 商品标题
-  Widget _goodTitle() {
+  Widget _goodTitle(GHGoodDetailsModel goodDetailsModel) {
     return Container(
         padding: EdgeInsets.only(left: 10, right: 10),
         child: Column(
@@ -167,8 +172,9 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                       width: 5,
                     )),
                     TextSpan(
-                        text:
-                            '有线充电款AirPodrPods抢券电有线充电有线充s抢券低至999元有线充电有线充电有线充电有线充电有线充电',
+                        text: goodDetailsModel.title.length > 0
+                            ? "${goodDetailsModel.title}"
+                            : "",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -182,7 +188,9 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                 child: Text.rich(TextSpan(
                   children: <InlineSpan>[
                     TextSpan(
-                        text: '有线充电款AirPods抢券低至999元有线充电有线充电有线充电有线充电有线充电',
+                        text: goodDetailsModel.description.length > 0
+                            ? "${goodDetailsModel.description}"
+                            : "",
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.normal,
@@ -646,7 +654,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   }
 
   /// 上方区域
-  Widget _goodsDetails() {
+  Widget _goodsDetails(GHGoodDetailsModel goodDetailsModel) {
     final double bottomPadding = MediaQuery.of(context).padding.bottom;
     return Container(
         child: ListView(
@@ -656,8 +664,8 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
           top: 0, bottom: ScreenAdaper.height(80) + bottomPadding),
       children: <Widget>[
         this._superspike(),
-        this._goodInfo(),
-        this._goodTitle(),
+        this._goodInfo(goodDetailsModel),
+        this._goodTitle(goodDetailsModel),
         this._goodService(),
         this._goodspecification(),
         Divider(),
@@ -782,7 +790,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   }
 
   /// 商品基本信息
-  Widget _goodInfo() {
+  Widget _goodInfo(GHGoodDetailsModel goodDetailsModel) {
     return Container(
         padding: EdgeInsets.only(left: 10, top: 10, right: 10),
         child: Row(
@@ -795,7 +803,9 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                       style: TextStyle(color: Colors.red, fontSize: 10),
                       children: [
                     TextSpan(
-                        text: "5999",
+                        text: goodDetailsModel.price != 0
+                            ? "${goodDetailsModel.price}"
+                            : "",
                         style: TextStyle(
                             color: Colors.red,
                             fontSize: 20,
@@ -815,52 +825,37 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   Widget build(BuildContext context) {
     ScreenAdaper.init(context);
-    return SafeArea(
-        top: false,
-        bottom: false,
-        child: Scaffold(
-            body: Stack(
+    return Scaffold(
+        body: Stack(
           children: <Widget>[
-            CustomScrollView(
-              controller: this._scrollController,
-              slivers: <Widget>[
-                SliverAppBar(
-                  backgroundColor: Colors.white,
-                  title: Container(
-                    child: Text(
-                      "商品详情",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+            EasyRefresh(
+              onRefresh: ()async {
+                print("22");
+              },
+              child: CustomScrollView(
+                slivers: <Widget>[
+                  SliverToBoxAdapter(),
+                  SliverAppBar(
+                    pinned: true,
+                    brightness: Brightness.light,
+                    expandedHeight: 200,
+                    title: Text("商品详情"),
+                    flexibleSpace: FlexibleSpaceBar(
+                      background: this._swiperWidget(),
                     ),
                   ),
-                  //标题居中
-                  centerTitle: true,
-                  //展开高度200
-                  expandedHeight: ScreenAdaper.height(400),
-                  //不随着滑动隐藏标题
-                  floating: true,
-                  //固定在顶部
-                  pinned: true,
-                  flexibleSpace: FlexibleSpaceBar(
-                      centerTitle: true,
-                      background: Container(
-                        child: this._swiperWidget(),
-                      )),
-                ),
-                SliverToBoxAdapter(
-                  child: Container(
-                    /// 上方区域
-                    child: this._goodsDetails(),
+                  SliverToBoxAdapter(
+                    child: Container(
+                      /// 上方区域
+                      child: this._goodsDetails(this._goodDetailsModel),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-
-            /// 底部工具条
             this._bottomToolBar(),
           ],
-        )));
+        )
+    );
   }
 }

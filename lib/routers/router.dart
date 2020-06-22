@@ -17,7 +17,7 @@ import '../pages/GHGoodsDetails.dart';
 //配置路由
 final routes = {
   '/': (context) => Tabs(),
-  '/test': (context) => DiscoverListPage(),
+  '/test': (context) => Test(),
   '/search': (context) => SearchPage(),
   '/login': (context) => LoginPage(),
   '/producttContent': (context,{arguments}) => ProducttContent(arguments:arguments),
