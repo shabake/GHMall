@@ -15,7 +15,6 @@ class _GHAddressListState extends State<GHAddressList> {
   /// 地址列表
   var _list = [];
 
-
   GlobalKey _easyRefreshKey = new GlobalKey();
 
   _getAddressList() async {
@@ -34,7 +33,6 @@ class _GHAddressListState extends State<GHAddressList> {
 
     url = url + '?' + "order=" + c;
 
-    print(url);
     HttpRequest.request(url, method: 'GET').then((res) {
       var list = new GHAddressModel.fromJson(res).results;
       setState(() {
@@ -62,83 +60,80 @@ class _GHAddressListState extends State<GHAddressList> {
       child: Container(
         margin: EdgeInsets.only(top: 5, bottom: 5),
         width: ScreenAdaper.getScreenWidth(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
           children: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row (
                   children: <Widget>[
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.red,
-                            ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                width:50,
+                                child: Text(
+                                  results.name,
+                                  overflow: TextOverflow.ellipsis,
+                                  style:TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                child: Text(
+                                  results.phone,
+                                  style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
                           ),
-                          Container(
-                            child: Text(
-                              results.name,
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
+                        ),
+                        Container(
+                          width: ScreenAdaper.getScreenWidth() - 20 - 20 - 30,
+                          child: Text(
+                            results.province +
+                                results.city +
+                                results.area +
+                                results.detailsAddress,
+                            style: TextStyle(fontSize: 14, color: Colors.black54),
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            child: Text(
-                              results.phone,
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: ScreenAdaper.getScreenWidth() - 20 - 20 - 30,
-                      child: Text(
-                        results.province +
-                            results.city +
-                            results.area +
-                            results.detailsAddress,
-                        style: TextStyle(fontSize: 16, color: Colors.black38),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      color: Colors.black12,
-                      width: ScreenAdaper.getScreenWidth() - 20 - 20 - 30,
-                      height: 1,
+                        ),
+
+                      ],
                     )
                   ],
-                )
+                ),
+                GestureDetector(
+
+                  onTap: () {
+                    Navigator.pushNamed(context, '/GHAddressEdit', arguments: {
+                      'name': "${results.name}",
+                      'zone': "${results.zone}",
+                      'detailsAddress': "${results.detailsAddress}",
+                      'phoneNumber': results.phone,
+                      'objectId': results.objectId,
+                    });
+                  },
+                  child: Container(
+                    child: Icon(
+                      Icons.edit,
+                      size: 30,
+                    ),
+                  ),
+                ),
               ],
             ),
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, '/GHAddressEdit', arguments: {
-                  'name': "${results.name}",
-                  'zone': "${results.zone}",
-                  'detailsAddress': "${results.detailsAddress}",
-                  'phoneNumber': results.phone,
-                  'objectId': results.objectId,
-                });
-              },
-              child: Container(
-                child: Icon(
-                  Icons.edit,
-                  size: 30,
-                ),
-              ),
-            ),
+            Divider(),
           ],
-        ),
+        )
       ),
     );
   }
@@ -146,7 +141,6 @@ class _GHAddressListState extends State<GHAddressList> {
   @override
   Widget build(BuildContext context) {
     ScreenAdaper.init(context);
-    LogUtil.init(tag: "2", isDebug: false, maxLen: 128);
     ScreenAdaper.init(context);
     return Scaffold(
       appBar: AppBar(
@@ -158,7 +152,7 @@ class _GHAddressListState extends State<GHAddressList> {
             child: Icon(Icons.add),
           )
         ],
-        title: Text("收货地址"),
+        title: Text("地址管理"),
       ),
       body: Container(
           padding: EdgeInsets.all(20),

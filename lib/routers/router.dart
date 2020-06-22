@@ -17,7 +17,7 @@ import '../pages/GHGoodsDetails.dart';
 //配置路由
 final routes = {
   '/': (context) => Tabs(),
-  '/test': (context) => TestPage(),
+  '/test': (context) => DiscoverListPage(),
   '/search': (context) => SearchPage(),
   '/login': (context) => LoginPage(),
   '/producttContent': (context,{arguments}) => ProducttContent(arguments:arguments),
@@ -29,7 +29,7 @@ final routes = {
   '/GHAddressEdit': (context,{arguments}) => GHAddressEdit(arguments:arguments),
   '/OnlinePayments': (context,{arguments}) => OnlinePayments(),
   '/GHGoodsList': (context,{arguments}) => GHGoodsList(),
-  '/GHGoodsDetails': (context,{arguments}) => GHGoodsDetails(),
+  '/GHGoodsDetails': (context,{arguments}) => GHGoodsDetails(arguments:arguments),
 
 };
 

@@ -26,11 +26,9 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         /// 隐藏debug
         debugShowCheckedModeBanner: false,
-
         /// 配置路由
-        initialRoute: '/GHGoodsDetails',
+        initialRoute: '/',
         onGenerateRoute: onGenerateRoute,
-
         /// 设置主题
         theme: ThemeData(
           primaryColor: Colors.white,

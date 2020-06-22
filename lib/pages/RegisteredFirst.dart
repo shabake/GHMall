@@ -5,7 +5,6 @@ import 'package:flutter/gestures.dart';
 import '../services/GHToast.dart';
 import 'package:dio/dio.dart';
 import '../config/Config.dart';
-import '../services/httptool.dart';
 
 
 /// 注册第一步

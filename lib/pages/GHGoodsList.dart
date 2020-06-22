@@ -819,7 +819,9 @@ class _GHGoodsListState extends State<GHGoodsList> {
     return GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
-          Navigator.pushNamed(context, '/GHGoodsDetails');
+          Navigator.pushNamed(context, '/GHGoodsDetails',arguments: {
+            'id':goodsItemModel.objectId,
+          });
         },
         child: Container(
           padding: EdgeInsets.all(10),

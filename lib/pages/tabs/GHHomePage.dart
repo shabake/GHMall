@@ -41,7 +41,7 @@ class _GHHomePageState extends State<GHHomePage>
   }
 
   //获取轮播图数据
-  _getCarouselData() async {
+  void _getCarouselData() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCarousel";
     await HttpRequest.request(url, method: 'GET').then((value) {
       var list = new GHomeCarouselDataModel.fromJson(value).results;
@@ -52,7 +52,7 @@ class _GHHomePageState extends State<GHHomePage>
   }
 
   //获取猜你喜欢的数据
-  _getGuessLicktData() async {
+  void _getGuessLicktData() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopGuessLike";
     await HttpRequest.request(url).then((value) {
       print(value);
@@ -64,7 +64,7 @@ class _GHHomePageState extends State<GHHomePage>
   }
 
   //获取热门商品的数据
-  _getHotGoodsData() async {
+  void _getHotGoodsData() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopHotGoods";
     await HttpRequest.request(url).then((value) {
       var list = new GHHotGoodsModel.fromJson(value).results;
@@ -80,23 +80,23 @@ class _GHHomePageState extends State<GHHomePage>
       return LoadingWidget();
     }
     return Container(
-        height: ScreenAdaper.height(400),
-        width: double.infinity,
-        child: Swiper(
-            itemBuilder: (BuildContext context, int index) {
-              GHomeCarouselDataItemModel carouselModel =
-                  this._carouselDataList[index];
-              return InkWell(
-                onTap: () {},
-                child: Image.network(
-                  carouselModel.url, // pic
-                  fit: BoxFit.fill,
-                ),
-              );
-            },
-            itemCount: this._carouselDataList.length,
-            pagination: new SwiperPagination(),
-            autoplay: true),
+      height: ScreenAdaper.height(400),
+      width: double.infinity,
+      child: Swiper(
+          itemBuilder: (BuildContext context, int index) {
+            GHomeCarouselDataItemModel carouselModel =
+                this._carouselDataList[index];
+            return GestureDetector(
+              onTap: () {},
+              child: Image.network(
+                carouselModel.url, // pic
+                fit: BoxFit.fill,
+              ),
+            );
+          },
+          itemCount: this._carouselDataList.length,
+          pagination: new SwiperPagination(),
+          autoplay: true),
     );
   }
 
@@ -149,85 +149,89 @@ class _GHHomePageState extends State<GHHomePage>
         runSpacing: 10,
         children: this._hotGoodsList.map((value) {
           return GestureDetector(
-            onTap: (){
-              Navigator.pushNamed(context, '/GHGoodsDetails');
-            },
-            child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Color.fromRGBO(233, 233, 233, 0.9), width: 1)),
-                padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
-                width: (ScreenAdaper.getScreenWidth() - 30) / 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      width: 80,
-                      height: 100,
-                      child: new FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image: "${value.url}",
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                Navigator.pushNamed(context, '/GHGoodsDetails', arguments: {
+                  'id': '5eec49783521d4000606e7d4',
+                });
+              },
+              child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Color.fromRGBO(233, 233, 233, 0.9), width: 1)),
+                  padding:
+                      EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
+                  width: (ScreenAdaper.getScreenWidth() - 30) / 2,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        width: 80,
+                        height: 100,
+                        child: new FadeInImage.memoryNetwork(
+                          placeholder: kTransparentImage,
+                          image: "${value.url}",
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Container(
-                      child: Text(
-                        "${value.title}",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                      SizedBox(
+                        height: 3,
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    child: Text(
-                                      "￥",
-                                      style: TextStyle(fontSize: 10, color: Colors.red),
-                                    ),
+                      Container(
+                        child: Text(
+                          "${value.title}",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(
+                                child: Row(
+                              children: <Widget>[
+                                Container(
+                                  child: Text(
+                                    "￥",
+                                    style: TextStyle(
+                                        fontSize: 10, color: Colors.red),
                                   ),
-                                  Container(
-                                    child: Text(
-                                      "${value.price}",
-                                      style: TextStyle(
-                                          color: Colors.red,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  )
-                                ],
-                              )),
-                          Container(
-                            height: 21,
-                            width: 40,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color.fromRGBO(233, 233, 233, 0.9),
-                                width: 1,
+                                ),
+                                Container(
+                                  child: Text(
+                                    "${value.price}",
+                                    style: TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                )
+                              ],
+                            )),
+                            Container(
+                              height: 21,
+                              width: 40,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Color.fromRGBO(233, 233, 233, 0.9),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Text(
-                              "看详情",
-                              style: TextStyle(color: Colors.black54, fontSize: 10),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                )
-            )
-          );
+                              child: Text(
+                                "看详情",
+                                style: TextStyle(
+                                    color: Colors.black54, fontSize: 10),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  )));
         }).toList(),
       ),
     );
@@ -255,12 +259,12 @@ class _GHHomePageState extends State<GHHomePage>
           GHGuessLikeItemModel itemModel = this._getGuessLikeList[index];
           return Column(
             children: <Widget>[
-              InkWell(
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
                 onTap: () {
-//                    Navigator.pushNamed(context, '/producttContent',
-//                        arguments: {
-//                          'id': id,
-//                        });
+                  Navigator.pushNamed(context, '/GHGoodsDetails', arguments: {
+                    'id': '5eec49783521d4000606e7d4',
+                  });
                 },
                 child: Column(
                   children: <Widget>[
@@ -300,22 +304,23 @@ class _GHHomePageState extends State<GHHomePage>
     ScreenAdaper.init(context);
     return SafeArea(
       top: false,
+      bottom: false,
       child: Scaffold(
         body: ListView(
           padding: EdgeInsets.only(top: 0),
           children: <Widget>[
-//            / 轮播图
-            _swiperWidget(),
+            /// 轮播图
+            this._swiperWidget(),
 
             /// 超级秒杀
-            _superspike(),
+            this._superspike(),
             SizedBox(height: ScreenAdaper.height(20)),
 
             /// 猜你喜欢
-            _titleWidget("猜你喜欢"),
+            this._titleWidget("猜你喜欢"),
 
             /// 猜你喜欢
-            _guessLiketWidget(),
+            this._guessLiketWidget(),
             Container(
               padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
               child: Row(
@@ -343,12 +348,12 @@ class _GHHomePageState extends State<GHHomePage>
             SizedBox(height: ScreenAdaper.height(5)),
 
             /// 热门推荐
-            _titleWidget("热门推荐"),
+            this._titleWidget("热门推荐"),
 
             SizedBox(height: ScreenAdaper.height(10)),
 
             /// 热门推荐
-            _hotGoodstWidget(),
+            this._hotGoodstWidget(),
           ],
         ),
       ),

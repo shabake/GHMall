@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter/material.dart';
 import '../services/ScreenAdaper.dart';
+import 'package:flutter/gestures.dart';
+import '../services/httptool.dart';
+import '../widget/GHLoading.dart';
 
-/// 商品详情
+
 class GHGoodsDetails extends StatefulWidget {
   Map arguments;
 
@@ -20,22 +23,33 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   Color _actionColor;
 
+  double _changeHeight = 0;
+
   @override
   void initState() {
     super.initState();
-    double height = ScreenAdaper.height(400) + ScreenAdaper.height(80) ;
+    print(widget.arguments["id"]);
+    this._loadData();
+    double height = ScreenAdaper.height(400);
     this._scrollController.addListener(() {
       double _opacity = this._scrollController.offset / height > 1.0
           ? 1.0
           : this._scrollController.offset / height;
-
-
-      setState(() {
-        if (_opacity >= 0) {
-          this._actionColor = Color.fromRGBO(255, 255, 255, _opacity);
-        }
-      });
       print(this._scrollController.offset);
+      setState(() {
+        this._changeHeight = -this._scrollController.offset;
+      });
+    });
+  }
+
+  /// 请求数据
+  void _loadData() async {
+
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/" +
+        "shopGoodsList/${widget.arguments["id"]}";
+
+    await HttpRequest.request(url, method: 'GET').then((value) {
+      print(value);
     });
   }
 
@@ -73,51 +87,49 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   /// 轮播图
   Widget _swiperWidget() {
     return Container(
+      width: double.infinity,
+      child: Container(
         height: ScreenAdaper.height(400),
-        width: double.infinity,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              child: Swiper(
-                  itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      onTap: () {},
-                      child: Image.network(
-                        "https://upload-images.jianshu.io/upload_images/1419035-84f72de1cfe0dc5e.jpg",
-                        fit: BoxFit.fill,
-                      ),
-                    );
-                  },
-                  itemCount: 3,
-                  pagination: new SwiperPagination(),
-                  autoplay: true),
-            ),
-          ],
-        ));
+        child: Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {},
+                child: Image.network(
+                  "https://upload-images.jianshu.io/upload_images/1419035-8348d9e1439d81a7.jpg",
+                  fit: BoxFit.fill,
+                ),
+              );
+            },
+            itemCount: 3,
+            pagination: new SwiperPagination(),
+            autoplay: true),
+      ),
+    );
   }
 
   /// 服务
   Widget _goodService() {
     return Container(
-        color: Color.fromRGBO(253, 249, 237, 1),
+        color: Color.fromRGBO(253, 249, 210, 1),
         padding: EdgeInsets.all(10),
         child: Row(
           children: <Widget>[
             Container(
-              child: Icon(
-                Icons.home,
-                size: 18,
-                color: Color.fromRGBO(135, 102, 59, 1),
+              height: 24,
+              width: 24,
+              child: Image.asset(
+                'images/serviceIcon.png',
+                fit: BoxFit.fill,
               ),
             ),
             SizedBox(
-              width: 5,
+              width: 10,
             ),
             Container(
                 child: Text(
-              "为京东提供服务",
+              "为京东Apple产品用户提供无忧服务",
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 14,
                 color: Color.fromRGBO(135, 102, 59, 1),
               ),
             ))
@@ -177,11 +189,19 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                           color: Colors.black87,
                         ),
                         children: [
+                          WidgetSpan(
+                            child: Container(width: 5, child: Text("")),
+                          ),
                           TextSpan(
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  print('点击更多优惠');
+                                },
                               text: '更多优惠!',
                               style: TextStyle(
                                 color: Colors.red,
                                 fontSize: 12,
+                                fontWeight: FontWeight.bold,
                                 decoration: TextDecoration.underline,
                               )),
                         ]),
@@ -396,47 +416,52 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   /// 地址
   Widget _goodAddress() {
-    return Container(
-        padding: EdgeInsets.all(10),
-        child: Row(
-          children: <Widget>[
-            Container(
-                child: Text(
-              "送至",
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.black38,
-              ),
-            )),
-            SizedBox(
-              width: 10,
-            ),
-            Container(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          Navigator.pushNamed(context, '/GHAddressList');
+        },
+        child: Container(
+            padding: EdgeInsets.all(10),
+            child: Row(
               children: <Widget>[
                 Container(
-                    child: Row(
+                    child: Text(
+                  "送至",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.black38,
+                  ),
+                )),
+                SizedBox(
+                  width: 10,
+                ),
+                Container(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      child: Icon(
-                        Icons.home,
-                        size: 12,
-                      ),
-                    ),
+                        child: Row(
+                      children: <Widget>[
+                        Container(
+                          child: Icon(
+                            Icons.home,
+                            size: 12,
+                          ),
+                        ),
+                        Container(
+                          child: Text("就可以快速实现图文混排的需"),
+                        )
+                      ],
+                    )),
                     Container(
-                      child: Text("就可以快速实现图文混排的需"),
+                      child: Text("就可以快速实现图文混排的需求，并且可以看出"),
                     )
                   ],
-                )),
-                Container(
-                  child: Text("就可以快速实现图文混排的需求，并且可以看出"),
-                )
+                ))
               ],
-            ))
-          ],
-        ));
+            )));
   }
 
   /// 门店列表
@@ -488,12 +513,13 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
             ),
             Container(
                 child: Wrap(
-              spacing: 5,
+              spacing: 0,
               runSpacing: 0,
               children: this._services.map((value) {
                 return Container(
                   height: 30,
                   child: Chip(
+                    labelPadding: EdgeInsets.only(left: 0),
                     backgroundColor: Colors.transparent,
                     avatar: Icon(
                       Icons.check_circle_outline,
@@ -592,12 +618,12 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
             width: ScreenAdaper.getScreenWidth(),
             height: (ScreenAdaper.getScreenWidth() - 50) / 4,
             child: GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 10),
               itemBuilder: (context, index) {
                 return Container(
-                  height: (ScreenAdaper.getScreenWidth() - 50) / 4,
-                  width: (ScreenAdaper.getScreenWidth() - 50) / 4,
                   color: index % 2 == 0 ? Colors.red : Colors.orange,
                 );
               },
@@ -624,34 +650,34 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     final double bottomPadding = MediaQuery.of(context).padding.bottom;
     return Container(
         child: ListView(
-      controller: this._scrollController,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
       padding: EdgeInsets.only(
           top: 0, bottom: ScreenAdaper.height(80) + bottomPadding),
       children: <Widget>[
-        _swiperWidget(),
-        _superspike(),
-        _goodInfo(),
-        _goodTitle(),
-        _goodService(),
-        _goodspecification(),
+        this._superspike(),
+        this._goodInfo(),
+        this._goodTitle(),
+        this._goodService(),
+        this._goodspecification(),
         Divider(),
-        _goodCoupon(),
+        this._goodCoupon(),
         Divider(),
-        _goodPromotion(),
+        this._goodPromotion(),
         Container(
           height: 10,
           color: Color.fromRGBO(245, 245, 245, 1),
         ),
-        _goodSelected(),
-        _goodAddress(),
+        this._goodSelected(),
+        this._goodAddress(),
         Divider(),
-        _goodShops(),
+        this._goodShops(),
         Container(
           height: 10,
           color: Color.fromRGBO(245, 245, 245, 1),
         ),
-        _goodEvaluation(),
-        _goodEvaluationList(),
+        this._goodEvaluation(),
+        this._goodEvaluationList(),
       ],
     ));
   }
@@ -769,7 +795,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                       style: TextStyle(color: Colors.red, fontSize: 10),
                       children: [
                     TextSpan(
-                        text: "599 9",
+                        text: "5999",
                         style: TextStyle(
                             color: Colors.red,
                             fontSize: 20,
@@ -782,71 +808,59 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                             fontWeight: FontWeight.bold)),
                   ])),
             ),
-            _goodRightItem(),
+            this._goodRightItem(),
           ],
         ));
   }
 
   Widget build(BuildContext context) {
-    final double topPadding = MediaQuery.of(context).padding.top;
-    print(topPadding);
     ScreenAdaper.init(context);
     return SafeArea(
         top: false,
         bottom: false,
         child: Scaffold(
-          body: Container(
-              child: Stack(
-            children: <Widget>[
-              _goodsDetails(),
-              _bottomToolBar(),
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                child: Container(
-                    height: topPadding + 40 + 20,
-                    width: double.infinity,
-                    color: this._actionColor,
-                    child: Container(
-                        padding: EdgeInsets.only(left: 20, top: topPadding),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Icon(
-                                Icons.arrow_back_ios,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            child: Text("商品详情",
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight:FontWeight.bold,
-                              ),),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(right: 10),
-                            child: GestureDetector(
-                              onTap: () {
-                              },
-                              child: Icon(
-                                Icons.share,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    )
+            body: Stack(
+          children: <Widget>[
+            CustomScrollView(
+              controller: this._scrollController,
+              slivers: <Widget>[
+                SliverAppBar(
+                  backgroundColor: Colors.white,
+                  title: Container(
+                    child: Text(
+                      "商品详情",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  //标题居中
+                  centerTitle: true,
+                  //展开高度200
+                  expandedHeight: ScreenAdaper.height(400),
+                  //不随着滑动隐藏标题
+                  floating: true,
+                  //固定在顶部
+                  pinned: true,
+                  flexibleSpace: FlexibleSpaceBar(
+                      centerTitle: true,
+                      background: Container(
+                        child: this._swiperWidget(),
+                      )),
                 ),
-              )
-            ],
-          )),
-        ));
+                SliverToBoxAdapter(
+                  child: Container(
+                    /// 上方区域
+                    child: this._goodsDetails(),
+                  ),
+                ),
+              ],
+            ),
+
+            /// 底部工具条
+            this._bottomToolBar(),
+          ],
+        )));
   }
 }
