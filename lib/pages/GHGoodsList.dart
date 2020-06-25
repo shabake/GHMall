@@ -100,7 +100,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
 
   /// 网络运营商
   List _fourList = [
-    {"id": "1", "title": "移动", "type": "1", "seletecd": "1"},
+    {"id": "1", "title": "移动", "type": "1", "seletecd": "0"},
     {"id": "2", "title": "联通", "type": "1", "seletecd": "0"},
     {"id": "3", "title": "电信", "type": "1", "seletecd": "0"},
   ];
@@ -552,7 +552,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                 child: Column(
                   children: <Widget>[
                     _sideSectionTitle("运营商", this._fourList),
-                    _sideItem(this._fourList,true),
+                    _sideItem(this._fourList),
                   ],
                 ),
               ),

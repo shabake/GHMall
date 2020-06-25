@@ -273,7 +273,8 @@ class _ProductContentFirstState extends State<ProductContentFirst>
                 ],
               ),
             );
-          });
+          }
+          );
         });
   }
 

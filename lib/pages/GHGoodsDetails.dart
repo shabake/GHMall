@@ -286,16 +286,15 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
               width: 10,
             ),
             Container(
-
               //topTitles.asMap().keys.map((f)=>
               child: Row(
                 children: detailsModel.coupons.asMap().keys.map((f) {
                   /// 处理text
                   String coupon = "";
                   String text = detailsModel.coupons[f];
-                  if(text == "1") {
+                  if (text == "1") {
                     coupon = "满1000减50";
-                  } else if (text == "2"){
+                  } else if (text == "2") {
                     coupon = "满2000减100";
                   } else {
                     coupon = "满3000减200";
@@ -699,6 +698,56 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     ));
   }
 
+  /// 规格选择器
+  void _showBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Stack(
+          children: <Widget>[
+            Positioned(
+                bottom: 0,
+                height: ScreenAdaper.height(80),
+                child: Row(
+                  children: <Widget>[
+                    GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: ScreenAdaper.getScreenWidth(),
+                          height: double.infinity,
+                          color: Colors.red,
+                          child: Text(
+                            "确 定",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ))
+                  ],
+                )),
+            Positioned(
+              top: 0,
+              width: ScreenAdaper.getScreenWidth(),
+              height: 100,
+              child: Container(
+                child: Row(
+                  children: <Widget>[
+                      Container(
+                        child: Image.network("https://upload-images.jianshu.io/upload_images/1419035-84f72de1cfe0dc5e.jpg"),
+                      )
+                  ],
+                )
+              )
+            ),
+            Container(
+              height: 400,
+              width: double.infinity,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   /// 底部工具条
   Widget _bottomToolBar() {
     final double topPadding = MediaQuery.of(context).padding.top;
@@ -726,26 +775,34 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
               Expanded(
                 flex: 1,
                 child: Container(
-                  alignment: Alignment.center,
-                  height: ScreenAdaper.height(80) - 10,
-                  color: Colors.red,
-                  child: Text(
-                    "加入购物车",
-                    style: TextStyle(fontSize: 14, color: Colors.white),
-                  ),
-                ),
+                    alignment: Alignment.center,
+                    height: ScreenAdaper.height(80) - 10,
+                    color: Colors.red,
+                    child: GestureDetector(
+                      onTap: () {
+                        this._showBottomSheet();
+                      },
+                      child: Text(
+                        "加入购物车",
+                        style: TextStyle(fontSize: 14, color: Colors.white),
+                      ),
+                    )),
               ),
               Expanded(
                 flex: 1,
                 child: Container(
-                  alignment: Alignment.center,
-                  height: ScreenAdaper.height(80) - 10,
-                  color: Colors.orange,
-                  child: Text(
-                    "立即购买",
-                    style: TextStyle(fontSize: 14, color: Colors.white),
-                  ),
-                ),
+                    alignment: Alignment.center,
+                    height: ScreenAdaper.height(80) - 10,
+                    color: Colors.orange,
+                    child: GestureDetector(
+                      onTap: () {
+                        this._showBottomSheet();
+                      },
+                      child: Text(
+                        "立即购买",
+                        style: TextStyle(fontSize: 14, color: Colors.white),
+                      ),
+                    )),
               ),
             ],
           ),

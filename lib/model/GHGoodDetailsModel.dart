@@ -12,6 +12,7 @@ class GHGoodDetailsModel {
   List<String> storeAdvantages;
   String createdAt;
   String title;
+  Operators operators;
   String url;
   int price;
 
@@ -29,6 +30,7 @@ class GHGoodDetailsModel {
         this.storeAdvantages,
         this.createdAt,
         this.title,
+        this.operators,
         this.url,
         this.price});
 
@@ -46,6 +48,9 @@ class GHGoodDetailsModel {
     storeAdvantages = json['storeAdvantages'].cast<String>();
     createdAt = json['createdAt'];
     title = json['title'];
+    operators = json['operators'] != null
+        ? new Operators.fromJson(json['operators'])
+        : null;
     url = json['url'];
     price = json['price'];
   }
@@ -65,8 +70,50 @@ class GHGoodDetailsModel {
     data['storeAdvantages'] = this.storeAdvantages;
     data['createdAt'] = this.createdAt;
     data['title'] = this.title;
+    if (this.operators != null) {
+      data['operators'] = this.operators.toJson();
+    }
     data['url'] = this.url;
     data['price'] = this.price;
+    return data;
+  }
+}
+
+class Operators {
+  List<Operator> operator;
+
+  Operators({this.operator});
+
+  Operators.fromJson(Map<String, dynamic> json) {
+    if (json['operator'] != null) {
+      operator = new List<Operator>();
+      json['operator'].forEach((v) {
+        operator.add(new Operator.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.operator != null) {
+      data['operator'] = this.operator.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Operator {
+  String title;
+
+  Operator({this.title});
+
+  Operator.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['title'] = this.title;
     return data;
   }
 }
