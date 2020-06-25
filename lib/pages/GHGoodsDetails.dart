@@ -25,6 +25,9 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   double _changeHeight = 0;
 
+  /// 优惠券
+  List coupons = [];
+
   /// 商品详情模型
   var _goodDetailsModel;
 
@@ -269,7 +272,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   }
 
   /// 优惠券
-  Widget _goodCoupon() {
+  Widget _goodCoupon(GHGoodDetailsModel detailsModel) {
     return Container(
         padding: EdgeInsets.all(10),
         child: Row(
@@ -283,28 +286,36 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
               width: 10,
             ),
             Container(
+
+              //topTitles.asMap().keys.map((f)=>
               child: Row(
-                children: <Widget>[
-                  Container(
-                    color: Colors.red,
-                    padding: EdgeInsets.all(5),
-                    child: Text(
-                      "满500减50",
-                      style: TextStyle(fontSize: 12, color: Colors.white),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    color: Colors.red,
-                    padding: EdgeInsets.all(5),
-                    child: Text(
-                      "满1000减250",
-                      style: TextStyle(fontSize: 12, color: Colors.white),
-                    ),
-                  ),
-                ],
+                children: detailsModel.coupons.asMap().keys.map((f) {
+                  /// 处理text
+                  String coupon = "";
+                  String text = detailsModel.coupons[f];
+                  if(text == "1") {
+                    coupon = "满1000减50";
+                  } else if (text == "2"){
+                    coupon = "满2000减100";
+                  } else {
+                    coupon = "满3000减200";
+                  }
+                  return Row(
+                    children: <Widget>[
+                      Container(
+                        color: Colors.red,
+                        padding: EdgeInsets.all(5),
+                        child: Text(
+                          coupon,
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  );
+                }).toList(),
               ),
             )
           ],
@@ -669,7 +680,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
         this._goodService(),
         this._goodspecification(),
         Divider(),
-        this._goodCoupon(),
+        this._goodCoupon(goodDetailsModel),
         Divider(),
         this._goodPromotion(),
         Container(
@@ -684,8 +695,6 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
           height: 10,
           color: Color.fromRGBO(245, 245, 245, 1),
         ),
-        this._goodEvaluation(),
-        this._goodEvaluationList(),
       ],
     ));
   }
@@ -803,9 +812,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                       style: TextStyle(color: Colors.red, fontSize: 10),
                       children: [
                     TextSpan(
-                        text: goodDetailsModel.price != 0
-                            ? "${goodDetailsModel.price}"
-                            : "",
+                        text: "${goodDetailsModel?.price}",
                         style: TextStyle(
                             color: Colors.red,
                             fontSize: 20,
@@ -827,35 +834,36 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     ScreenAdaper.init(context);
     return Scaffold(
         body: Stack(
-          children: <Widget>[
-            EasyRefresh(
-              onRefresh: ()async {
-                print("22");
-              },
-              child: CustomScrollView(
-                slivers: <Widget>[
-                  SliverToBoxAdapter(),
-                  SliverAppBar(
-                    pinned: true,
-                    brightness: Brightness.light,
-                    expandedHeight: 200,
-                    title: Text("商品详情"),
-                    flexibleSpace: FlexibleSpaceBar(
-                      background: this._swiperWidget(),
-                    ),
-                  ),
-                  SliverToBoxAdapter(
-                    child: Container(
-                      /// 上方区域
-                      child: this._goodsDetails(this._goodDetailsModel),
-                    ),
-                  ),
-                ],
+      children: <Widget>[
+        EasyRefresh(
+          onRefresh: () async {
+            print("22");
+          },
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverToBoxAdapter(),
+              SliverAppBar(
+                pinned: true,
+                brightness: Brightness.light,
+                expandedHeight: 200,
+                title: Text("商品详情"),
+                flexibleSpace: FlexibleSpaceBar(
+                  background: this._swiperWidget(),
+                ),
               ),
-            ),
-            this._bottomToolBar(),
-          ],
-        )
-    );
+              SliverToBoxAdapter(
+                child: this._goodDetailsModel != null
+                    ? Container(
+                        /// 上方区域
+                        child: this._goodsDetails(this._goodDetailsModel),
+                      )
+                    : Text(''),
+              ),
+            ],
+          ),
+        ),
+        this._bottomToolBar(),
+      ],
+    ));
   }
 }

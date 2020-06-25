@@ -17,6 +17,7 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - HandyJSON (5.0.2)
   - image_picker (0.0.1):
     - Flutter
   - MTBBarcodeScanner (5.0.11)
@@ -30,6 +31,11 @@ PODS:
     - Flutter
     - FMDB (~> 2.7.2)
   - SwiftProtobuf (1.9.0)
+  - tencent_im_plugin (0.0.1):
+    - Flutter
+    - HandyJSON
+    - TXIMSDK_iOS
+  - TXIMSDK_iOS (4.8.50)
 
 DEPENDENCIES:
   - barcode_scan (from `.symlinks/plugins/barcode_scan/ios`)
@@ -44,12 +50,15 @@ DEPENDENCIES:
   - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
   - shared_preferences_web (from `.symlinks/plugins/shared_preferences_web/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - tencent_im_plugin (from `.symlinks/plugins/tencent_im_plugin/ios`)
 
 SPEC REPOS:
   trunk:
     - FMDB
+    - HandyJSON
     - MTBBarcodeScanner
     - SwiftProtobuf
+    - TXIMSDK_iOS
 
 EXTERNAL SOURCES:
   barcode_scan:
@@ -76,6 +85,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences_web/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
+  tencent_im_plugin:
+    :path: ".symlinks/plugins/tencent_im_plugin/ios"
 
 SPEC CHECKSUMS:
   barcode_scan: a5c27959edfafaa0c771905bad0b29d6d39e4479
@@ -86,6 +97,7 @@ SPEC CHECKSUMS:
   flutter_webview_plugin: ed9e8a6a96baf0c867e90e1bce2673913eeac694
   fluttertoast: b644586ef3b16f67fae9a1f8754cef6b2d6b634b
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   image_picker: 66aa71bc96850a90590a35d4c4a2907b0d823109
   MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
@@ -93,6 +105,8 @@ SPEC CHECKSUMS:
   shared_preferences_web: 141cce0c3ed1a1c5bf2a0e44f52d31eeb66e5ea9
   sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
   SwiftProtobuf: ecbec1be9036d15655f6b3443a1c4ea693c97932
+  tencent_im_plugin: 3067e9b6f9dea82aab41d9dc2f99387f8ff938be
+  TXIMSDK_iOS: ae26f78e028e01beed47127ea6bde03c11156208
 
 PODFILE CHECKSUM: 4a9c09d05225e6275a9f915d005a357c6c47b1e8
 

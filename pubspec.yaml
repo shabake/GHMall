@@ -39,6 +39,7 @@ dependencies:
   transparent_image: ^1.0.0
   image_picker: 0.6.7+2
   barcode_scan: 3.0.1
+  tencent_im_plugin: ^0.2.33
 
 dev_dependencies:
   flutter_test:

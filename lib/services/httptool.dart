@@ -34,13 +34,12 @@ class HttpRequest {
 //    }
 //
 //    dio.interceptors.addAll(inters);
-//    // 3.发送网络请求
+    // 3.发送网络请求
     try {
       Response response =
           await dio.request(url, data: params, options: options);
       return response.data;
     } on DioError catch (e) {
-      print(e);
       return Future.error(e);
     }
   }
@@ -50,6 +49,5 @@ const httpHeaders = {
   'Content-Type': 'application/json',
   'X-LC-Id': 'a4Cj1Hm5aMrdhob6xGw71B5A-gzGzoHsz',
   'X-LC-Key': 'XQaL1tUQC0DCQxBA9fpoR21C',
-
 //  'X-LC-Key': 'XQaL1tUQC0DCQxBA9fpoR21C',
 };
