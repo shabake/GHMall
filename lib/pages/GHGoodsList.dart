@@ -98,6 +98,13 @@ class _GHGoodsListState extends State<GHGoodsList> {
     {"id": "3", "title": "3M", "type": "1", "seletecd": "0"},
   ];
 
+  /// 网络运营商
+  List _fourList = [
+    {"id": "1", "title": "移动", "type": "1", "seletecd": "1"},
+    {"id": "2", "title": "联通", "type": "1", "seletecd": "0"},
+    {"id": "3", "title": "电信", "type": "1", "seletecd": "0"},
+  ];
+
   List _seletecdList = [];
 
   //二级导航选中判断
@@ -236,6 +243,12 @@ class _GHGoodsListState extends State<GHGoodsList> {
         seletecdList.add(element);
       }
     });
+
+    this._fourList.forEach((element) {
+      if (element["seletecd"] == "1") {
+        seletecdList.add(element);
+      }
+    });
     this._seletecdList = seletecdList;
   }
 
@@ -299,9 +312,13 @@ class _GHGoodsListState extends State<GHGoodsList> {
   }
 
   /// 侧滑筛选子项
-  Widget _sideItem(list) {
-    List actionList = [];
+  Widget _sideItem(list,[seletecdType]) {
 
+    /// 单选 多选 默认多选
+    bool _seletecdType = seletecdType;
+
+    /// 处理数组返回数量
+    List actionList = [];
     if (list.length > 6) {
       for (var i = 0; i < 6; i++) {
         Map map = list[i];
@@ -321,14 +338,28 @@ class _GHGoodsListState extends State<GHGoodsList> {
         runSpacing: 5,
         children: temp.asMap().keys.map<Widget>((f) {
           Map map = temp[f];
-          return InkWell(
+          return GestureDetector(
               onTap: () {
                 setState(() {
-                  String sel = map["seletecd"];
-                  if (sel == "0") {
-                    map["seletecd"] = "1";
+                  if(_seletecdType == true) {
+                    /// 单选
+                    String sel = map["seletecd"];
+                    if (sel == "1") {
+                      map["seletecd"] = "0";
+                    } else {
+                      list.forEach((element) {
+                         element["seletecd"] = "0";
+                      });
+                      map["seletecd"] = "1";
+                    }
                   } else {
-                    map["seletecd"] = "0";
+                    /// 多选
+                    String sel = map["seletecd"];
+                    if (sel == "0") {
+                      map["seletecd"] = "1";
+                    } else {
+                      map["seletecd"] = "0";
+                    }
                   }
                 });
                 _getSeletecdList();
@@ -506,19 +537,25 @@ class _GHGoodsListState extends State<GHGoodsList> {
                   children: <Widget>[
                     _sideSectionTitle("价格区间"),
                     _sidePriceItem(),
-                    Container(
-                      child: Container(
-                        child: Column(
-                          children: <Widget>[
-                            _sideSectionTitle("品牌", this._thirdList),
-                            _sideItem(this._thirdList),
-                          ],
-                        ),
-                      ),
-                    )
                   ],
                 ),
-              )
+              ),
+              Container(
+                child: Column(
+                  children: <Widget>[
+                    _sideSectionTitle("品牌", this._thirdList),
+                    _sideItem(this._thirdList),
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  children: <Widget>[
+                    _sideSectionTitle("运营商", this._fourList),
+                    _sideItem(this._fourList,true),
+                  ],
+                ),
+              ),
             ],
           ),
         )
@@ -712,11 +749,16 @@ class _GHGoodsListState extends State<GHGoodsList> {
                                         ),
                                       )
                                     : Text(""),
-                                value["title"] == "筛选" ? Container(
-                                  height: 16,
-                                  width: 20,
-                                  child: value["seletecd"] == "0" ? Image.asset("images/filter.png"):Image.asset("images/filterSeletecd.png"),
-                                ):Text(""),
+                                value["title"] == "筛选"
+                                    ? Container(
+                                        height: 16,
+                                        width: 20,
+                                        child: value["seletecd"] == "0"
+                                            ? Image.asset("images/filter.png")
+                                            : Image.asset(
+                                                "images/filterSeletecd.png"),
+                                      )
+                                    : Text(""),
                               ],
                             ))
                       ],
@@ -818,8 +860,8 @@ class _GHGoodsListState extends State<GHGoodsList> {
     return GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
-          Navigator.pushNamed(context, '/GHGoodsDetails',arguments: {
-            'id':goodsItemModel.objectId,
+          Navigator.pushNamed(context, '/GHGoodsDetails', arguments: {
+            'id': goodsItemModel.objectId,
           });
         },
         child: Container(
