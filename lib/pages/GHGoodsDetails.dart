@@ -8,6 +8,7 @@ import 'dart:convert';
 import '../model/GHGoodDetailsModel.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import '../model/GHAddressModel.dart';
+import '../widget/GHCountItemWidget.dart';
 
 class GHGoodsDetails extends StatefulWidget {
   Map arguments;
@@ -33,7 +34,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   List coupons = [];
 
   /// 商品详情模型
-  var _goodDetailsModel;
+  GHGoodDetailsModel _goodDetailsModel;
 
   /// 地址模型
   Results _addressModel;
@@ -62,6 +63,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     });
   }
 
+  /// 请求地址
   void _getAddressList() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
     var c = Uri.encodeComponent('-createdAt');
@@ -72,6 +74,21 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
       setState(() {
         this._addressModel = list.first;
       });
+    });
+  }
+
+  /// 生成订单
+  void _creatOrder() async {
+    //shopOrderList
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList";
+    Map<String, dynamic> params = {
+      "title": this._goodDetailsModel.title,
+      "price": "${this._goodDetailsModel.price}",
+      "seletecdStrings": this._seletecdStrings,
+    };
+    HttpRequest.request(url, method: 'POST', params: params).then((value) {
+      var objectId = value["objectId"];
+      if (objectId != null) {}
     });
   }
 
@@ -627,7 +644,12 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
               ),
             ),
             Container(
-              child: Text("就可以快速实现图文混排的需求，并且可以看出"),
+              child: Text(
+                this._addressModel.province +
+                    this._addressModel.city +
+                    this._addressModel.area +
+                    "1号店",
+              ),
             ),
             Container(
                 child: Wrap(
@@ -958,6 +980,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
             ),
           ),
+          SizedBox(height: 5,),
           Container(
             child: this._sideItem(list, setBottomState, seletecdType),
           ),
@@ -995,6 +1018,22 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                   "容量", this._fiveList, setBottomState, true),
                               this._bottomSpecificationItem(
                                   "颜色", this._sixList, setBottomState, true),
+
+                              Container(
+                                  padding: EdgeInsets.all(5),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Container(
+                                      child: Text(
+                                        "数量",
+                                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    GHCountItemWidger(count: 1,),
+                                  ],
+                                )
+                              )
                             ],
                           ),
                         ),
@@ -1009,6 +1048,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                           GestureDetector(
                               onTap: () {
                                 this._getSeletecdList();
+                                this._creatOrder();
                                 Navigator.pop(context);
                               },
                               child: Container(

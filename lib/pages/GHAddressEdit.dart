@@ -57,8 +57,6 @@ class _GHAddressEditState extends State<GHAddressEdit> {
     }
   }
 
-
-
   _changeAddress() {
 
   }
