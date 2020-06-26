@@ -9,6 +9,7 @@ import '../model/GHGoodDetailsModel.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import '../model/GHAddressModel.dart';
 import '../widget/GHCountItemWidget.dart';
+import '../widget/GHLoading.dart';
 
 class GHGoodsDetails extends StatefulWidget {
   Map arguments;
@@ -22,6 +23,9 @@ class GHGoodsDetails extends StatefulWidget {
 class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   /// 滚动控制器
   ScrollController _scrollController = new ScrollController();
+
+  /// 用户选择数量
+  int _count = 1;
 
   Color _actionColor;
 
@@ -79,16 +83,26 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   /// 生成订单
   void _creatOrder() async {
-    //shopOrderList
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList";
     Map<String, dynamic> params = {
       "title": this._goodDetailsModel.title,
       "price": "${this._goodDetailsModel.price}",
       "seletecdStrings": this._seletecdStrings,
+      "count": "${this._count}",
+      "address": this._addressModel.province +
+          this._addressModel.city +
+          this._addressModel.area +
+          this._addressModel.detailsAddress,
     };
     HttpRequest.request(url, method: 'POST', params: params).then((value) {
+      GHLoading.hideLoading(context);
+
       var objectId = value["objectId"];
-      if (objectId != null) {}
+      if (objectId != null) {
+        print("加入购物车成功");
+      } else {
+        print("加入购物车失败");
+      }
     });
   }
 
@@ -980,7 +994,9 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
           Container(
             child: this._sideItem(list, setBottomState, seletecdType),
           ),
@@ -1018,22 +1034,38 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                   "容量", this._fiveList, setBottomState, true),
                               this._bottomSpecificationItem(
                                   "颜色", this._sixList, setBottomState, true),
-
                               Container(
                                   padding: EdgeInsets.all(5),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Container(
-                                      child: Text(
-                                        "数量",
-                                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text(
+                                          "数量",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
-                                    ),
-                                    GHCountItemWidger(count: 1,),
-                                  ],
-                                )
-                              )
+                                      GHCountItemWidger(
+                                        addClick: (value) {
+                                          setState(() {
+                                            this._count = value;
+                                          });
+                                        },
+                                        subClick: (value) {
+                                          setState(() {
+                                            this._count = value;
+                                          });
+                                        },
+                                        count: this._count,
+                                      ),
+                                    ],
+                                  )),
+                              SizedBox(
+                                height: 5,
+                              ),
                             ],
                           ),
                         ),
@@ -1047,6 +1079,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                         children: <Widget>[
                           GestureDetector(
                               onTap: () {
+                                GHLoading.showLoading(context);
                                 this._getSeletecdList();
                                 this._creatOrder();
                                 Navigator.pop(context);

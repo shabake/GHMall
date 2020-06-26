@@ -1,72 +1,38 @@
 import 'package:flutter/material.dart';
 
-typedef MenuCallBack = void Function(int count);
+typedef clickCallback = void Function(int value);
 
 /// 显示数量子控件
 class GHCountItemWidger extends StatefulWidget {
-
-
   /// 数量
   int count;
 
   /// 是否可以点击
   bool isEnable;
 
-  /// 点击增加事件
-  final Object addAction;
+  final clickCallback addClick;
+  final clickCallback subClick;
 
-  /// 点击减少事件
-  final Object subAction;
-
-  GHCountItemWidger(
-      {Key key,
-      this.isEnable = true,
-      this.count,
-      this.addAction,
-      this.subAction})
-      : super(key: key);
+  GHCountItemWidger({
+    Key key,
+    this.isEnable = true,
+    this.count,
+    this.addClick,
+    this.subClick,
+  }) : super(key: key);
 
   _GHCountItemWidgerState createState() => _GHCountItemWidgerState();
 }
 
-
 class _GHCountItemWidgerState extends State<GHCountItemWidger> {
-
   @override
 
   /// 数量
   int _count;
 
-  MenuCallBack addAction ;
-
-
-  /// 减少
-//  void _subAction() {
-//    if (!widget.isEnable) {
-//      return;
-//    }
-//    if (this._count > 1) {
-//      setState(() {
-//        this._count--;
-//      });
-//    }
-//  }
-//
-  /// 增加
-  void _addAction() {
-    if (!widget.isEnable) {
-      print("禁止响应");
-      return;
-    }
-    setState(() {
-      this._count++;
-    });
-  }
   void initState() {
     super.initState();
     this._count = widget.count;
-    addAction = widget.addAction;
-//    subAction = widget.subAction;
   }
 
   Widget _centerNumber() {
@@ -101,8 +67,18 @@ class _GHCountItemWidgerState extends State<GHCountItemWidger> {
   }
 
   Widget _rightNumber() {
-    return InkWell(
-//      onTap: this.addAction,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        if (!widget.isEnable) {
+          print("禁止响应");
+          return;
+        }
+        setState(() {
+          this._count++;
+        });
+        widget.addClick(this._count);
+      },
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(
@@ -124,8 +100,21 @@ class _GHCountItemWidgerState extends State<GHCountItemWidger> {
   }
 
   Widget _leftNumber() {
-    return InkWell(
-//      onTap: this.subAction,
+    return GestureDetector(
+      onTap: () {
+        if (!widget.isEnable) {
+          print("禁止响应");
+          return;
+        }
+
+        if (this._count > 1) {
+          setState(() {
+            this._count--;
+          });
+        }
+        widget.subClick(this._count);
+      },
+      behavior: HitTestBehavior.opaque,
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(

@@ -4,12 +4,6 @@ import 'package:flutter/material.dart';
 typedef OnSuccess = void Function(Object o);
 typedef OnError = void Function(Exception e);
 
-class HttpCallback {
-  OnSuccess onSuccess;
-  OnError onError;
-
-  HttpCallback({OnSuccess this.onSuccess, OnError this.onError});
-}
 
 class GHLoading {
 
