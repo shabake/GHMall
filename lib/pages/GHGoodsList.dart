@@ -230,7 +230,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
   }
 
   /// 获取用户选中
-  _getSeletecdList() {
+  void _getSeletecdList() {
     List seletecdList = [];
     this._firstList.forEach((element) {
       if (element["seletecd"] == "1") {
@@ -250,6 +250,8 @@ class _GHGoodsListState extends State<GHGoodsList> {
       }
     });
     this._seletecdList = seletecdList;
+
+    print(seletecdList);
   }
 
   /// 侧滑每行的标题
@@ -312,8 +314,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
   }
 
   /// 侧滑筛选子项
-  Widget _sideItem(list,[seletecdType]) {
-
+  Widget _sideItem(list, [seletecdType]) {
     /// 单选 多选 默认多选
     bool _seletecdType = seletecdType;
 
@@ -341,14 +342,14 @@ class _GHGoodsListState extends State<GHGoodsList> {
           return GestureDetector(
               onTap: () {
                 setState(() {
-                  if(_seletecdType == true) {
+                  if (_seletecdType == true) {
                     /// 单选
                     String sel = map["seletecd"];
                     if (sel == "1") {
                       map["seletecd"] = "0";
                     } else {
                       list.forEach((element) {
-                         element["seletecd"] = "0";
+                        element["seletecd"] = "0";
                       });
                       map["seletecd"] = "1";
                     }
@@ -362,7 +363,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                     }
                   }
                 });
-                _getSeletecdList();
+                this._getSeletecdList();
               },
               child: Container(
                 decoration: BoxDecoration(

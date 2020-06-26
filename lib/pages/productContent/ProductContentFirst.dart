@@ -275,7 +275,8 @@ class _ProductContentFirstState extends State<ProductContentFirst>
             );
           }
           );
-        });
+        }
+        );
   }
 
   Widget build(BuildContext context) {

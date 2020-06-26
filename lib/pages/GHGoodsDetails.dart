@@ -7,6 +7,7 @@ import '../services/httptool.dart';
 import 'dart:convert';
 import '../model/GHGoodDetailsModel.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import '../model/GHAddressModel.dart';
 
 class GHGoodsDetails extends StatefulWidget {
   Map arguments;
@@ -25,26 +26,27 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   double _changeHeight = 0;
 
+  /// 用户选择的规格型号
+  String _seletecdStrings = "";
+
   /// 优惠券
   List coupons = [];
 
   /// 商品详情模型
   var _goodDetailsModel;
 
+  /// 地址模型
+  Results _addressModel;
+
   @override
   void initState() {
     super.initState();
-    print(widget.arguments["id"]);
     this._loadData();
+    this._getAddressList();
     double height = ScreenAdaper.height(400);
-    this._scrollController.addListener(() {
-      double _opacity = this._scrollController.offset / height > 1.0
-          ? 1.0
-          : this._scrollController.offset / height;
-      setState(() {
-        this._changeHeight = -this._scrollController.offset;
-      });
-    });
+    this._scrollController.addListener(() {});
+
+    this._getSeletecdList();
   }
 
   /// 请求数据
@@ -57,9 +59,23 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
       setState(() {
         this._goodDetailsModel = goodDetailsModel;
       });
-      print(json);
     });
   }
+
+  void _getAddressList() async {
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
+    var c = Uri.encodeComponent('-createdAt');
+    url = url + '?' + "order=" + c;
+
+    HttpRequest.request(url, method: 'GET').then((res) {
+      var list = new GHAddressModel.fromJson(res).results;
+      setState(() {
+        this._addressModel = list.first;
+      });
+    });
+  }
+
+  List _seletecdList = [];
 
   @override
   void dispose() {
@@ -76,6 +92,52 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     {"title": "免举证换货"},
     {"title": "原厂维修"},
     {"title": "自提"}
+  ];
+
+  /// 构造筛选Map
+  List _firstList = [
+    {"id": "1", "title": "京东物流", "type": "1", "seletecd": "0"},
+    {"id": "2", "title": "货到付款", "type": "2", "seletecd": "0"},
+    {"id": "3", "title": "仅看有货", "type": "3", "seletecd": "0"},
+    {"id": "4", "title": "京东国际", "type": "5", "seletecd": "0"}
+  ];
+
+  /// 构造筛选Map
+  List _secondList = [
+    {"id": "1", "title": "6-10", "type": "1", "seletecd": "0"},
+    {"id": "2", "title": "10-26", "type": "1", "seletecd": "0"},
+    {"id": "3", "title": "26-137", "type": "1", "seletecd": "0"}
+  ];
+
+  /// 构造筛选Map
+  List _thirdList = [
+    {"id": "1", "title": "32G", "type": "1", "seletecd": "1"},
+    {"id": "2", "title": "64G", "type": "1", "seletecd": "0"},
+    {"id": "3", "title": "128G", "type": "1", "seletecd": "0"},
+    {"id": "1", "title": "256G", "type": "1", "seletecd": "0"},
+  ];
+
+  /// 网络运营商
+  List _fourList = [
+    {"id": "1", "title": "移动", "type": "1", "seletecd": "1"},
+    {"id": "2", "title": "联通", "type": "1", "seletecd": "0"},
+    {"id": "3", "title": "电信", "type": "1", "seletecd": "0"},
+  ];
+
+  /// 套餐
+  List _fiveList = [
+    {"id": "1", "title": "10G", "type": "1", "seletecd": "1"},
+    {"id": "2", "title": "100G", "type": "1", "seletecd": "0"},
+    {"id": "2", "title": "200G", "type": "1", "seletecd": "0"},
+    {"id": "2", "title": "500G", "type": "1", "seletecd": "0"},
+  ];
+
+  /// 颜色
+  List _sixList = [
+    {"id": "1", "title": "红色", "type": "1", "seletecd": "1"},
+    {"id": "2", "title": "黑色", "type": "1", "seletecd": "0"},
+    {"id": "2", "title": "土豪金", "type": "1", "seletecd": "0"},
+    {"id": "2", "title": "绿色", "type": "1", "seletecd": "0"},
   ];
 
   /// 广告
@@ -381,7 +443,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   }
 
   /// 已选
-  Widget _goodSelected() {
+  Widget _goodSelected(GHGoodDetailsModel goodDetailsModel) {
     return Container(
         padding: EdgeInsets.all(10),
         child: Row(
@@ -399,12 +461,21 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  child: Text("64GB 移动 双卡双待，每月120G流量套餐",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      )),
+                GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    this._showBottomSheet(goodDetailsModel);
+                  },
+                  child: Container(
+                    child: Text(
+                        this._seletecdStrings.length > 0
+                            ? this._seletecdStrings
+                            : "请选择",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
                 ),
                 SizedBox(
                   height: 4,
@@ -414,12 +485,15 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                   children: <Widget>[
                     Container(
                       child: Icon(
-                        Icons.home,
+                        Icons.help_outline,
                         size: 12,
                       ),
                     ),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
-                        child: Text("就可以快速实现图文混排的需求，并且可以看出 ",
+                        child: Text("可选服务 ",
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
@@ -440,44 +514,70 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
           Navigator.pushNamed(context, '/GHAddressList');
         },
         child: Container(
+            width: ScreenAdaper.getScreenWidth(),
             padding: EdgeInsets.all(10),
             child: Row(
               children: <Widget>[
                 Container(
+                    width: 30,
                     child: Text(
-                  "送至",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.black38,
-                  ),
-                )),
+                      "送至",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.black38,
+                      ),
+                    )),
                 SizedBox(
                   width: 10,
                 ),
                 Container(
+                    width: ScreenAdaper.getScreenWidth() - 60,
                     child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Container(
-                          child: Icon(
-                            Icons.home,
-                            size: 12,
-                          ),
-                        ),
+                            child: Row(
+                          children: <Widget>[
+                            Container(
+                              child: Icon(
+                                Icons.location_on,
+                                size: 12,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Container(
+                              child: Text(
+                                this._addressModel.province +
+                                    this._addressModel.city +
+                                    this._addressModel.area +
+                                    this._addressModel.detailsAddress,
+                              ),
+                            )
+                          ],
+                        )),
                         Container(
-                          child: Text("就可以快速实现图文混排的需"),
+                          child: RichText(
+                              text: TextSpan(
+                                  text: "11:10",
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
+                                  children: [
+                                TextSpan(
+                                    text:
+                                        "前下单,预计今天(06月26日)送达,受道路封闭影响,您的订单可能会有所延迟,我们将尽快为您送达,请您耐心等待",
+                                    style: TextStyle(
+                                        color: Colors.black87,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold)),
+                              ])),
                         )
                       ],
-                    )),
-                    Container(
-                      child: Text("就可以快速实现图文混排的需求，并且可以看出"),
-                    )
-                  ],
-                ))
+                    ))
               ],
             )));
   }
@@ -686,7 +786,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
           height: 10,
           color: Color.fromRGBO(245, 245, 245, 1),
         ),
-        this._goodSelected(),
+        this._goodSelected(goodDetailsModel),
         this._goodAddress(),
         Divider(),
         this._goodShops(),
@@ -698,58 +798,314 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     ));
   }
 
-  /// 规格选择器
-  void _showBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Stack(
-          children: <Widget>[
-            Positioned(
-                bottom: 0,
-                height: ScreenAdaper.height(80),
-                child: Row(
-                  children: <Widget>[
-                    GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: ScreenAdaper.getScreenWidth(),
-                          height: double.infinity,
-                          color: Colors.red,
-                          child: Text(
-                            "确 定",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ))
-                  ],
-                )),
-            Positioned(
-              top: 0,
-              width: ScreenAdaper.getScreenWidth(),
-              height: 100,
+  /// 获取用户选中
+  void _getSeletecdList() {
+    List seletecdList = [];
+    this._firstList.forEach((element) {
+      if (element["seletecd"] == "1") {
+        seletecdList.add(element);
+      }
+    });
+
+    this._thirdList.forEach((element) {
+      if (element["seletecd"] == "1") {
+        seletecdList.add(element);
+      }
+    });
+
+    this._fourList.forEach((element) {
+      if (element["seletecd"] == "1") {
+        seletecdList.add(element);
+      }
+    });
+
+    this._fiveList.forEach((element) {
+      if (element["seletecd"] == "1") {
+        seletecdList.add(element);
+      }
+    });
+
+    this._sixList.forEach((element) {
+      if (element["seletecd"] == "1") {
+        seletecdList.add(element);
+      }
+    });
+    this._seletecdList = seletecdList;
+
+    List<String> _seletecdStrings = [];
+    if (this._seletecdList.length > 0) {
+      this._seletecdList.forEach((element) {
+        _seletecdStrings.add(element["title"]);
+      });
+      setState(() {
+        this._seletecdStrings = _seletecdStrings.toString();
+      });
+    }
+  }
+
+  /// 侧滑筛选子项
+  Widget _sideItem(list, setBottomState, [seletecdType]) {
+    /// 单选 多选 默认多选
+    bool _seletecdType = seletecdType;
+
+    /// 处理数组返回数量
+    List actionList = [];
+    if (list.length > 6) {
+      for (var i = 0; i < 6; i++) {
+        Map map = list[i];
+        actionList.add(map);
+      }
+    }
+    List temp = [];
+
+    temp = list;
+
+    return Container(
+      padding: EdgeInsets.only(top: 5),
+      child: Wrap(
+        spacing: 10,
+        runSpacing: 5,
+        children: temp.asMap().keys.map<Widget>((f) {
+          Map map = temp[f];
+          return GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                setBottomState(() {
+                  if (_seletecdType == true) {
+                    /// 单选
+                    String sel = map["seletecd"];
+                    if (sel == "1") {
+                      map["seletecd"] = "0";
+                    } else {
+                      list.forEach((element) {
+                        element["seletecd"] = "0";
+                      });
+                      map["seletecd"] = "1";
+                    }
+                  } else {
+                    /// 多选
+                    String sel = map["seletecd"];
+                    if (sel == "0") {
+                      map["seletecd"] = "1";
+                    } else {
+                      map["seletecd"] = "0";
+                    }
+                  }
+                });
+                this._getSeletecdList();
+              },
               child: Container(
-                child: Row(
-                  children: <Widget>[
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(
+                      width: 0.5,
+                      color: map["seletecd"] == "0"
+                          ? Colors.transparent
+                          : Colors.red,
+                    )),
+                alignment: Alignment.center,
+                height: 36,
+                width: 80,
+                child: Chip(
+                  backgroundColor: map["seletecd"] == "0"
+                      ? Color.fromRGBO(240, 240, 240, 1)
+                      : Color.fromRGBO(245, 245, 245, 0.2),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  label: Stack(
+                    alignment: Alignment.center,
+                    children: <Widget>[
+                      Positioned(
+                        child: Container(
+                          width: double.infinity,
+                          child: Text(
+                            "#####",
+                            style: TextStyle(
+                                color: Colors.transparent, fontSize: 12),
+                          ),
+                        ),
+                      ),
                       Container(
-                        child: Image.network("https://upload-images.jianshu.io/upload_images/1419035-84f72de1cfe0dc5e.jpg"),
-                      )
-                  ],
-                )
-              )
-            ),
-            Container(
-              height: 400,
-              width: double.infinity,
-            ),
-          ],
-        );
-      },
+                        child: Text(
+                          "${map["title"]}",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: map["seletecd"] == "1"
+                                  ? Colors.red
+                                  : Colors.black),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ));
+        }).toList(),
+      ),
     );
   }
 
+  /// 底部规格选择器子项
+  Widget _bottomSpecificationItem(title, list, setBottomState, seletecdType) {
+    return Container(
+      padding: EdgeInsets.all(5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            child: Text(
+              title,
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Container(
+            child: this._sideItem(list, setBottomState, seletecdType),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// 规格选择器
+  void _showBottomSheet(GHGoodDetailsModel goodDetailsModel) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return StatefulBuilder(builder: (context, setBottomState) {
+            return Container(
+              height: 500,
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    color: Colors.white,
+                    margin: EdgeInsets.only(top: 120),
+                    height: 500 - 20 - ScreenAdaper.height(80) - 10,
+                    child: ListView(
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              this._bottomSpecificationItem(
+                                  "容量", this._thirdList, setBottomState, true),
+                              this._bottomSpecificationItem(
+                                  "网络", this._fourList, setBottomState, true),
+                              this._bottomSpecificationItem(
+                                  "容量", this._fiveList, setBottomState, true),
+                              this._bottomSpecificationItem(
+                                  "颜色", this._sixList, setBottomState, true),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                      bottom: 0,
+                      height: ScreenAdaper.height(80),
+                      child: Row(
+                        children: <Widget>[
+                          GestureDetector(
+                              onTap: () {
+                                this._getSeletecdList();
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                width: ScreenAdaper.getScreenWidth(),
+                                height: double.infinity,
+                                color: Colors.red,
+                                child: Text(
+                                  "确 定",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
+                                ),
+                              ))
+                        ],
+                      )),
+                  Positioned(
+                      top: 0,
+                      width: ScreenAdaper.getScreenWidth(),
+                      height: 120,
+                      child: Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                  alignment: Alignment.centerRight,
+                                  child: GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Icon(Icons.close),
+                                  )),
+                              Container(
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                        width: ScreenAdaper.height(110),
+                                        height: ScreenAdaper.height(110),
+                                        child: Image.network(
+                                          goodDetailsModel.url,
+                                        )),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                        child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          child: RichText(
+                                              text: TextSpan(
+                                                  text: "¥",
+                                                  style: TextStyle(
+                                                      color: Colors.red,
+                                                      fontSize: 10),
+                                                  children: [
+                                                TextSpan(
+                                                    text:
+                                                        "${goodDetailsModel?.price}",
+                                                    style: TextStyle(
+                                                        color: Colors.red,
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                TextSpan(
+                                                    text: ".00",
+                                                    style: TextStyle(
+                                                        color: Colors.red,
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                              ])),
+                                        ),
+                                        Container(
+                                          child: Text(
+                                            goodDetailsModel.title,
+                                          ),
+                                        ),
+                                      ],
+                                    )),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ))),
+                ],
+              ),
+            );
+          });
+        });
+  }
+
   /// 底部工具条
-  Widget _bottomToolBar() {
+  Widget _bottomToolBar(GHGoodDetailsModel goodDetailsModel) {
     final double topPadding = MediaQuery.of(context).padding.top;
     final double bottomPadding = MediaQuery.of(context).padding.bottom;
     return Positioned(
@@ -773,37 +1129,38 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                 ),
               ),
               Expanded(
-                flex: 1,
-                child: Container(
-                    alignment: Alignment.center,
-                    height: ScreenAdaper.height(80) - 10,
-                    color: Colors.red,
-                    child: GestureDetector(
-                      onTap: () {
-                        this._showBottomSheet();
-                      },
+                  flex: 1,
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      this._showBottomSheet(goodDetailsModel);
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: ScreenAdaper.height(80) - 10,
+                      color: Colors.red,
                       child: Text(
                         "加入购物车",
                         style: TextStyle(fontSize: 14, color: Colors.white),
                       ),
-                    )),
-              ),
+                    ),
+                  )),
               Expanded(
-                flex: 1,
-                child: Container(
-                    alignment: Alignment.center,
-                    height: ScreenAdaper.height(80) - 10,
-                    color: Colors.orange,
-                    child: GestureDetector(
-                      onTap: () {
-                        this._showBottomSheet();
-                      },
+                  flex: 1,
+                  child: GestureDetector(
+                    onTap: () {
+                      this._showBottomSheet(goodDetailsModel);
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: ScreenAdaper.height(80) - 10,
+                      color: Colors.orange,
                       child: Text(
                         "立即购买",
                         style: TextStyle(fontSize: 14, color: Colors.white),
                       ),
-                    )),
-              ),
+                    ),
+                  )),
             ],
           ),
           decoration: BoxDecoration(
@@ -893,9 +1250,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
         body: Stack(
       children: <Widget>[
         EasyRefresh(
-          onRefresh: () async {
-            print("22");
-          },
+          onRefresh: () async {},
           child: CustomScrollView(
             slivers: <Widget>[
               SliverToBoxAdapter(),
@@ -919,7 +1274,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
             ],
           ),
         ),
-        this._bottomToolBar(),
+        this._bottomToolBar(this._goodDetailsModel),
       ],
     ));
   }
