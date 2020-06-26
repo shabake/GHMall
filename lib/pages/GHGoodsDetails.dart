@@ -316,28 +316,27 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   }
 
   /// 规格子元素
-  Widget _specificationItem() {
+  Widget _specificationItem(String title,String details,String imageName) {
     return Container(
         width: 100,
         child: Column(
           children: <Widget>[
             Container(
-              child: Icon(
-                Icons.home,
-                size: 22,
-              ),
+              height: 20,
+              width: 20,
+              child: Image.asset('images/${imageName}.png'),
             ),
             Container(
               padding: EdgeInsets.all(2),
               child: Text(
-                "上市时间",
+                title,
                 style: TextStyle(fontSize: 12),
               ),
             ),
             Container(
                 padding: EdgeInsets.all(2),
                 child: Text(
-                  "2020年1月",
+                  details,
                   style: TextStyle(fontSize: 12),
                 ))
           ],
@@ -357,9 +356,11 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
             SizedBox(
               width: 10,
             ),
-            _specificationItem(),
-            _specificationItem(),
-            _specificationItem(),
+            _specificationItem("上市时间","2020年6月","goPublic"),
+            _specificationItem("屏幕尺寸","5.7英寸","screen"),
+            _specificationItem("厚度","0.2mm","thickness"),
+
+
           ],
         ));
   }
