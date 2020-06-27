@@ -425,7 +425,6 @@ class _GHShopCartState extends State<GHShopCart> {
   Widget _bottomToolBar() {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(left: 10, right: 10),
       child: Container(
         decoration: BoxDecoration(
             border: Border(
@@ -437,6 +436,7 @@ class _GHShopCartState extends State<GHShopCart> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
+              padding: EdgeInsets.only(left: 10),
               width: 100,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -584,9 +584,9 @@ class _GHShopCartState extends State<GHShopCart> {
                                 padding: EdgeInsets.only(right: 10),
                                 height: 100,
                                 width: 100,
-                                child: Image.network(
-                                  goodDetailsModel.url,
-                                  fit: BoxFit.cover,
+                                child:  new FadeInImage.memoryNetwork(
+                                  placeholder: kTransparentImage,
+                                  image: goodDetailsModel.url,
                                 ),
                               ),
                               Expanded(
@@ -725,9 +725,9 @@ class _GHShopCartState extends State<GHShopCart> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: this._appBar(),
-      body: this._shopCartList.length == 0
-          ? this._notLoginWidgte()
-          : this._shopCartWidget(),
+      body: this._shopCartList.length != 0
+          ? this._shopCartWidget() :this._notLoginWidgte(),
+
     );
   }
 }
