@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'Cart.dart';
 import 'User.dart';
 import '../../services/ScreenAdaper.dart';
 import '../../services/gh_sqflite.dart';
