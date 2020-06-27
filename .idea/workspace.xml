@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/checkSelected.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/checkSelected.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/Tabs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/Tabs.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -345,12 +348,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="572" column="22" lean-forward="true" selection-start-line="572" selection-start-column="22" selection-end-line="572" selection-end-column="22" />
+            <state relative-caret-position="343">
+              <caret line="730" column="34" selection-start-line="730" selection-start-column="34" selection-end-line="730" selection-end-column="34" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#273#344#0" />
                 <element signature="e#536#623#0" />
+                <element signature="e#803#1794#0" />
                 <element signature="e#777#791#0" />
                 <element signature="e#852#872#0" />
                 <element signature="e#1133#1139#0" />
@@ -473,12 +477,25 @@
                 <element signature="e#11942#12088#0" />
                 <element signature="e#12326#12363#0" />
                 <element signature="e#12536#17220#0" />
+                <element signature="e#12558#17215#0" />
+                <element signature="e#12662#17208#0" />
+                <element signature="e#12697#12824#0" />
+                <element signature="e#12725#12823#0" />
+                <element signature="e#12758#12822#0" />
+                <element signature="e#12844#17199#0" />
+                <element signature="e#12958#14046#0" />
+                <element signature="e#12945#12953#0" />
+                <element signature="e#13010#14031#0" />
+                <element signature="e#13135#13728#0" />
+                <element signature="e#13248#13727#0" />
                 <element signature="e#13628#13656#0" />
                 <element signature="e#13700#13726#0" />
                 <element signature="e#13757#13995#0" />
                 <element signature="e#13803#13813#0" />
                 <element signature="e#13846#13974#0" />
                 <element signature="e#13914#13951#0" />
+                <element signature="e#14109#16407#0" />
+                <element signature="e#14141#16386#0" />
                 <element signature="e#14218#15262#0" />
                 <element signature="e#14261#15235#0" />
                 <element signature="e#14307#15234#0" />
@@ -494,12 +511,33 @@
                 <element signature="e#16028#16307#0" />
                 <element signature="e#16073#16274#0" />
                 <element signature="e#16165#16239#0" />
+                <element signature="e#16435#17175#0" />
+                <element signature="e#16594#16784#0" />
                 <element signature="e#16655#16659#0" />
                 <element signature="e#16703#16783#0" />
                 <element signature="e#16754#16772#0" />
+                <element signature="e#16828#17174#0" />
+                <element signature="e#17017#17151#0" />
                 <element signature="e#17089#17126#0" />
+                <element signature="e#17294#25263#0" />
+                <element signature="e#17316#25258#0" />
                 <element signature="e#16123#16127#0" />
+                <element signature="e#17394#25257#0" />
+                <element signature="e#17504#18101#0" />
+                <element signature="e#17599#18100#0" />
+                <element signature="e#16781#16809#0" />
+                <element signature="e#16847#16873#0" />
+                <element signature="e#18123#25234#0" />
+                <element signature="e#18188#25851#0" />
+                <element signature="e#18263#18418#0" />
+                <element signature="e#18329#18417#0" />
+                <element signature="e#18476#25850#0" />
+                <element signature="e#18619#25802#0" />
+                <element signature="e#18671#18681#0" />
+                <element signature="e#18769#25775#0" />
+                <element signature="e#18932#19321#0" />
                 <element signature="e#18990#19001#0" />
+                <element signature="e#19158#19292#0" />
                 <element signature="e#19361#25716#0" />
                 <element signature="e#19456#25715#0" />
                 <element signature="e#19556#25678#0" />
@@ -529,7 +567,18 @@
                 <element signature="e#23316#23651#0" />
                 <element signature="e#23443#23650#0" />
                 <element signature="e#23671#23813#0" />
-                <element signature="e#23873#24050#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pages/tabs/User.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2337">
+              <caret line="123" column="27" selection-start-line="123" selection-end-line="124" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -550,10 +599,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/pages/tabs/Tabs.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="79" column="24" lean-forward="true" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+            <state relative-caret-position="114">
+              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#289#374#0" />
+                <element signature="e#413#2199#0" />
+                <element signature="e#506#664#0" />
+                <element signature="e#576#609#0" />
+                <element signature="e#823#2197#0" />
+                <element signature="e#846#855#0" />
+                <element signature="e#876#2192#0" />
+                <element signature="e#898#1040#0" />
+                <element signature="e#1088#2185#0" />
+                <element signature="e#1425#1580#0" />
+                <element signature="e#1449#1461#0" />
+                <element signature="e#1486#1567#0" />
+                <element signature="e#1538#1552#0" />
+                <element signature="e#1615#1774#0" />
+                <element signature="e#1639#1655#0" />
+                <element signature="e#1680#1761#0" />
+                <element signature="e#1732#1746#0" />
+                <element signature="e#1809#1974#0" />
+                <element signature="e#1833#1854#0" />
+                <element signature="e#1879#1961#0" />
+                <element signature="e#1932#1946#0" />
+                <element signature="e#2009#2166#0" />
+                <element signature="e#2033#2047#0" />
+                <element signature="e#2072#2153#0" />
+                <element signature="e#2124#2138#0" />
               </folding>
             </state>
           </provider>
@@ -562,10 +635,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHHomePage.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="173" column="26" selection-start-line="170" selection-start-column="30" selection-end-line="173" selection-end-column="26" />
+            <state relative-caret-position="95">
+              <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-end-line="6" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#500#603#0" />
                 <element signature="e#903#1022#0" />
                 <element signature="e#1062#1357#0" />
@@ -673,15 +745,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="19">
               <caret line="32" column="5" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/services/ScreenAdaper.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="26" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -961,7 +1024,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_fourList</find>
       <find>规格</find>
       <find>_getSeletecdList</find>
       <find>_seletecdList</find>
@@ -991,6 +1053,7 @@
       <find>Map&lt;String, dynamic&gt; params</find>
       <find>全选</find>
       <find>_total</find>
+      <find>orange</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1160,7 +1223,7 @@
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Flutter Performance" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32866243" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32866243" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.3284974" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Flutter Inspector" order="2" />
@@ -1416,16 +1479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-293">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/User.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="123" column="27" selection-start-line="123" selection-end-line="124" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -1936,16 +1989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/routers/router.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="30" column="18" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/GHGoodsList.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -2199,22 +2242,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/Tabs.dart">
+    <entry file="file://$PROJECT_DIR$/lib/routers/router.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="79" column="24" lean-forward="true" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+        <state relative-caret-position="570">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="18" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHHomePage.dart">
+    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/User.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="173" column="26" selection-start-line="170" selection-start-column="30" selection-end-line="173" selection-end-column="26" />
+        <state relative-caret-position="2337">
+          <caret line="123" column="27" selection-start-line="123" selection-end-line="124" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/Tabs.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+          <folding>
+            <element signature="e#289#374#0" />
+            <element signature="e#413#2199#0" />
+            <element signature="e#506#664#0" />
+            <element signature="e#576#609#0" />
+            <element signature="e#823#2197#0" />
+            <element signature="e#846#855#0" />
+            <element signature="e#876#2192#0" />
+            <element signature="e#898#1040#0" />
+            <element signature="e#1088#2185#0" />
+            <element signature="e#1425#1580#0" />
+            <element signature="e#1449#1461#0" />
+            <element signature="e#1486#1567#0" />
+            <element signature="e#1538#1552#0" />
+            <element signature="e#1615#1774#0" />
+            <element signature="e#1639#1655#0" />
+            <element signature="e#1680#1761#0" />
+            <element signature="e#1732#1746#0" />
+            <element signature="e#1809#1974#0" />
+            <element signature="e#1833#1854#0" />
+            <element signature="e#1879#1961#0" />
+            <element signature="e#1932#1946#0" />
+            <element signature="e#2009#2166#0" />
+            <element signature="e#2033#2047#0" />
+            <element signature="e#2072#2153#0" />
+            <element signature="e#2124#2138#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHHomePage.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-end-line="6" />
+          <folding>
             <element signature="e#500#603#0" />
             <element signature="e#903#1022#0" />
             <element signature="e#1062#1357#0" />
@@ -2313,12 +2399,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="572" column="22" lean-forward="true" selection-start-line="572" selection-start-column="22" selection-end-line="572" selection-end-column="22" />
+        <state relative-caret-position="343">
+          <caret line="730" column="34" selection-start-line="730" selection-start-column="34" selection-end-line="730" selection-end-column="34" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#273#344#0" />
             <element signature="e#536#623#0" />
+            <element signature="e#803#1794#0" />
             <element signature="e#777#791#0" />
             <element signature="e#852#872#0" />
             <element signature="e#1133#1139#0" />
@@ -2441,12 +2528,25 @@
             <element signature="e#11942#12088#0" />
             <element signature="e#12326#12363#0" />
             <element signature="e#12536#17220#0" />
+            <element signature="e#12558#17215#0" />
+            <element signature="e#12662#17208#0" />
+            <element signature="e#12697#12824#0" />
+            <element signature="e#12725#12823#0" />
+            <element signature="e#12758#12822#0" />
+            <element signature="e#12844#17199#0" />
+            <element signature="e#12958#14046#0" />
+            <element signature="e#12945#12953#0" />
+            <element signature="e#13010#14031#0" />
+            <element signature="e#13135#13728#0" />
+            <element signature="e#13248#13727#0" />
             <element signature="e#13628#13656#0" />
             <element signature="e#13700#13726#0" />
             <element signature="e#13757#13995#0" />
             <element signature="e#13803#13813#0" />
             <element signature="e#13846#13974#0" />
             <element signature="e#13914#13951#0" />
+            <element signature="e#14109#16407#0" />
+            <element signature="e#14141#16386#0" />
             <element signature="e#14218#15262#0" />
             <element signature="e#14261#15235#0" />
             <element signature="e#14307#15234#0" />
@@ -2462,12 +2562,33 @@
             <element signature="e#16028#16307#0" />
             <element signature="e#16073#16274#0" />
             <element signature="e#16165#16239#0" />
+            <element signature="e#16435#17175#0" />
+            <element signature="e#16594#16784#0" />
             <element signature="e#16655#16659#0" />
             <element signature="e#16703#16783#0" />
             <element signature="e#16754#16772#0" />
+            <element signature="e#16828#17174#0" />
+            <element signature="e#17017#17151#0" />
             <element signature="e#17089#17126#0" />
+            <element signature="e#17294#25263#0" />
+            <element signature="e#17316#25258#0" />
             <element signature="e#16123#16127#0" />
+            <element signature="e#17394#25257#0" />
+            <element signature="e#17504#18101#0" />
+            <element signature="e#17599#18100#0" />
+            <element signature="e#16781#16809#0" />
+            <element signature="e#16847#16873#0" />
+            <element signature="e#18123#25234#0" />
+            <element signature="e#18188#25851#0" />
+            <element signature="e#18263#18418#0" />
+            <element signature="e#18329#18417#0" />
+            <element signature="e#18476#25850#0" />
+            <element signature="e#18619#25802#0" />
+            <element signature="e#18671#18681#0" />
+            <element signature="e#18769#25775#0" />
+            <element signature="e#18932#19321#0" />
             <element signature="e#18990#19001#0" />
+            <element signature="e#19158#19292#0" />
             <element signature="e#19361#25716#0" />
             <element signature="e#19456#25715#0" />
             <element signature="e#19556#25678#0" />
@@ -2497,7 +2618,6 @@
             <element signature="e#23316#23651#0" />
             <element signature="e#23443#23650#0" />
             <element signature="e#23671#23813#0" />
-            <element signature="e#23873#24050#0" />
           </folding>
         </state>
       </provider>

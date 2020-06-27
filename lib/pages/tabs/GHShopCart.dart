@@ -6,6 +6,7 @@ import '../../services/ScreenAdaper.dart';
 import "../../model/GHGoodDetailsModel.dart";
 import '../../widget/GHCountItemWidget.dart';
 import 'dart:convert';
+import '../../widget/LoadingWidget.dart';
 
 /// 购物车
 class GHShopCart extends StatefulWidget {
@@ -155,15 +156,15 @@ class _GHShopCartState extends State<GHShopCart> {
                             Container(
                               child: Text(
                                 "￥",
-                                style: TextStyle(
-                                    fontSize: 10, color: Colors.orange),
+                                style:
+                                    TextStyle(fontSize: 10, color: Colors.red),
                               ),
                             ),
                             Container(
                               child: Text(
                                 "${value.price}",
                                 style: TextStyle(
-                                    color: Colors.orange,
+                                    color: Colors.red,
                                     fontWeight: FontWeight.bold),
                               ),
                             )
@@ -361,7 +362,7 @@ class _GHShopCartState extends State<GHShopCart> {
                       child: Icon(
                         Icons.location_on,
                         size: 18,
-                        color: Colors.orange,
+                        color: Colors.red,
                       ),
                     ),
                     Container(
@@ -473,18 +474,18 @@ class _GHShopCartState extends State<GHShopCart> {
                               text: TextSpan(
                                   text: "¥",
                                   style: TextStyle(
-                                      color: Colors.orange, fontSize: 10),
+                                      color: Colors.red, fontSize: 10),
                                   children: [
                                 TextSpan(
                                     text: "${this._total}",
                                     style: TextStyle(
-                                        color: Colors.orange,
+                                        color: Colors.red,
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold)),
                                 TextSpan(
                                     text: ".00",
                                     style: TextStyle(
-                                        color: Colors.orange,
+                                        color: Colors.red,
                                         fontSize: 10,
                                         fontWeight: FontWeight.bold)),
                               ])),
@@ -493,7 +494,7 @@ class _GHShopCartState extends State<GHShopCart> {
                           width: 10,
                         ),
                         Container(
-                            color: Colors.orange,
+                            color: Colors.red,
                             width: 120,
                             height: 50,
                             child: GestureDetector(
@@ -584,7 +585,7 @@ class _GHShopCartState extends State<GHShopCart> {
                                 padding: EdgeInsets.only(right: 10),
                                 height: 100,
                                 width: 100,
-                                child:  new FadeInImage.memoryNetwork(
+                                child: new FadeInImage.memoryNetwork(
                                   placeholder: kTransparentImage,
                                   image: goodDetailsModel.url,
                                 ),
@@ -637,15 +638,14 @@ class _GHShopCartState extends State<GHShopCart> {
                                                   text: TextSpan(
                                                       text: "¥",
                                                       style: TextStyle(
-                                                          color: Colors.orange,
+                                                          color: Colors.red,
                                                           fontSize: 10),
                                                       children: [
                                                     TextSpan(
                                                         text:
                                                             "${goodDetailsModel?.price}",
                                                         style: TextStyle(
-                                                            color:
-                                                                Colors.orange,
+                                                            color: Colors.red,
                                                             fontSize: 20,
                                                             fontWeight:
                                                                 FontWeight
@@ -653,8 +653,7 @@ class _GHShopCartState extends State<GHShopCart> {
                                                     TextSpan(
                                                         text: ".00",
                                                         style: TextStyle(
-                                                            color:
-                                                                Colors.orange,
+                                                            color: Colors.red,
                                                             fontSize: 10,
                                                             fontWeight:
                                                                 FontWeight
@@ -722,12 +721,18 @@ class _GHShopCartState extends State<GHShopCart> {
     );
   }
 
+  /// 判断bodywidget
+  Widget _bodyWidgt() {
+    if (this._shopCartList.length == 0) {
+      return LoadingWidget();
+    }
+    return this._shopCartWidget();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: this._appBar(),
-      body: this._shopCartList.length != 0
-          ? this._shopCartWidget() :this._notLoginWidgte(),
-
+      body: this._bodyWidgt(),
     );
   }
 }

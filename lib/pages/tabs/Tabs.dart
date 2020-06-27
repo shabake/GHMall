@@ -51,7 +51,7 @@ class _TabsState extends State<Tabs> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        fixedColor: Colors.orange,
+        fixedColor: Colors.red,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
