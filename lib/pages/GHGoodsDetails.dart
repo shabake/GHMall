@@ -84,7 +84,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCartList";
     Map<String, dynamic> params = {
       "title": this._goodDetailsModel.title,
-      "price": "${this._goodDetailsModel.price}",
+      "price": this._goodDetailsModel.price,
       "seletecdStrings": this._seletecdStrings,
       "count": this._count,
       "province": this._addressModel.province,

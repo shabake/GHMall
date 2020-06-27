@@ -22,6 +22,9 @@ class _GHShopCartState extends State<GHShopCart> {
   /// 记录是否已经全选
   bool _isAllCheck = false;
 
+  /// 共计
+  double _total = 0;
+
   @override
   void initState() {
     super.initState();
@@ -43,8 +46,22 @@ class _GHShopCartState extends State<GHShopCart> {
             new GHGoodDetailsModel.fromJson(item);
         _tempList.add(goodDetailsModel);
       });
+
+      double _tempTotal = 0;
+      bool _tempIsAllCheck = true;
+      for (var i = 0; i < _tempList.length; i++) {
+        GHGoodDetailsModel goodDetailsModel = _tempList[i];
+        if (goodDetailsModel.check == true) {
+          _tempTotal += goodDetailsModel.count *  goodDetailsModel.price;
+        } else {
+          _tempIsAllCheck = false;
+        }
+      }
+
       setState(() {
         this._shopCartList = _tempList;
+        this._total = _tempTotal;
+        this._isAllCheck = _tempIsAllCheck;
       });
     });
   }
@@ -70,10 +87,10 @@ class _GHShopCartState extends State<GHShopCart> {
       "check": goodDetailsModel.check,
     };
     HttpRequest.request(url, method: 'PUT', params: params).then((value) {
-      print(value);
       var objectId = value["objectId"];
       if (objectId != null) {
         print("更新成功");
+        this._getShopCartList();
       } else {
         print("更新失败");
       }
@@ -135,14 +152,14 @@ class _GHShopCartState extends State<GHShopCart> {
                               child: Text(
                                 "￥",
                                 style:
-                                    TextStyle(fontSize: 10, color: Colors.red),
+                                    TextStyle(fontSize: 10, color: Colors.orange),
                               ),
                             ),
                             Container(
                               child: Text(
                                 "${value.price}",
                                 style: TextStyle(
-                                    color: Colors.red,
+                                    color: Colors.orange,
                                     fontWeight: FontWeight.bold),
                               ),
                             )
@@ -368,6 +385,7 @@ class _GHShopCartState extends State<GHShopCart> {
   /// 底部工具条
   Widget _bottomToolBar() {
     return Container(
+      color: Colors.white,
       padding: EdgeInsets.only(left: 10),
       child: Container(
         decoration: BoxDecoration(
@@ -410,14 +428,24 @@ class _GHShopCartState extends State<GHShopCart> {
               child: Row(
                 children: <Widget>[
                   Container(
-                    child: Text(
-                      "2",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
-                        color: Colors.black54,
-                      ),
-                    ),
+                    child: RichText(
+                        text: TextSpan(
+                            text: "¥",
+                            style: TextStyle(color: Colors.orange, fontSize: 10),
+                            children: [
+                          TextSpan(
+                              text: "${this._total}",
+                              style: TextStyle(
+                                  color: Colors.orange,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold)),
+                          TextSpan(
+                              text: ".00",
+                              style: TextStyle(
+                                  color: Colors.orange,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold)),
+                        ])),
                   ),
                   SizedBox(
                     width: 10,
@@ -537,21 +565,21 @@ class _GHShopCartState extends State<GHShopCart> {
                                               text: TextSpan(
                                                   text: "¥",
                                                   style: TextStyle(
-                                                      color: Colors.red,
+                                                      color: Colors.orange,
                                                       fontSize: 10),
                                                   children: [
                                                 TextSpan(
                                                     text:
                                                         "${goodDetailsModel?.price}",
                                                     style: TextStyle(
-                                                        color: Colors.red,
+                                                        color: Colors.orange,
                                                         fontSize: 20,
                                                         fontWeight:
                                                             FontWeight.bold)),
                                                 TextSpan(
                                                     text: ".00",
                                                     style: TextStyle(
-                                                        color: Colors.red,
+                                                        color: Colors.orange,
                                                         fontSize: 10,
                                                         fontWeight:
                                                             FontWeight.bold)),
@@ -596,19 +624,20 @@ class _GHShopCartState extends State<GHShopCart> {
   Widget _shopCartWidget() {
     return Stack(
       children: <Widget>[
+        Container(
+            color: Colors.white,
+            height: ScreenAdaper.getScreenHeight() - 50,
+            child: ListView.builder(
+                itemCount: this._shopCartList.length,
+                itemBuilder: (BuildContext context, index) {
+                  return this._shopCartItem(this._shopCartList[index]);
+                })),
         Positioned(
           width: ScreenAdaper.getScreenWidth(),
           height: 50,
           bottom: 0,
           child: this._bottomToolBar(),
         ),
-        Container(
-            color: Colors.white,
-            child: ListView.builder(
-                itemCount: this._shopCartList.length,
-                itemBuilder: (BuildContext context, index) {
-                  return this._shopCartItem(this._shopCartList[index]);
-                }))
       ],
     );
   }
