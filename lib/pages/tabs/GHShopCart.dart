@@ -5,6 +5,7 @@ import 'package:transparent_image/transparent_image.dart';
 import '../../services/ScreenAdaper.dart';
 import "../../model/GHGoodDetailsModel.dart";
 import '../../widget/GHCountItemWidget.dart';
+import 'dart:convert';
 
 /// 购物车
 class GHShopCart extends StatefulWidget {
@@ -21,6 +22,9 @@ class _GHShopCartState extends State<GHShopCart> {
 
   /// 记录是否已经全选
   bool _isAllCheck = false;
+
+  /// 编辑/完成
+  bool _isEdit = false;
 
   /// 共计
   double _total = 0;
@@ -52,7 +56,7 @@ class _GHShopCartState extends State<GHShopCart> {
       for (var i = 0; i < _tempList.length; i++) {
         GHGoodDetailsModel goodDetailsModel = _tempList[i];
         if (goodDetailsModel.check == true) {
-          _tempTotal += goodDetailsModel.count *  goodDetailsModel.price;
+          _tempTotal += goodDetailsModel.count * goodDetailsModel.price;
         } else {
           _tempIsAllCheck = false;
         }
@@ -151,8 +155,8 @@ class _GHShopCartState extends State<GHShopCart> {
                             Container(
                               child: Text(
                                 "￥",
-                                style:
-                                    TextStyle(fontSize: 10, color: Colors.orange),
+                                style: TextStyle(
+                                    fontSize: 10, color: Colors.orange),
                               ),
                             ),
                             Container(
@@ -372,21 +376,56 @@ class _GHShopCartState extends State<GHShopCart> {
         ),
       ),
       actions: <Widget>[
-        IconButton(
-            icon: Icon(
-              Icons.delete_outline,
-              color: Colors.black38,
-            ),
-            onPressed: () {}),
+        Container(
+            margin: EdgeInsets.only(right: 20),
+            alignment: Alignment.center,
+            child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  setState(() {
+                    this._isEdit = !this._isEdit;
+                  });
+                },
+                child: Text(
+                  this._isEdit == false ? "编辑" : "完成",
+                  style: TextStyle(fontSize: 14, color: Colors.black38),
+                )))
       ],
     );
+  }
+
+  /// 批量处理全选
+  void _actionAllCheck(bool isAllCheck) {
+    List maps = [];
+    for (var i = 0; i < this._shopCartList.length; i++) {
+      GHGoodDetailsModel goodDetailsModel = _shopCartList[i];
+      Map map = {
+        "method": "PUT",
+        "path": "/1.1/classes/shopCartList/${goodDetailsModel.objectId}",
+        "body": {"check": isAllCheck}
+      };
+      maps.add(map);
+    }
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/batch";
+
+    Map<String, dynamic> params = {"requests": maps};
+
+    var jsonWherePrice = jsonEncode(params);
+    print(jsonWherePrice);
+    HttpRequest.request(url, method: 'POST', params: params).then((value) {
+      if (value != null) {
+        this._getShopCartList();
+      } else {
+        print("更新失败");
+      }
+    });
   }
 
   /// 底部工具条
   Widget _bottomToolBar() {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(left: 10),
+      padding: EdgeInsets.only(left: 10, right: 10),
       child: Container(
         decoration: BoxDecoration(
             border: Border(
@@ -410,6 +449,7 @@ class _GHShopCartState extends State<GHShopCart> {
                             setState(() {
                               this._isAllCheck = !this._isAllCheck;
                             });
+                            this._actionAllCheck(this._isAllCheck);
                           },
                           child: this._isAllCheck == true
                               ? Image.asset('images/checkSelected.png')
@@ -424,55 +464,76 @@ class _GHShopCartState extends State<GHShopCart> {
                 ],
               ),
             ),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    child: RichText(
-                        text: TextSpan(
-                            text: "¥",
-                            style: TextStyle(color: Colors.orange, fontSize: 10),
-                            children: [
-                          TextSpan(
-                              text: "${this._total}",
-                              style: TextStyle(
-                                  color: Colors.orange,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold)),
-                          TextSpan(
-                              text: ".00",
-                              style: TextStyle(
-                                  color: Colors.orange,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold)),
-                        ])),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                      color: Colors.orange,
-                      width: 120,
-                      height: 50,
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () {
+            this._isEdit == false
+                ? Container(
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          child: RichText(
+                              text: TextSpan(
+                                  text: "¥",
+                                  style: TextStyle(
+                                      color: Colors.orange, fontSize: 10),
+                                  children: [
+                                TextSpan(
+                                    text: "${this._total}",
+                                    style: TextStyle(
+                                        color: Colors.orange,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold)),
+                                TextSpan(
+                                    text: ".00",
+                                    style: TextStyle(
+                                        color: Colors.orange,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold)),
+                              ])),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                            color: Colors.orange,
+                            width: 120,
+                            height: 50,
+                            child: GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTap: () {
 //                          if (this.list.length == 0) {
 //                            Navigator.pushNamed(context, '/login');
 //                          } else {
 //                            Navigator.pushNamed(context, '/CheckOut');
 //                          }
-                        },
-                        child: Center(
-                          child: Text(
-                            "结算",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        ),
-                      ))
-                ],
-              ),
-            ),
+                              },
+                              child: Center(
+                                child: Text(
+                                  "结算",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                              ),
+                            ))
+                      ],
+                    ),
+                  )
+                : Container(
+                    alignment: Alignment.center,
+                    height: 30,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                            color: Color.fromRGBO(200, 200, 200, 1), width: 1)),
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {
+                        print("点击删除");
+                      },
+                      child: Text(
+                        "删除",
+                        style: TextStyle(fontSize: 12, color: Colors.black87),
+                      ),
+                    )),
           ],
         ),
       ),
@@ -503,119 +564,138 @@ class _GHShopCartState extends State<GHShopCart> {
                         : Image.asset('images/checkNormal.png'))),
             Expanded(
                 flex: 1,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(left: 10),
-                      width: double.infinity,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.only(right: 10),
-                            height: 100,
-                            width: 100,
-                            child: Image.network(
-                              goodDetailsModel.url,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Expanded(
-                              flex: 1,
-                              child: Container(
-                                height: 110,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Container(
-                                        child: Column(
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/GHGoodsDetails',
+                          arguments: {
+                            'id': goodDetailsModel.goodId,
+                          });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.only(left: 10),
+                          width: double.infinity,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                padding: EdgeInsets.only(right: 10),
+                                height: 100,
+                                width: 100,
+                                child: Image.network(
+                                  goodDetailsModel.url,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: 110,
+                                    child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          padding: EdgeInsets.only(bottom: 10),
-                                          child: Text(
-                                            goodDetailsModel.title,
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                        Container(
-                                          color: Colors.black12,
-                                          child: Text(
-                                            goodDetailsModel.seletecdStrings,
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    )),
-                                    Container(
-                                        child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: <Widget>[
                                         Container(
-                                          child: RichText(
-                                              text: TextSpan(
-                                                  text: "¥",
-                                                  style: TextStyle(
-                                                      color: Colors.orange,
-                                                      fontSize: 10),
-                                                  children: [
-                                                TextSpan(
-                                                    text:
-                                                        "${goodDetailsModel?.price}",
-                                                    style: TextStyle(
-                                                        color: Colors.orange,
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
-                                                TextSpan(
-                                                    text: ".00",
-                                                    style: TextStyle(
-                                                        color: Colors.orange,
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
-                                              ])),
-                                        ),
+                                            child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              padding:
+                                                  EdgeInsets.only(bottom: 10),
+                                              child: Text(
+                                                goodDetailsModel.title,
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            Container(
+                                              color: Colors.black12,
+                                              child: Text(
+                                                goodDetailsModel
+                                                    .seletecdStrings,
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )),
                                         Container(
-                                          child: GHCountItemWidger(
-                                            count: goodDetailsModel.count,
-                                            addClick: (value) {
-                                              setState(() {
-                                                goodDetailsModel.count = value;
-                                              });
-                                              this._updateShopCartList(
-                                                  goodDetailsModel,
-                                                  goodDetailsModel.objectId);
-                                            },
-                                            subClick: (value) {
-                                              setState(() {
-                                                goodDetailsModel.count = value;
-                                              });
-                                              this._updateShopCartList(
-                                                  goodDetailsModel,
-                                                  goodDetailsModel.objectId);
-                                            },
-                                          ),
-                                        )
+                                            child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: <Widget>[
+                                            Container(
+                                              child: RichText(
+                                                  text: TextSpan(
+                                                      text: "¥",
+                                                      style: TextStyle(
+                                                          color: Colors.orange,
+                                                          fontSize: 10),
+                                                      children: [
+                                                    TextSpan(
+                                                        text:
+                                                            "${goodDetailsModel?.price}",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.orange,
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold)),
+                                                    TextSpan(
+                                                        text: ".00",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.orange,
+                                                            fontSize: 10,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold)),
+                                                  ])),
+                                            ),
+                                            Container(
+                                              child: GHCountItemWidger(
+                                                count: goodDetailsModel.count,
+                                                addClick: (value) {
+                                                  setState(() {
+                                                    goodDetailsModel.count =
+                                                        value;
+                                                  });
+                                                  this._updateShopCartList(
+                                                      goodDetailsModel,
+                                                      goodDetailsModel
+                                                          .objectId);
+                                                },
+                                                subClick: (value) {
+                                                  setState(() {
+                                                    goodDetailsModel.count =
+                                                        value;
+                                                  });
+                                                  this._updateShopCartList(
+                                                      goodDetailsModel,
+                                                      goodDetailsModel
+                                                          .objectId);
+                                                },
+                                              ),
+                                            )
+                                          ],
+                                        ))
                                       ],
-                                    ))
-                                  ],
-                                ),
-                              ))
-                        ],
-                      ),
-                    ),
-                  ],
-                ))
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ],
+                    )))
           ],
         ));
   }
