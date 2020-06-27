@@ -29,8 +29,6 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   Color _actionColor;
 
-  double _changeHeight = 0;
-
   /// 用户选择的规格型号
   String _seletecdStrings = "";
 
@@ -81,18 +79,22 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     });
   }
 
-  /// 生成订单
+  /// 加入到购物车
   void _creatOrder() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList";
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCartList";
     Map<String, dynamic> params = {
       "title": this._goodDetailsModel.title,
       "price": "${this._goodDetailsModel.price}",
       "seletecdStrings": this._seletecdStrings,
-      "count": "${this._count}",
-      "address": this._addressModel.province +
-          this._addressModel.city +
-          this._addressModel.area +
-          this._addressModel.detailsAddress,
+      "count": this._count,
+      "province": this._addressModel.province,
+      "city": this._addressModel.city,
+      "area": this._addressModel.area,
+      "detailsAddress": this._addressModel.detailsAddress,
+      "urls": this._goodDetailsModel.urls,
+      "url": this._goodDetailsModel.url,
+      "check": true,
+      "goodId": this._goodDetailsModel.objectId,
     };
     HttpRequest.request(url, method: 'POST', params: params).then((value) {
       GHLoading.hideLoading(context);
@@ -316,7 +318,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   }
 
   /// 规格子元素
-  Widget _specificationItem(String title,String details,String imageName) {
+  Widget _specificationItem(String title, String details, String imageName) {
     return Container(
         width: 100,
         child: Column(
@@ -356,11 +358,9 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
             SizedBox(
               width: 10,
             ),
-            _specificationItem("上市时间","2020年6月","goPublic"),
-            _specificationItem("屏幕尺寸","5.7英寸","screen"),
-            _specificationItem("厚度","0.2mm","thickness"),
-
-
+            _specificationItem("上市时间", "2020年6月", "goPublic"),
+            _specificationItem("屏幕尺寸", "5.7英寸", "screen"),
+            _specificationItem("厚度", "0.2mm", "thickness"),
           ],
         ));
   }
@@ -1157,7 +1157,9 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                                         fontSize: 10,
                                                         fontWeight:
                                                             FontWeight.bold)),
-                                              ])),
+                                              ]
+                                              )
+                                          ),
                                         ),
                                         Container(
                                           child: Text(

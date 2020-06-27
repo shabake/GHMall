@@ -12,40 +12,75 @@ class GHGoodDetailsModel {
   List<String> storeAdvantages;
   String createdAt;
   String title;
+  String goodId;
   Operators operators;
   String url;
-  int price;
+  Object price;
+  int count;
+  String seletecdStrings;
+  bool check;
 
   GHGoodDetailsModel(
       {this.isSelf,
-        this.description,
-        this.coupons,
-        this.service,
-        this.sales,
-        this.urls,
-        this.receiptTip,
-        this.updatedAt,
-        this.evaluate,
-        this.objectId,
-        this.storeAdvantages,
-        this.createdAt,
-        this.title,
-        this.operators,
-        this.url,
-        this.price});
+      this.description,
+      this.coupons,
+      this.service,
+      this.sales,
+      this.urls,
+      this.receiptTip,
+      this.updatedAt,
+      this.evaluate,
+      this.objectId,
+      this.goodId,
+      this.storeAdvantages,
+      this.createdAt,
+      this.title,
+      this.operators,
+      this.url,
+      this.count,
+      this.seletecdStrings,
+      this.check,
+      this.price});
 
   GHGoodDetailsModel.fromJson(Map<String, dynamic> json) {
     isSelf = json['isSelf'];
     description = json['description'];
-    coupons = json['coupons'].cast<String>();
-    service = json['service'].cast<String>();
+    Object tempCoupons = json['coupons'];
+    if (tempCoupons is List) {
+      coupons = tempCoupons.cast<String>();
+    } else {
+      coupons = [];
+    }
+
+    Object tempservice = json['service'];
+    if (tempservice is List) {
+      service = tempservice.cast<String>();
+    } else {
+      service = [];
+    }
+
     sales = json['sales'];
-    urls = json['urls'].cast<String>();
+
+    Object tempurls = json['urls'];
+    if (tempurls is List) {
+      urls = tempurls.cast<String>();
+    } else {
+      urls = [];
+    }
+    count = json['count'];
+    check = json['check'];
+    goodId = json['goodId'];
     receiptTip = json['receiptTip'];
     updatedAt = json['updatedAt'];
     evaluate = json['evaluate'];
     objectId = json['objectId'];
-    storeAdvantages = json['storeAdvantages'].cast<String>();
+    Object tempstoreAdvantages = json['storeAdvantages'];
+    if (tempstoreAdvantages is List) {
+      storeAdvantages = tempstoreAdvantages.cast<String>();
+    } else {
+      storeAdvantages = [];
+    }
+
     createdAt = json['createdAt'];
     title = json['title'];
     operators = json['operators'] != null
@@ -53,6 +88,7 @@ class GHGoodDetailsModel {
         : null;
     url = json['url'];
     price = json['price'];
+    seletecdStrings = json['seletecdStrings'];
   }
 
   Map<String, dynamic> toJson() {
@@ -67,9 +103,14 @@ class GHGoodDetailsModel {
     data['updatedAt'] = this.updatedAt;
     data['evaluate'] = this.evaluate;
     data['objectId'] = this.objectId;
+    data['count'] = this.count;
+    data['check'] = this.check;
     data['storeAdvantages'] = this.storeAdvantages;
     data['createdAt'] = this.createdAt;
     data['title'] = this.title;
+    data['goodId'] = this.goodId;
+
+    data['seletecdStrings'] = this.seletecdStrings;
     if (this.operators != null) {
       data['operators'] = this.operators.toJson();
     }
@@ -106,7 +147,6 @@ class Operator {
   String title;
 
   Operator({this.title});
-
   Operator.fromJson(Map<String, dynamic> json) {
     title = json['title'];
   }
@@ -117,4 +157,3 @@ class Operator {
     return data;
   }
 }
-

@@ -3,6 +3,8 @@ import '../../model/GHHotGoodsModel.dart';
 import '../../services/httptool.dart';
 import 'package:transparent_image/transparent_image.dart';
 import '../../services/ScreenAdaper.dart';
+import "../../model/GHGoodDetailsModel.dart";
+import '../../widget/GHCountItemWidget.dart';
 
 /// 购物车
 class GHShopCart extends StatefulWidget {
@@ -11,16 +13,43 @@ class GHShopCart extends StatefulWidget {
 }
 
 class _GHShopCartState extends State<GHShopCart> {
+  /// 热卖商品
   List _hotGoodsList = [];
+
+  /// 购物车列表
+  List _shopCartList = [];
+
+  /// 记录是否已经全选
+  bool _isAllCheck = false;
 
   @override
   void initState() {
     super.initState();
 
     this._getHotGoodsData();
+    this._getShopCartList();
   }
 
-  //获取热门商品的数据
+  /// 获取购物车列表
+  void _getShopCartList() async {
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCartList";
+    var c = Uri.encodeComponent('-createdAt');
+    url = url + '?' + "order=" + c;
+    HttpRequest.request(url, method: 'GET').then((res) {
+      List _tempList = [];
+      List _results = res["results"];
+      _results.forEach((item) {
+        GHGoodDetailsModel goodDetailsModel =
+            new GHGoodDetailsModel.fromJson(item);
+        _tempList.add(goodDetailsModel);
+      });
+      setState(() {
+        this._shopCartList = _tempList;
+      });
+    });
+  }
+
+  /// 获取热门商品的数据
   void _getHotGoodsData() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopHotGoods";
     await HttpRequest.request(url).then((value) {
@@ -28,6 +57,26 @@ class _GHShopCartState extends State<GHShopCart> {
       setState(() {
         this._hotGoodsList = list;
       });
+    });
+  }
+
+  /// 修改购物车中的商品
+  void _updateShopCartList(
+      GHGoodDetailsModel goodDetailsModel, String goodId) async {
+    var url =
+        "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCartList/${goodId}";
+    Map<String, dynamic> params = {
+      "count": goodDetailsModel.count,
+      "check": goodDetailsModel.check,
+    };
+    HttpRequest.request(url, method: 'PUT', params: params).then((value) {
+      print(value);
+      var objectId = value["objectId"];
+      if (objectId != null) {
+        print("更新成功");
+      } else {
+        print("更新失败");
+      }
     });
   }
 
@@ -316,10 +365,260 @@ class _GHShopCartState extends State<GHShopCart> {
     );
   }
 
+  /// 底部工具条
+  Widget _bottomToolBar() {
+    return Container(
+      padding: EdgeInsets.only(left: 10),
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border(
+                top: BorderSide(
+          width: 1,
+          color: Colors.black12,
+        ))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Container(
+              width: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                      width: 20,
+                      height: 20,
+                      child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              this._isAllCheck = !this._isAllCheck;
+                            });
+                          },
+                          child: this._isAllCheck == true
+                              ? Image.asset('images/checkSelected.png')
+                              : Image.asset('images/checkNormal.png'))),
+                  Container(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                      "全选",
+                      style: TextStyle(fontSize: 14, color: Colors.black54),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    child: Text(
+                      "2",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                      color: Colors.orange,
+                      width: 120,
+                      height: 50,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+//                          if (this.list.length == 0) {
+//                            Navigator.pushNamed(context, '/login');
+//                          } else {
+//                            Navigator.pushNamed(context, '/CheckOut');
+//                          }
+                        },
+                        child: Center(
+                          child: Text(
+                            "结算",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                      ))
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// 购物车子项
+  Widget _shopCartItem(GHGoodDetailsModel goodDetailsModel) {
+    return Container(
+        padding: EdgeInsets.all(10),
+        height: 130,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+                width: 20,
+                height: 20,
+                child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        goodDetailsModel.check = !goodDetailsModel.check;
+                      });
+                      this._updateShopCartList(
+                          goodDetailsModel, goodDetailsModel.objectId);
+                    },
+                    child: goodDetailsModel.check == true
+                        ? Image.asset('images/checkSelected.png')
+                        : Image.asset('images/checkNormal.png'))),
+            Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: 10),
+                      width: double.infinity,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.only(right: 10),
+                            height: 100,
+                            width: 100,
+                            child: Image.network(
+                              goodDetailsModel.url,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 110,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Container(
+                                        child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          padding: EdgeInsets.only(bottom: 10),
+                                          child: Text(
+                                            goodDetailsModel.title,
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        Container(
+                                          color: Colors.black12,
+                                          child: Text(
+                                            goodDetailsModel.seletecdStrings,
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    )),
+                                    Container(
+                                        child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Container(
+                                          child: RichText(
+                                              text: TextSpan(
+                                                  text: "¥",
+                                                  style: TextStyle(
+                                                      color: Colors.red,
+                                                      fontSize: 10),
+                                                  children: [
+                                                TextSpan(
+                                                    text:
+                                                        "${goodDetailsModel?.price}",
+                                                    style: TextStyle(
+                                                        color: Colors.red,
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                TextSpan(
+                                                    text: ".00",
+                                                    style: TextStyle(
+                                                        color: Colors.red,
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                              ])),
+                                        ),
+                                        Container(
+                                          child: GHCountItemWidger(
+                                            count: goodDetailsModel.count,
+                                            addClick: (value) {
+                                              setState(() {
+                                                goodDetailsModel.count = value;
+                                              });
+                                              this._updateShopCartList(
+                                                  goodDetailsModel,
+                                                  goodDetailsModel.objectId);
+                                            },
+                                            subClick: (value) {
+                                              setState(() {
+                                                goodDetailsModel.count = value;
+                                              });
+                                              this._updateShopCartList(
+                                                  goodDetailsModel,
+                                                  goodDetailsModel.objectId);
+                                            },
+                                          ),
+                                        )
+                                      ],
+                                    ))
+                                  ],
+                                ),
+                              ))
+                        ],
+                      ),
+                    ),
+                  ],
+                ))
+          ],
+        ));
+  }
+
+  /// 购物车列表
+  Widget _shopCartWidget() {
+    return Stack(
+      children: <Widget>[
+        Positioned(
+          width: ScreenAdaper.getScreenWidth(),
+          height: 50,
+          bottom: 0,
+          child: this._bottomToolBar(),
+        ),
+        Container(
+            color: Colors.white,
+            child: ListView.builder(
+                itemCount: this._shopCartList.length,
+                itemBuilder: (BuildContext context, index) {
+                  return this._shopCartItem(this._shopCartList[index]);
+                }))
+      ],
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: this._appBar(),
-      body: this._notLoginWidgte(),
+      body: this._shopCartList.length == 0
+          ? this._notLoginWidgte()
+          : this._shopCartWidget(),
     );
   }
 }
