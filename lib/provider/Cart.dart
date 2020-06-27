@@ -1,12 +1,10 @@
 import 'dart:convert';
 import '../services/Storage.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 class Cart with ChangeNotifier {
   List _cartList = [];
   bool _isCheckAll = false;
-  int _cartNum = 0;
   double _totalPrice = 0.0;
 
   List get cartList => this._cartList;

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../pages/tabs/Tabs.dart';
 import '../pages/Search.dart';
 import '../pages/ProductContent.dart';
-import '../pages/Test.dart';
 import '../pages/Login.dart';
 import '../pages/RegisteredFirst.dart';
 import '../pages/RegisiteredSecond.dart';
@@ -13,6 +12,7 @@ import '../pages/GHAddressEdit.dart';
 import '../pages/OnlinePayments.dart';
 import '../pages/GHGoodsList.dart';
 import '../pages/GHGoodsDetails.dart';
+
 
 //配置路由
 final routes = {

@@ -3,7 +3,6 @@ import 'routers/router.dart';
 import 'package:provider/provider.dart';
 import 'provider/Cart.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 
 void main() {
   /// 将状态栏设置为白色

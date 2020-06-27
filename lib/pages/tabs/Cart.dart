@@ -50,9 +50,6 @@ class _CartPageState extends State<CartPage>
     Result result = await CityPickers.showCitiesSelector(
       context: context,
     );
-    //{"provinceName":"北京市","provinceId":"110000",
-    // "cityName":"北京城区","cityId":"110100",
-    // "areaName":"东城区","areaId":"110101"}
     setState(() {
       this._city = result.cityName;
       GHToast.showTost("当前定位${this._city}");
@@ -435,6 +432,7 @@ class _CartPageState extends State<CartPage>
                 ],
               ),
             ),
+
             /// 热门推荐
             _hotGoodstWidget(),
           ],

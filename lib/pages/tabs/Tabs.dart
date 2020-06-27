@@ -5,6 +5,7 @@ import '../../services/ScreenAdaper.dart';
 import '../../services/gh_sqflite.dart';
 import 'GHHomePage.dart';
 import 'GHCategoryPage.dart';
+import 'GHShopCart.dart';
 
 /// tab
 class Tabs extends StatefulWidget {
@@ -29,7 +30,7 @@ class _TabsState extends State<Tabs> {
   List<Widget> _pageList = [
     GHHomePage(),
     GHCategoryPage(),
-    CartPage(),
+    GHShopCart(),
     UserPage()
   ];
 
