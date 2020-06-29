@@ -5,7 +5,6 @@ import 'package:transparent_image/transparent_image.dart';
 import '../../services/ScreenAdaper.dart';
 import "../../model/GHGoodDetailsModel.dart";
 import '../../widget/GHCountItemWidget.dart';
-import 'dart:convert';
 import '../../widget/LoadingWidget.dart';
 
 /// 购物车
@@ -411,8 +410,6 @@ class _GHShopCartState extends State<GHShopCart> {
 
     Map<String, dynamic> params = {"requests": maps};
 
-    var jsonWherePrice = jsonEncode(params);
-    print(jsonWherePrice);
     HttpRequest.request(url, method: 'POST', params: params).then((value) {
       if (value != null) {
         this._getShopCartList();
@@ -437,7 +434,7 @@ class _GHShopCartState extends State<GHShopCart> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 20),
               width: 100,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -544,7 +541,7 @@ class _GHShopCartState extends State<GHShopCart> {
   /// 购物车子项
   Widget _shopCartItem(GHGoodDetailsModel goodDetailsModel) {
     return Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.only(left: 20,right: 10,bottom: 10,top: 10),
         height: 130,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,

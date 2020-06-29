@@ -1080,10 +1080,10 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                         children: <Widget>[
                           GestureDetector(
                               onTap: () {
-                                GHLoading.showLoading(context);
                                 this._getSeletecdList();
                                 this._creatOrder();
                                 Navigator.pop(context);
+                                Navigator.pushNamed(context, '/');
                               },
                               child: Container(
                                 alignment: Alignment.center,
@@ -1157,9 +1157,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                                         fontSize: 10,
                                                         fontWeight:
                                                             FontWeight.bold)),
-                                              ]
-                                              )
-                                          ),
+                                              ])),
                                         ),
                                         Container(
                                           child: Text(
