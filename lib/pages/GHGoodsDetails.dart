@@ -96,7 +96,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
       "check": true,
       "goodId": this._goodDetailsModel.objectId,
     };
-    HttpRequest.request(url, method: 'POST', params: params).then((value) {
+    await HttpRequest.request(url, method: 'POST', params: params).then((value) {
       GHLoading.hideLoading(context);
 
       var objectId = value["objectId"];

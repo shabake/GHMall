@@ -102,6 +102,29 @@ class _GHShopCartState extends State<GHShopCart> {
     });
   }
 
+  /// 创建订单
+  void _creatOrder () async {
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList";
+
+    List jsons = [];
+    for(var i = 0 ; i < this._shopCartList.length;i++) {
+      GHGoodDetailsModel goodDetailsModel =  this._shopCartList[i];
+      jsons.add(goodDetailsModel.toJson());
+    }
+
+    Map<String, dynamic> params = {
+      "goodList": jsons,
+      "total": this._total,
+    };
+    await HttpRequest.request(url, method: 'POST', params: params).then((value) {
+      var objectId = value["objectId"];
+      if (objectId != null) {
+        print("创建订单成功");
+      } else {
+        print("创建订单失败");
+      }
+    });
+  }
   /// 热销商品widget
   Widget _hotGoodstWidget() {
     if (this._hotGoodsList.length == 0) {
@@ -428,7 +451,7 @@ class _GHShopCartState extends State<GHShopCart> {
         decoration: BoxDecoration(
             border: Border(
                 top: BorderSide(
-          width: 1,
+          width: 0.5,
           color: Colors.black12,
         ))),
         child: Row(
@@ -498,9 +521,8 @@ class _GHShopCartState extends State<GHShopCart> {
                             child: GestureDetector(
                               behavior: HitTestBehavior.opaque,
                               onTap: () {
-
-                            Navigator.pushNamed(context, '/CheckOut');
-
+                                this._creatOrder();
+                                Navigator.pushNamed(context, '/CheckOut');
                               },
                               child: Center(
                                 child: Text(

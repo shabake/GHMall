@@ -104,6 +104,10 @@ class _CheckOutState extends State<CheckOut> {
             ));
   }
 
+  /// 商品子项
+  Widget _goodItem(){
+
+  }
   /// 上方区域
   Widget _orderDetails() {
     return ListView(
