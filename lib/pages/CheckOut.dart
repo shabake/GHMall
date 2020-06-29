@@ -6,8 +6,6 @@ import '../services/ScreenAdaper.dart';
 import 'Cart/CartItem.dart';
 import 'package:provider/provider.dart';
 import '../provider/Cart.dart';
-import 'Cart/CartItem.dart';
-import '../services/Storage.dart';
 import '../widget/LoadingWidget.dart';
 
 /// 结算清单
@@ -22,7 +20,6 @@ class _CheckOutState extends State<CheckOut> {
   Results results;
 
   _getAddressList() async {
-
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
     await HttpRequest.request(url, method: 'GET').then((res) {
       Results firstModel = new GHAddressModel.fromJson(res).results.first;
