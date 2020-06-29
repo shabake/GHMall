@@ -1182,7 +1182,6 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   /// 底部工具条
   Widget _bottomToolBar(GHGoodDetailsModel goodDetailsModel) {
-    final double topPadding = MediaQuery.of(context).padding.top;
     final double bottomPadding = MediaQuery.of(context).padding.bottom;
     return Positioned(
         bottom: 0,

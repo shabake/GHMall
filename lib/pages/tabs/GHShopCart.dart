@@ -30,6 +30,7 @@ class _GHShopCartState extends State<GHShopCart> {
   double _total = 0;
 
   @override
+
   void initState() {
     super.initState();
 
@@ -497,11 +498,9 @@ class _GHShopCartState extends State<GHShopCart> {
                             child: GestureDetector(
                               behavior: HitTestBehavior.opaque,
                               onTap: () {
-//                          if (this.list.length == 0) {
-//                            Navigator.pushNamed(context, '/login');
-//                          } else {
-//                            Navigator.pushNamed(context, '/CheckOut');
-//                          }
+
+                            Navigator.pushNamed(context, '/CheckOut');
+
                               },
                               child: Center(
                                 child: Text(
@@ -703,7 +702,7 @@ class _GHShopCartState extends State<GHShopCart> {
         Container(
             color: Colors.white,
             margin: EdgeInsets.only(bottom: 50),
-            height: ScreenAdaper.getScreenHeight(),
+            height: ScreenAdaper.getScreenHeight() ,
             child: ListView.builder(
                 itemCount: this._shopCartList.length,
                 itemBuilder: (BuildContext context, index) {
