@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/tabs/Tabs.dart';
 import '../pages/Search.dart';
-import '../pages/ProductContent.dart';
 import '../pages/Login.dart';
 import '../pages/RegisteredFirst.dart';
 import '../pages/RegisiteredSecond.dart';
@@ -16,10 +15,9 @@ import '../pages/GHGoodsDetails.dart';
 
 //配置路由
 final routes = {
-  '/': (context) => Tabs(),
+  '/': (context,{arguments}) => Tabs(arguments:arguments),
   '/search': (context) => SearchPage(),
   '/login': (context) => LoginPage(),
-  '/producttContent': (context,{arguments}) => ProducttContent(arguments:arguments),
   '/registeredFirst': (context,{arguments}) => RegisiteredFirst(),
   '/registeredSecound': (context,{arguments}) => RegisiteredSecond(arguments:arguments),
   '/registeredThird': (context,{arguments}) => RegisterrdThird(arguments:arguments),

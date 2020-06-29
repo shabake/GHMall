@@ -80,7 +80,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   }
 
   /// 加入到购物车
-  void _creatOrder() async {
+  void _addGood() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCartList";
     Map<String, dynamic> params = {
       "title": this._goodDetailsModel.title,
@@ -1081,9 +1081,11 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                           GestureDetector(
                               onTap: () {
                                 this._getSeletecdList();
-                                this._creatOrder();
+                                this._addGood();
                                 Navigator.pop(context);
-                                Navigator.pushNamed(context, '/');
+                                Navigator.pushNamed(context, '/',arguments: {
+                                  "index":2,
+                                });
                               },
                               child: Container(
                                 alignment: Alignment.center,

@@ -702,7 +702,8 @@ class _GHShopCartState extends State<GHShopCart> {
       children: <Widget>[
         Container(
             color: Colors.white,
-            height: ScreenAdaper.getScreenHeight() - 50,
+            margin: EdgeInsets.only(bottom: 50),
+            height: ScreenAdaper.getScreenHeight(),
             child: ListView.builder(
                 itemCount: this._shopCartList.length,
                 itemBuilder: (BuildContext context, index) {

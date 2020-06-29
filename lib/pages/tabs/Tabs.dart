@@ -8,7 +8,9 @@ import 'GHShopCart.dart';
 
 /// tab
 class Tabs extends StatefulWidget {
-  Tabs({Key key}) : super(key: key);
+  Map arguments;
+
+  Tabs({Key key, this.arguments}) : super(key: key);
 
   _TabsState createState() => _TabsState();
 }
@@ -20,6 +22,12 @@ class _TabsState extends State<Tabs> {
   @override
   void initState() {
     super.initState();
+
+    if (widget.arguments != null) {
+      this._currentIndex = widget.arguments["index"];
+    } else {
+      this._currentIndex = 0;
+    }
     this._pageController = new PageController(initialPage: this._currentIndex);
 
     GHSqflite sq = GHSqflite();
