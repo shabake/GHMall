@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/CheckOut.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/CheckOut.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/CheckOut.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routers/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routers/router.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -432,11 +430,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="110" column="35" selection-start-line="110" selection-start-column="35" selection-end-line="110" selection-end-column="35" />
+            <state relative-caret-position="200">
+              <caret line="104" column="10" lean-forward="true" selection-start-line="104" selection-start-column="10" selection-end-line="104" selection-end-column="10" />
               <folding>
                 <element signature="e#407#478#0" />
                 <element signature="e#882#1873#0" />
@@ -656,6 +654,27 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pages/GHCheckOut.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/routers/router.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -667,7 +686,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_getSeletecdList</find>
       <find>_seletecdList</find>
       <find>_goodSelected</find>
       <find>GestureDetector</find>
@@ -697,6 +715,7 @@
       <find>jsonEncode</find>
       <find>_bottomToolBar</find>
       <find>结算</find>
+      <find>定案详细</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -722,16 +741,17 @@
         <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/services/ScreenAdaper.dart" />
         <option value="$PROJECT_DIR$/lib/model/GHGoodDetailsModel.dart" />
-        <option value="$PROJECT_DIR$/lib/routers/router.dart" />
         <option value="$PROJECT_DIR$/lib/pages/tabs/Tabs.dart" />
         <option value="$PROJECT_DIR$/lib/services/GHLog.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/CheckOut.dart" />
         <option value="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" />
         <option value="$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/CheckOut.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/GHCheckOut.dart" />
+        <option value="$PROJECT_DIR$/lib/routers/router.dart" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -823,7 +843,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
@@ -835,14 +855,14 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.3299363" />
-      <window_info active="true" anchor="bottom" id="Run" order="1" visible="true" weight="0.3197452" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" visible="true" weight="0.31847134" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Flutter Performance" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32866243" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.3284974" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32738853" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Flutter Inspector" order="2" />
@@ -866,15 +886,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/pages/OnlinePayments.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/widgets/framework.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="993">
@@ -1942,118 +1953,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/routers/router.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/GHAddressEdit.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1333">
           <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/CheckOut.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
-          <folding>
-            <element signature="e#382#449#0" />
-            <element signature="e#427#716#0" />
-            <element signature="e#536#556#0" />
-            <element signature="e#624#629#0" />
-            <element signature="e#749#805#0" />
-            <element signature="e#844#3496#0" />
-            <element signature="e#924#3491#0" />
-            <element signature="e#1029#1056#0" />
-            <element signature="e#1101#3626#0" />
-            <element signature="e#1140#1144#0" />
-            <element signature="e#1170#3611#0" />
-            <element signature="e#1296#3390#0" />
-            <element signature="e#1366#3347#0" />
-            <element signature="e#1517#2751#0" />
-            <element signature="e#1557#2722#0" />
-            <element signature="e#1650#2145#0" />
-            <element signature="e#1742#2110#0" />
-            <element signature="e#1915#2073#0" />
-            <element signature="e#2187#2267#0" />
-            <element signature="e#2310#2658#0" />
-            <element signature="e#2357#2623#0" />
-            <element signature="e#2462#2586#0" />
-            <element signature="e#2788#3295#0" />
-            <element signature="e#2910#3266#0" />
-            <element signature="e#3163#3235#0" />
-            <element signature="e#3419#3575#0" />
-            <element signature="e#3452#3554#0" />
-            <element signature="e#3857#6255#0" />
-            <element signature="e#3892#3896#0" />
-            <element signature="e#3955#6244#0" />
-            <element signature="e#4127#4787#0" />
-            <element signature="e#4155#4770#0" />
-            <element signature="e#4293#4498#0" />
-            <element signature="e#4362#4475#0" />
-            <element signature="e#4436#4450#0" />
-            <element signature="e#4529#4731#0" />
-            <element signature="e#4598#4708#0" />
-            <element signature="e#4669#4683#0" />
-            <element signature="e#4812#5262#0" />
-            <element signature="e#4840#5245#0" />
-            <element signature="e#4978#5076#0" />
-            <element signature="e#5047#5053#0" />
-            <element signature="e#5107#5205#0" />
-            <element signature="e#5176#5182#0" />
-            <element signature="e#5287#5740#0" />
-            <element signature="e#5315#5723#0" />
-            <element signature="e#5453#5554#0" />
-            <element signature="e#5522#5531#0" />
-            <element signature="e#5585#5683#0" />
-            <element signature="e#5654#5660#0" />
-            <element signature="e#5765#6216#0" />
-            <element signature="e#5793#6199#0" />
-            <element signature="e#5931#6029#0" />
-            <element signature="e#6000#6006#0" />
-            <element signature="e#6060#6159#0" />
-            <element signature="e#6129#6136#0" />
-            <element signature="e#6316#7886#0" />
-            <element signature="e#6338#7881#0" />
-            <element signature="e#6371#6448#0" />
-            <element signature="e#6397#6447#0" />
-            <element signature="e#6413#6446#0" />
-            <element signature="e#6472#7874#0" />
-            <element signature="e#6505#6509#0" />
-            <element signature="e#6529#7865#0" />
-            <element signature="e#6699#7372#0" />
-            <element signature="e#6725#7357#0" />
-            <element signature="e#6848#7007#0" />
-            <element signature="e#6881#6986#0" />
-            <element signature="e#6949#6963#0" />
-            <element signature="e#7036#7321#0" />
-            <element signature="e#7069#7300#0" />
-            <element signature="e#7136#7277#0" />
-            <element signature="e#7395#7842#0" />
-            <element signature="e#7563#7841#0" />
-            <element signature="e#7634#7662#0" />
-            <element signature="e#7714#7822#0" />
-            <element signature="e#7780#7801#0" />
-            <element signature="e#7929#8261#0" />
-            <element signature="e#7947#8256#0" />
-            <element signature="e#7992#8084#0" />
-            <element signature="e#8027#8039#0" />
-            <element signature="e#8104#8241#0" />
-            <element signature="e#844#7947#0" />
-            <element signature="e#867#876#0" />
-            <element signature="e#7812#7906#0" />
-            <element signature="e#7834#7872#0" />
-            <element signature="e#7855#7863#0" />
           </folding>
         </state>
       </provider>
@@ -2159,10 +2064,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/CheckOut.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#243#310#0" />
+            <element signature="e#536#556#0" />
+            <element signature="e#624#629#0" />
+            <element signature="e#842#3630#0" />
+            <element signature="e#922#3625#0" />
+            <element signature="e#1027#1054#0" />
+            <element signature="e#1099#3624#0" />
+            <element signature="e#1138#1142#0" />
+            <element signature="e#1168#3609#0" />
+            <element signature="e#1294#3388#0" />
+            <element signature="e#1364#3345#0" />
+            <element signature="e#1515#2749#0" />
+            <element signature="e#1555#2720#0" />
+            <element signature="e#1648#2143#0" />
+            <element signature="e#1740#2108#0" />
+            <element signature="e#1913#2071#0" />
+            <element signature="e#2185#2265#0" />
+            <element signature="e#2308#2656#0" />
+            <element signature="e#2355#2621#0" />
+            <element signature="e#2460#2584#0" />
+            <element signature="e#2786#3293#0" />
+            <element signature="e#2908#3264#0" />
+            <element signature="e#3161#3233#0" />
+            <element signature="e#3417#3573#0" />
+            <element signature="e#3450#3552#0" />
+            <element signature="e#3663#3669#0" />
+            <element signature="e#3706#6619#0" />
+            <element signature="e#3727#6614#0" />
+            <element signature="e#3803#3887#0" />
+            <element signature="e#3858#3876#0" />
+            <element signature="e#3889#3916#0" />
+            <element signature="e#4200#6598#0" />
+            <element signature="e#4235#4239#0" />
+            <element signature="e#4298#6587#0" />
+            <element signature="e#4470#5130#0" />
+            <element signature="e#4498#5113#0" />
+            <element signature="e#4636#4841#0" />
+            <element signature="e#4705#4818#0" />
+            <element signature="e#4779#4793#0" />
+            <element signature="e#4872#5074#0" />
+            <element signature="e#4941#5051#0" />
+            <element signature="e#5012#5026#0" />
+            <element signature="e#5155#5605#0" />
+            <element signature="e#5183#5588#0" />
+            <element signature="e#5321#5419#0" />
+            <element signature="e#5390#5396#0" />
+            <element signature="e#5450#5548#0" />
+            <element signature="e#5519#5525#0" />
+            <element signature="e#5630#6083#0" />
+            <element signature="e#5658#6066#0" />
+            <element signature="e#5796#5897#0" />
+            <element signature="e#5865#5874#0" />
+            <element signature="e#5928#6026#0" />
+            <element signature="e#5997#6003#0" />
+            <element signature="e#6108#6559#0" />
+            <element signature="e#6136#6542#0" />
+            <element signature="e#6274#6372#0" />
+            <element signature="e#6343#6349#0" />
+            <element signature="e#6403#6502#0" />
+            <element signature="e#6472#6479#0" />
+            <element signature="e#6659#8229#0" />
+            <element signature="e#6681#8224#0" />
+            <element signature="e#6714#6791#0" />
+            <element signature="e#6740#6790#0" />
+            <element signature="e#6756#6789#0" />
+            <element signature="e#6815#8217#0" />
+            <element signature="e#6848#6852#0" />
+            <element signature="e#6872#8208#0" />
+            <element signature="e#7042#7715#0" />
+            <element signature="e#7068#7700#0" />
+            <element signature="e#7191#7350#0" />
+            <element signature="e#7224#7329#0" />
+            <element signature="e#7292#7306#0" />
+            <element signature="e#7379#7664#0" />
+            <element signature="e#7412#7643#0" />
+            <element signature="e#7479#7620#0" />
+            <element signature="e#7738#8185#0" />
+            <element signature="e#7906#8184#0" />
+            <element signature="e#7977#8005#0" />
+            <element signature="e#8057#8165#0" />
+            <element signature="e#8123#8144#0" />
+            <element signature="e#8272#8604#0" />
+            <element signature="e#8290#8599#0" />
+            <element signature="e#8335#8427#0" />
+            <element signature="e#8370#8382#0" />
+            <element signature="e#8447#8584#0" />
+            <element signature="e#8643#8801#0" />
+            <element signature="e#8666#8675#0" />
+            <element signature="e#8697#8796#0" />
+            <element signature="e#8719#8757#0" />
+            <element signature="e#8740#8748#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="110" column="35" selection-start-line="110" selection-start-column="35" selection-end-line="110" selection-end-column="35" />
+        <state relative-caret-position="200">
+          <caret line="104" column="10" lean-forward="true" selection-start-line="104" selection-start-column="10" selection-end-line="104" selection-end-column="10" />
           <folding>
             <element signature="e#407#478#0" />
             <element signature="e#882#1873#0" />
@@ -2378,6 +2383,23 @@
             <element signature="e#26604#26698#0" />
             <element signature="e#26625#26693#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/GHCheckOut.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/routers/router.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
         </state>
       </provider>
     </entry>

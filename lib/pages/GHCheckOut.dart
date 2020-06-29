@@ -5,16 +5,21 @@ import '../services/ScreenAdaper.dart';
 import '../widget/LoadingWidget.dart';
 
 /// 订单确认页
-class CheckOut extends StatefulWidget {
+class GHCheckOut extends StatefulWidget {
+  final Map arguments;
+
   @override
-  _CheckOutState createState() => _CheckOutState();
+  GHCheckOut({Key key, this.arguments}) : super(key: key);
+
+  _GHCheckOutState createState() => _GHCheckOutState();
 }
 
-class _CheckOutState extends State<CheckOut> {
+class _GHCheckOutState extends State<GHCheckOut> {
   List list = List();
 
   Results results;
 
+  /// 获取地址
   void _getAddressList() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
     await HttpRequest.request(url, method: 'GET').then((res) {
@@ -25,10 +30,24 @@ class _CheckOutState extends State<CheckOut> {
     });
   }
 
+  /// 获取订单详情
+  void _getOrderDetails() async {
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList";
+    await HttpRequest.request(url, method: 'GET').then((res) {
+      print("定案详细");
+      print(res);
+      setState(() {
+
+      });
+    });
+  }
+
   @override
+
   void initState() {
     super.initState();
     this._getAddressList();
+    this._getOrderDetails();
   }
 
   /// 地址
@@ -108,6 +127,7 @@ class _CheckOutState extends State<CheckOut> {
   Widget _goodItem(){
 
   }
+
   /// 上方区域
   Widget _orderDetails() {
     return ListView(

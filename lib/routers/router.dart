@@ -5,7 +5,7 @@ import '../pages/Login.dart';
 import '../pages/RegisteredFirst.dart';
 import '../pages/RegisiteredSecond.dart';
 import '../pages/RegisteredThird.dart';
-import '../pages/CheckOut.dart';
+import '../pages/GHCheckOut.dart';
 import '../pages/GHAddressList.dart';
 import '../pages/GHAddressEdit.dart';
 import '../pages/OnlinePayments.dart';
@@ -21,7 +21,7 @@ final routes = {
   '/registeredFirst': (context,{arguments}) => RegisiteredFirst(),
   '/registeredSecound': (context,{arguments}) => RegisiteredSecond(arguments:arguments),
   '/registeredThird': (context,{arguments}) => RegisterrdThird(arguments:arguments),
-  '/CheckOut': (context,{arguments}) => CheckOut(),
+  '/GHCheckOut': (context,{arguments}) => GHCheckOut(arguments:arguments),
   '/GHAddressList': (context,{arguments}) => GHAddressList(),
   '/GHAddressEdit': (context,{arguments}) => GHAddressEdit(arguments:arguments),
   '/OnlinePayments': (context,{arguments}) => OnlinePayments(),
