@@ -585,7 +585,8 @@ class _GHShopCartState extends State<GHShopCart> {
                     },
                     child: goodDetailsModel.check == true
                         ? Image.asset('images/checkSelected.png')
-                        : Image.asset('images/checkNormal.png'))),
+                        : Image.asset('images/checkNormal.png'))
+            ),
             Expanded(
                 flex: 1,
                 child: GestureDetector(

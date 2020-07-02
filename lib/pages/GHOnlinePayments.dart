@@ -15,8 +15,13 @@ class GHOnlinePayments extends StatefulWidget {
 
 class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
   bool _seletecd = true;
-
+  String _orderId = "";
   @override
+  void initState() {
+    super.initState();
+    this._orderId = widget.arguments["id"];
+  }
+
   Widget build(BuildContext context) {
     var cartProvider = Provider.of<Cart>(context);
     return Scaffold(
@@ -24,66 +29,36 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
         title: Text("在线支付"),
       ),
       body: Container(
+        padding: EdgeInsets.all(20),
         child: ListView(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(10),
               child: Text(
-                "订单号:13836123",
+                "订单号: ${this._orderId}",
                 style: TextStyle(fontSize: 16),
               ),
             ),
             Container(
-              height: 10,
+              height: 20,
               color: Color.fromRGBO(245, 245, 245, 1),
             ),
-            Container(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Row(children: <Widget>[
-                        Container(
-                          height: 50,
-                          width: 50,
-                          child: Image.network(
-                            "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2335288179,2509273265&fm=26&gp=0.jpg",
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          child: Text(
-                            "微信",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ),
-                      ]),
-                      Container(
-                        child: Checkbox(
-                            activeColor: Colors.red,
-                            value: _seletecd,
-                            onChanged: (value) {
-                              setState(() {
-                                _seletecd = !_seletecd;
-                              });
-                            }),
-                      )
-                    ])),
-            Divider(),
-            Container(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
+            GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                setState(() {
+                  this._seletecd = !this._seletecd;
+                });
+              },
+              child: Container(
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
                     Row(children: <Widget>[
                       Container(
-                        height: 50,
-                        width: 50,
-                        child: Image.network(
-                          "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592127646571&di=5ed1f401d3a5df18378058b4ae67e84f&imgtype=0&src=http%3A%2F%2Fi-3.shouji56.com%2F2015%2F8%2F28%2F5dc468e3-6d20-48b7-9f13-5133c0478dc0.jpeg",
+                        height: 40,
+                        width: 40,
+                        child: Image.asset(
+                          'images/pay_wechat.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -92,23 +67,59 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
                       ),
                       Container(
                         child: Text(
-                          "支付宝",
+                          "微信",
                           style: TextStyle(fontSize: 18),
                         ),
                       ),
                     ]),
                     Container(
-                      child: Checkbox(
-                          activeColor: Colors.red,
-                          value: !_seletecd,
-                          onChanged: (value) {
-                            setState(() {
-                              _seletecd = !_seletecd;
-                            });
-                          }),
-                    )
-                  ],
-                )),
+                        width: 20,
+                        height: 20,
+                        child: this._seletecd == true
+                            ? Image.asset('images/checkSelected.png')
+                            : Image.asset('images/checkNormal.png'))
+                  ])),
+            ),
+            Divider(),
+            GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                setState(() {
+                  this._seletecd = !this._seletecd;
+                });
+              },
+              child: Container(
+                  child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(children: <Widget>[
+                    Container(
+                      height: 40,
+                      width: 40,
+                      child: Image.asset(
+                        'images/pay_alipay.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      child: Text(
+                        "支付宝",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ]),
+                  Container(
+                      width: 20,
+                      height: 20,
+                      child: this._seletecd != true
+                          ? Image.asset('images/checkSelected.png')
+                          : Image.asset('images/checkNormal.png'))
+                ],
+              )),
+            ),
             Divider(),
             Container(
               padding: EdgeInsets.all(10),

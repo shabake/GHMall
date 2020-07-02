@@ -88,7 +88,8 @@ flutter:
     - images/screen.png
     - images/checkNormal.png
     - images/checkSelected.png
-
+    - images/pay_alipay.png
+    - images/pay_wechat.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/widget/GHRichTextPriceWidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHCheckOut.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHCheckOut.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/OnlinePayments.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routers/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routers/router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -393,21 +390,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/widget/GHRichTextPriceWidget.dart">
+        <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+            <state relative-caret-position="132">
+              <caret line="575" column="11" lean-forward="true" selection-start-line="575" selection-start-column="11" selection-end-line="576" selection-end-column="27" />
+              <folding>
+                <element signature="e#407#478#0" />
+                <element signature="e#754#841#0" />
+                <element signature="e#883#1874#0" />
+                <element signature="e#995#1009#0" />
+                <element signature="e#1070#1090#0" />
+                <element signature="e#1290#1296#0" />
+                <element signature="e#1918#2187#0" />
+                <element signature="e#2028#2033#0" />
+                <element signature="e#2094#2101#0" />
+                <element signature="e#2291#2769#0" />
+                <element signature="e#2424#2509#0" />
+                <element signature="e#2534#2570#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/services/GHToast.dart">
+        <entry file="file://$PROJECT_DIR$/lib/widget/GHRichTextPriceWidget.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="418">
+              <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -447,11 +456,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="35" lean-forward="true" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+            <state relative-caret-position="149">
+              <caret line="74" column="30" lean-forward="true" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#868#1016#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="90" column="17" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -469,28 +488,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/widget/GHDialog.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="27" lean-forward="true" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/pages/GHCheckOut.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="802">
-              <caret line="387" column="27" selection-start-line="387" selection-start-column="27" selection-end-line="387" selection-end-column="27" />
+            <state relative-caret-position="271">
+              <caret line="57" selection-start-line="57" selection-end-line="62" />
               <folding>
                 <element signature="e#394#549#0" />
                 <element signature="e#703#992#0" />
                 <element signature="e#812#832#0" />
                 <element signature="e#900#905#0" />
-                <element signature="e#1042#1654#0" />
                 <element signature="e#1159#1179#0" />
                 <element signature="e#1476#1494#0" />
-                <element signature="e#1687#1794#0" />
                 <element signature="e#1831#4619#0" />
                 <element signature="e#1911#4614#0" />
                 <element signature="e#2016#2043#0" />
@@ -551,16 +559,10 @@
                 <element signature="e#9361#9652#0" />
                 <element signature="e#9798#10016#0" />
                 <element signature="e#9853#9973#0" />
-                <element signature="e#10361#13384#0" />
-                <element signature="e#10382#13379#0" />
-                <element signature="e#10458#10542#0" />
                 <element signature="e#10513#10531#0" />
-                <element signature="e#10568#10830#0" />
                 <element signature="e#10849#10933#0" />
                 <element signature="e#10904#10922#0" />
-                <element signature="e#10952#13363#0" />
                 <element signature="e#10987#10991#0" />
-                <element signature="e#11050#13352#0" />
                 <element signature="e#11222#11897#0" />
                 <element signature="e#11250#11880#0" />
                 <element signature="e#11388#11593#0" />
@@ -591,13 +593,12 @@
                 <element signature="e#13505#13555#0" />
                 <element signature="e#13521#13554#0" />
                 <element signature="e#13614#13644#0" />
+                <element signature="e#13834#14391#0" />
+                <element signature="e#13860#14376#0" />
+                <element signature="e#13983#14142#0" />
+                <element signature="e#14016#14121#0" />
                 <element signature="e#14084#14098#0" />
                 <element signature="e#14170#14222#0" />
-                <element signature="e#14977#15309#0" />
-                <element signature="e#14995#15304#0" />
-                <element signature="e#15040#15132#0" />
-                <element signature="e#15075#15087#0" />
-                <element signature="e#15152#15289#0" />
                 <element signature="e#15348#15506#0" />
                 <element signature="e#15371#15380#0" />
                 <element signature="e#15402#15501#0" />
@@ -637,7 +638,6 @@
       <find>_total</find>
       <find>orange</find>
       <find>jsonEncode</find>
-      <find>_bottomToolBar</find>
       <find>结算</find>
       <find>list</find>
       <find>_creatOrder</find>
@@ -649,6 +649,7 @@
       <find>立即下单</find>
       <find>共计</find>
       <find>price</find>
+      <find>_bottomToolBar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -668,7 +669,6 @@
         <option value="$PROJECT_DIR$/lib/pages/tabs/Cart.dart" />
         <option value="$PROJECT_DIR$/lib/provider/Cart.dart" />
         <option value="$PROJECT_DIR$/lib/model/GHGoodsModel.dart" />
-        <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/services/ScreenAdaper.dart" />
         <option value="$PROJECT_DIR$/lib/model/GHGoodDetailsModel.dart" />
         <option value="$PROJECT_DIR$/lib/pages/tabs/Tabs.dart" />
@@ -677,12 +677,13 @@
         <option value="$PROJECT_DIR$/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/pages/GHGoodsList.dart" />
         <option value="$PROJECT_DIR$/lib/services/httptool.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart" />
         <option value="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" />
         <option value="$PROJECT_DIR$/lib/widget/GHRichTextPriceWidget.dart" />
         <option value="$PROJECT_DIR$/lib/routers/router.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" />
         <option value="$PROJECT_DIR$/lib/pages/GHCheckOut.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
       </list>
     </option>
   </component>
@@ -1020,13 +1021,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-94">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/widgets/framework.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -1047,27 +1041,6 @@
           <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="893">
-          <caret line="116" column="34" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
-          <folding>
-            <element signature="e#407#478#0" />
-            <element signature="e#754#841#0" />
-            <element signature="e#883#1874#0" />
-            <element signature="e#995#1009#0" />
-            <element signature="e#1070#1090#0" />
-            <element signature="e#1290#1296#0" />
-            <element signature="e#1918#2187#0" />
-            <element signature="e#2028#2033#0" />
-            <element signature="e#2094#2101#0" />
-            <element signature="e#2291#2769#0" />
-            <element signature="e#2424#2509#0" />
-            <element signature="e#2534#2570#0" />
           </folding>
         </state>
       </provider>
@@ -1600,16 +1573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="35" lean-forward="true" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -1982,17 +1945,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/GHCheckOut.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="802">
-          <caret line="387" column="27" selection-start-line="387" selection-start-column="27" selection-end-line="387" selection-end-column="27" />
+        <state relative-caret-position="271">
+          <caret line="57" selection-start-line="57" selection-end-line="62" />
           <folding>
             <element signature="e#394#549#0" />
             <element signature="e#703#992#0" />
             <element signature="e#812#832#0" />
             <element signature="e#900#905#0" />
-            <element signature="e#1042#1654#0" />
             <element signature="e#1159#1179#0" />
             <element signature="e#1476#1494#0" />
-            <element signature="e#1687#1794#0" />
             <element signature="e#1831#4619#0" />
             <element signature="e#1911#4614#0" />
             <element signature="e#2016#2043#0" />
@@ -2053,16 +2014,10 @@
             <element signature="e#9361#9652#0" />
             <element signature="e#9798#10016#0" />
             <element signature="e#9853#9973#0" />
-            <element signature="e#10361#13384#0" />
-            <element signature="e#10382#13379#0" />
-            <element signature="e#10458#10542#0" />
             <element signature="e#10513#10531#0" />
-            <element signature="e#10568#10830#0" />
             <element signature="e#10849#10933#0" />
             <element signature="e#10904#10922#0" />
-            <element signature="e#10952#13363#0" />
             <element signature="e#10987#10991#0" />
-            <element signature="e#11050#13352#0" />
             <element signature="e#11222#11897#0" />
             <element signature="e#11250#11880#0" />
             <element signature="e#11388#11593#0" />
@@ -2093,19 +2048,57 @@
             <element signature="e#13505#13555#0" />
             <element signature="e#13521#13554#0" />
             <element signature="e#13614#13644#0" />
+            <element signature="e#13834#14391#0" />
+            <element signature="e#13860#14376#0" />
+            <element signature="e#13983#14142#0" />
+            <element signature="e#14016#14121#0" />
             <element signature="e#14084#14098#0" />
             <element signature="e#14170#14222#0" />
-            <element signature="e#14977#15309#0" />
-            <element signature="e#14995#15304#0" />
-            <element signature="e#15040#15132#0" />
-            <element signature="e#15075#15087#0" />
-            <element signature="e#15152#15289#0" />
             <element signature="e#15348#15506#0" />
             <element signature="e#15371#15380#0" />
             <element signature="e#15402#15501#0" />
             <element signature="e#15424#15462#0" />
             <element signature="e#15445#15453#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHShopCart.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="575" column="11" lean-forward="true" selection-start-line="575" selection-start-column="11" selection-end-line="576" selection-end-column="27" />
+          <folding>
+            <element signature="e#407#478#0" />
+            <element signature="e#754#841#0" />
+            <element signature="e#883#1874#0" />
+            <element signature="e#995#1009#0" />
+            <element signature="e#1070#1090#0" />
+            <element signature="e#1290#1296#0" />
+            <element signature="e#1918#2187#0" />
+            <element signature="e#2028#2033#0" />
+            <element signature="e#2094#2101#0" />
+            <element signature="e#2291#2769#0" />
+            <element signature="e#2424#2509#0" />
+            <element signature="e#2534#2570#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="74" column="30" lean-forward="true" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#868#1016#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="90" column="17" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
         </state>
       </provider>
     </entry>
