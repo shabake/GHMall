@@ -49,5 +49,4 @@ const httpHeaders = {
   'Content-Type': 'application/json',
   'X-LC-Id': 'a4Cj1Hm5aMrdhob6xGw71B5A-gzGzoHsz',
   'X-LC-Key': 'XQaL1tUQC0DCQxBA9fpoR21C',
-//  'X-LC-Key': 'XQaL1tUQC0DCQxBA9fpoR21C',
 };

@@ -96,7 +96,8 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
       "check": true,
       "goodId": this._goodDetailsModel.objectId,
     };
-    await HttpRequest.request(url, method: 'POST', params: params).then((value) {
+    await HttpRequest.request(url, method: 'POST', params: params)
+        .then((value) {
       GHLoading.hideLoading(context);
 
       var objectId = value["objectId"];
@@ -1083,8 +1084,8 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                 this._getSeletecdList();
                                 this._addGood();
                                 Navigator.pop(context);
-                                Navigator.pushNamed(context, '/',arguments: {
-                                  "index":2,
+                                Navigator.pushNamed(context, '/', arguments: {
+                                  "index": 2,
                                 });
                               },
                               child: Container(

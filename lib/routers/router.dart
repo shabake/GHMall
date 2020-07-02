@@ -27,7 +27,6 @@ final routes = {
   '/OnlinePayments': (context,{arguments}) => OnlinePayments(),
   '/GHGoodsList': (context,{arguments}) => GHGoodsList(),
   '/GHGoodsDetails': (context,{arguments}) => GHGoodsDetails(arguments:arguments),
-
 };
 
 /// 固定写法不需要改动
