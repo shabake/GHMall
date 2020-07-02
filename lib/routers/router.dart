@@ -8,7 +8,7 @@ import '../pages/RegisteredThird.dart';
 import '../pages/GHCheckOut.dart';
 import '../pages/GHAddressList.dart';
 import '../pages/GHAddressEdit.dart';
-import '../pages/OnlinePayments.dart';
+import '../pages/GHOnlinePayments.dart';
 import '../pages/GHGoodsList.dart';
 import '../pages/GHGoodsDetails.dart';
 
@@ -24,7 +24,7 @@ final routes = {
   '/GHCheckOut': (context,{arguments}) => GHCheckOut(arguments:arguments),
   '/GHAddressList': (context,{arguments}) => GHAddressList(),
   '/GHAddressEdit': (context,{arguments}) => GHAddressEdit(arguments:arguments),
-  '/OnlinePayments': (context,{arguments}) => OnlinePayments(),
+  '/OnlinePayments': (context,{arguments}) => GHOnlinePayments(arguments:arguments),
   '/GHGoodsList': (context,{arguments}) => GHGoodsList(),
   '/GHGoodsDetails': (context,{arguments}) => GHGoodsDetails(arguments:arguments),
 };

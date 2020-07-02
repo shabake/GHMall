@@ -5,6 +5,7 @@ import '../services/ScreenAdaper.dart';
 import '../widget/LoadingWidget.dart';
 import 'package:transparent_image/transparent_image.dart';
 import '../model/GHGoodDetailsModel.dart';
+import '../widget/GHRichTextPriceWidget.dart';
 
 /// 订单确认页
 class GHCheckOut extends StatefulWidget {
@@ -21,7 +22,6 @@ class _GHCheckOutState extends State<GHCheckOut> {
 
   double _total = 0;
   Results results;
-
   /// 获取地址
   void _getAddressList() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
@@ -38,12 +38,13 @@ class _GHCheckOutState extends State<GHCheckOut> {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList/${id}";
     await HttpRequest.request(url, method: 'GET').then((res) {
       List _tempgoodList = res["goodList"];
-      double _temptotal= res["total"];
+      double _temptotal = res["total"];
 
       print(_tempgoodList);
       List goodList = [];
       for (var i = 0; i < _tempgoodList.length; i++) {
-        GHGoodDetailsModel goodDetailsModel = new GHGoodDetailsModel.fromJson(_tempgoodList[i]);
+        GHGoodDetailsModel goodDetailsModel =
+            new GHGoodDetailsModel.fromJson(_tempgoodList[i]);
         goodList.add(goodDetailsModel);
       }
       setState(() {
@@ -350,7 +351,7 @@ class _GHCheckOutState extends State<GHCheckOut> {
       decoration: BoxDecoration(
           border: Border(top: BorderSide(width: 1, color: Colors.black12))),
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.only(left: 20, right: 20, top: 10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -365,14 +366,11 @@ class _GHCheckOutState extends State<GHCheckOut> {
                       style: TextStyle(fontSize: 14),
                     ),
                   ),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Container(
-                    child: Text(
-                      "2",
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red),
-                    ),
+                    child: GHRichTextPriceWidget(this._total + 10),
                   ),
                 ],
               ),
@@ -382,9 +380,12 @@ class _GHCheckOutState extends State<GHCheckOut> {
                 width: 100,
                 height: 40,
                 color: Colors.red,
-                child: InkWell(
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
                   onTap: () {
-                    Navigator.pushNamed(context, '/OnlinePayments');
+                    Navigator.pushNamed(context, '/OnlinePayments' ,arguments: {
+                      "id":widget.arguments["id"],
+                    });
                   },
                   child: Text(
                     "立即下单",

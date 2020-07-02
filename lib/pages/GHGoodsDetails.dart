@@ -1160,7 +1160,9 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                                         fontSize: 10,
                                                         fontWeight:
                                                             FontWeight.bold)),
-                                              ])),
+                                              ]
+                                              )
+                                          ),
                                         ),
                                         Container(
                                           child: Text(

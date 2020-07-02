@@ -4,12 +4,16 @@ import 'package:provider/provider.dart';
 import '../provider/Cart.dart';
 
 /// 在线支付
-class OnlinePayments extends StatefulWidget {
+class GHOnlinePayments extends StatefulWidget {
+  Map arguments;
+
   @override
-  _OnlinePaymentsState createState() => _OnlinePaymentsState();
+  GHOnlinePayments({Key key, this.arguments}) : super(key: key);
+
+  _GHOnlinePaymentsState createState() => _GHOnlinePaymentsState();
 }
 
-class _OnlinePaymentsState extends State<OnlinePayments> {
+class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
   bool _seletecd = true;
 
   @override
@@ -112,12 +116,9 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Container(
-                    child: InkWell(
-                      child: Text(
-                          "支付"
-                      ),
-                    )
-                  ),
+                      child: InkWell(
+                    child: Text("支付"),
+                  )),
                   SizedBox(
                     width: 5,
                   ),
