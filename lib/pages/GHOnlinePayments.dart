@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widget/GHButton.dart';
-import 'package:provider/provider.dart';
-import '../provider/Cart.dart';
+import '../services/httptool.dart';
+import '../widget/GHRichTextPriceWidget.dart';
 
 /// 在线支付
 class GHOnlinePayments extends StatefulWidget {
@@ -16,14 +16,29 @@ class GHOnlinePayments extends StatefulWidget {
 class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
   bool _seletecd = true;
   String _orderId = "";
+  double _total = 0;
+
+  /// 获取订单详情
+  void _getOrderDetails(String id) async {
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList/${id}";
+    await HttpRequest.request(url, method: 'GET').then((res) {
+      List _tempgoodList = res["goodList"];
+      double _temptotal = res["total"];
+
+      setState(() {
+        this._total = _temptotal;
+      });
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     this._orderId = widget.arguments["id"];
+    this._getOrderDetails(this._orderId);
   }
 
   Widget build(BuildContext context) {
-    var cartProvider = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("在线支付"),
@@ -33,13 +48,14 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
         child: ListView(
           children: <Widget>[
             Container(
+              padding: EdgeInsets.only(bottom: 10),
               child: Text(
                 "订单号: ${this._orderId}",
                 style: TextStyle(fontSize: 16),
               ),
             ),
             Container(
-              height: 20,
+              height: 10,
               color: Color.fromRGBO(245, 245, 245, 1),
             ),
             GestureDetector(
@@ -50,35 +66,36 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
                 });
               },
               child: Container(
+                  height: 60,
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                    Row(children: <Widget>[
-                      Container(
-                        height: 40,
-                        width: 40,
-                        child: Image.asset(
-                          'images/pay_wechat.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        child: Text(
-                          "微信",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
-                    ]),
-                    Container(
-                        width: 20,
-                        height: 20,
-                        child: this._seletecd == true
-                            ? Image.asset('images/checkSelected.png')
-                            : Image.asset('images/checkNormal.png'))
-                  ])),
+                        Row(children: <Widget>[
+                          Container(
+                            height: 40,
+                            width: 40,
+                            child: Image.asset(
+                              'images/pay_wechat.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            child: Text(
+                              "微信",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ),
+                        ]),
+                        Container(
+                            width: 20,
+                            height: 20,
+                            child: this._seletecd == true
+                                ? Image.asset('images/checkSelected.png')
+                                : Image.asset('images/checkNormal.png'))
+                      ])),
             ),
             Divider(),
             GestureDetector(
@@ -89,36 +106,37 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
                 });
               },
               child: Container(
+                  height: 60,
                   child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(children: <Widget>[
-                    Container(
-                      height: 40,
-                      width: 40,
-                      child: Image.asset(
-                        'images/pay_alipay.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      child: Text(
-                        "支付宝",
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ),
-                  ]),
-                  Container(
-                      width: 20,
-                      height: 20,
-                      child: this._seletecd != true
-                          ? Image.asset('images/checkSelected.png')
-                          : Image.asset('images/checkNormal.png'))
-                ],
-              )),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(children: <Widget>[
+                        Container(
+                          height: 40,
+                          width: 40,
+                          child: Image.asset(
+                            'images/pay_alipay.png',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          child: Text(
+                            "支付宝",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                      ]),
+                      Container(
+                          width: 20,
+                          height: 20,
+                          child: this._seletecd != true
+                              ? Image.asset('images/checkSelected.png')
+                              : Image.asset('images/checkNormal.png'))
+                    ],
+                  )),
             ),
             Divider(),
             Container(
@@ -127,14 +145,16 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Container(
-                      child: InkWell(
+                      child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {},
                     child: Text("支付"),
                   )),
                   SizedBox(
                     width: 5,
                   ),
                   Container(
-                    child: Text("￥${cartProvider.totalPrice + 10}"),
+                    child: GHRichTextPriceWidget(this._total + 10),
                   ),
                 ],
               ),

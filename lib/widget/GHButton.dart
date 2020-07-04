@@ -18,9 +18,7 @@ class GHButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: Colors.red
-      ),
+          borderRadius: BorderRadius.circular(8), color: Colors.red),
       height: 50,
       child: FlatButton(
         disabledColor: Colors.black12,

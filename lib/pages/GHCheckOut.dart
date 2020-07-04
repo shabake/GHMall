@@ -40,7 +40,6 @@ class _GHCheckOutState extends State<GHCheckOut> {
       List _tempgoodList = res["goodList"];
       double _temptotal = res["total"];
 
-      print(_tempgoodList);
       List goodList = [];
       for (var i = 0; i < _tempgoodList.length; i++) {
         GHGoodDetailsModel goodDetailsModel =
