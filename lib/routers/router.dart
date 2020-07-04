@@ -11,11 +11,13 @@ import '../pages/GHAddressEdit.dart';
 import '../pages/GHOnlinePayments.dart';
 import '../pages/GHGoodsList.dart';
 import '../pages/GHGoodsDetails.dart';
-
+import '../pages/Test.dart';
 
 //配置路由
 final routes = {
   '/': (context,{arguments}) => Tabs(arguments:arguments),
+  '/Test': (context) => AliPay(),
+
   '/search': (context) => SearchPage(),
   '/login': (context) => LoginPage(),
   '/registeredFirst': (context,{arguments}) => RegisiteredFirst(),
