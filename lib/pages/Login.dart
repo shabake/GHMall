@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import '../widget/GHTextWidget.dart';
 import '../widget/GHButton.dart';
-import 'RegisteredFirst.dart';
 import '../services/GHToast.dart';
-import '../config/Config.dart';
-import 'package:dio/dio.dart';
 import '../services/gh_sqflite.dart';
 import '../services/EventBus.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:core';
+import '../services/httptool.dart';
 
 /// 登录页面
 class LoginPage extends StatefulWidget {
@@ -17,27 +15,65 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  /// 手机号码
+  TextEditingController _mobilePhoneNumberEditingController =
+      TextEditingController();
 
-  TextEditingController usernameEditingController = TextEditingController();
-  TextEditingController passwordEditingController = TextEditingController();
-
-  /// 用户名
-  var _username;
-
-  /// 密码
-  var _password;
+  /// 验证码
+  TextEditingController _codeEditingController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
   }
-  @override
-  bool checkParameters(String username, String password) {
-    if (username == null || password == null) {
-      return false;
-    }
-    if (password.length < 4 || password.length > 20) {
-      GHToast.showTost("手机号格式不正确,请重新输入");
+
+  /// 注册或登录
+  void _login(String mobilePhoneNumber, String smsCode) async {
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/usersByMobilePhone";
+    Map<String, dynamic> params = {
+      "mobilePhoneNumber": "+86${mobilePhoneNumber}",
+      "smsCode": smsCode,
+    };
+    print(params);
+    await HttpRequest.request(url, method: 'POST', params: params).then((res) {
+      print(res);
+      if (res == null) {
+        GHToast.showTost("登录失败,请重试");
+      } else {
+        GHToast.showTost("登录成功");
+        String objectId = res["objectId"];
+        String username = res["username"];
+        String mobilePhone = res["mobilePhoneNumber"];
+        GHSqflite sqflite = GHSqflite();
+        sqflite.add(objectId, username, mobilePhone);
+
+        /// 发送广播
+        eventBus.fire(LoginSuccessEvent('登录成功'));
+
+        /// 返回到根控制器
+        Navigator.pop(context);
+      }
+    });
+  }
+
+  /// 请求验证码
+  void _requestSmsCode(String mobilePhoneNumber) async {
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/requestSmsCode";
+    Map<String, dynamic> params = {
+      "mobilePhoneNumber": mobilePhoneNumber,
+    };
+    await HttpRequest.request(url, method: 'POST', params: params).then((res) {
+      if (res == null) {
+        GHToast.showTost("请求验证码失败");
+      } else {
+        GHToast.showTost("请求验证码成功");
+      }
+    });
+  }
+
+  /// 校验手机号码
+  bool _checkParameters(String username) {
+    if (username == null) {
       return false;
     }
     RegExp reg = new RegExp(r"^1\d{10}$");
@@ -73,23 +109,54 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               Container(
+                height: 50,
                 child: GHTextWidget(
                   "请输入用户名",
-                  onChanged: (value) {
-                    this._username = value;
-                  },
-                  textEditingController:this.usernameEditingController,
+                  onChanged: (value) {},
+                  textEditingController:
+                      this._mobilePhoneNumberEditingController,
                 ),
+              ),
+              SizedBox(
+                height: 20,
               ),
               Container(
-                child: GHTextWidget(
-                  "请输入密码",
-                  onChanged: (value) {
-                    this._password = value;
-                  },
-                  textEditingController:this.passwordEditingController,
-                ),
-              ),
+                  child: Row(
+                children: <Widget>[
+                  Container(
+                    width: 240,
+                    height: 50,
+                    child: Container(
+                      child: GHTextWidget(
+                        "验证码",
+                        textEditingController: this._codeEditingController,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 10,
+                    child: Text(""),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black12, width: 1)),
+                      child: FlatButton(
+                        onPressed: () {
+                          this._requestSmsCode(
+                              this._mobilePhoneNumberEditingController.text);
+                        },
+                        child: Text(
+                          "重新发送",
+                          style: TextStyle(fontSize: 14, color: Colors.black54),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              )),
+
               Container(
                   height: 50,
                   padding: EdgeInsets.only(top: 10, bottom: 10),
@@ -108,38 +175,27 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/registeredFirst');
-                          print("注册");
-                        },
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Text(
-                            "注册",
-                            style:
-                                TextStyle(fontSize: 14, color: Colors.black54),
-                          ),
-                        ),
-                      ),
                     ],
                   )),
               Container(
                 height: 50,
                 child: GHButton(
-                  "登 录",
+                  "登录",
                   backGroudColor: Colors.red,
                   tapAction: () {
                     FocusScope.of(context).requestFocus(FocusNode());
-                    var username = this._username.trim();
-                    var password = this._password.trim();
-                    if (this.checkParameters(username, password)) {
-                      this._login(username, password);
+                    var username =
+                        this._mobilePhoneNumberEditingController.text.trim();
+                    if (this._checkParameters(username)) {
+                      this._login(this._mobilePhoneNumberEditingController.text,
+                          this._codeEditingController.text);
                     }
                   },
                 ),
               ),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 child: RichText(
                     text: TextSpan(
@@ -182,31 +238,5 @@ class _LoginPageState extends State<LoginPage> {
         ],
       ),
     );
-  }
-
-  _login(String user, String password) async {
-    var api = '${Config.domain}api/doLogin';
-    var response =
-        await Dio().post(api, data: {"username": user, "password": password});
-
-    print(response);
-
-    ///{"success":true,"message":"登录成功","userinfo":
-    ///[{"_id":"5ee0c2c4283a0e16607c88bd","username":"18301402058","tel":"18301402058","salt":"dfa037a53e121ecc9e0926800c3e814e"},
-    ///{"_id":"5ee0c443283a0e16607c88be","username":"18301402058","tel":"18301402058","salt":"dfa037a53e121ecc9e0926800c3e814e"}]}
-    List userinfo = response.data["userinfo"];
-    String _id = userinfo.first["_id"];
-    String tel = userinfo.first["tel"];
-    String salt = userinfo.first["salt"];
-    String username = userinfo.first["username"];
-    GHSqflite sq = GHSqflite();
-
-    sq.add(_id, username, tel, salt);
-
-    /// 发送广播
-    eventBus.fire(LoginSuccessEvent('登录成功'));
-
-    /// 返回到根控制器
-    Navigator.pop(context);
   }
 }

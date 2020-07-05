@@ -387,6 +387,13 @@
             </list>
           </value>
         </entry>
+        <entry key="sy_flutter_wechat">
+          <value>
+            <list>
+              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/sy_flutter_wechat-0.2.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="synchronized">
           <value>
             <list>
@@ -504,6 +511,7 @@
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/stream_channel-2.0.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/string_scanner-1.0.5/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/sy_flutter_alipay-0.2.1/lib" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/sy_flutter_wechat-0.2.2/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/synchronized-2.2.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/tencent_im_plugin-0.2.33/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/term_glyph-1.1.0/lib" />

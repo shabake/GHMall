@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
         /// 隐藏debug
         debugShowCheckedModeBanner: false,
         /// 配置路由
-        initialRoute: '/Test',
+        initialRoute: '/',
         onGenerateRoute: onGenerateRoute,
         /// 设置主题
         theme: ThemeData(

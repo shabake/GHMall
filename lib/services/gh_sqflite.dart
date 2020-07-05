@@ -1,6 +1,5 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:flutter/material.dart';
 import 'dart:io';
 
 String dbPath = "";
@@ -13,7 +12,7 @@ String userTable = "user";
 
 /// 用户表SQL
 String userTableSQL =
-    "create table user (id integer primary key, _id text, username text,tel text,salt text)";
+    "create table user (id integer primary key, objectId text, username text,mobilePhone text)";
 
 class GHSqflite {
   /// 判断表是否存在
@@ -64,10 +63,10 @@ class GHSqflite {
   }
 
   /// 添加数据
-  add(String _id, String username, String tel, String salt) async {
+  add(String objectId, String username, String mobilePhone) async {
     Database db = await open();
     String sql =
-        "insert into user(_id,username,tel,salt) values('$_id', '$username','$tel','$salt')";
+        "insert into user(objectId,username,mobilePhone) values('$objectId', '$username','$mobilePhone')";
     await db.transaction((txn) async {
       int id = await txn.rawInsert(sql);
       print('插入数据成功');

@@ -33,11 +33,15 @@ PODS:
   - sy_flutter_alipay (0.0.1):
     - AlipaySDK-iOS
     - Flutter
+  - sy_flutter_wechat (0.2.1):
+    - Flutter
+    - WechatOpenSDK
   - tencent_im_plugin (0.0.1):
     - Flutter
     - HandyJSON
     - TXIMSDK_iOS
   - TXIMSDK_iOS (4.8.50)
+  - WechatOpenSDK (1.8.7.1)
 
 DEPENDENCIES:
   - barcode_scan (from `.symlinks/plugins/barcode_scan/ios`)
@@ -52,6 +56,7 @@ DEPENDENCIES:
   - shared_preferences_web (from `.symlinks/plugins/shared_preferences_web/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - sy_flutter_alipay (from `.symlinks/plugins/sy_flutter_alipay/ios`)
+  - sy_flutter_wechat (from `.symlinks/plugins/sy_flutter_wechat/ios`)
   - tencent_im_plugin (from `.symlinks/plugins/tencent_im_plugin/ios`)
 
 SPEC REPOS:
@@ -62,6 +67,7 @@ SPEC REPOS:
     - MTBBarcodeScanner
     - SwiftProtobuf
     - TXIMSDK_iOS
+    - WechatOpenSDK
 
 EXTERNAL SOURCES:
   barcode_scan:
@@ -88,6 +94,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sqflite/ios"
   sy_flutter_alipay:
     :path: ".symlinks/plugins/sy_flutter_alipay/ios"
+  sy_flutter_wechat:
+    :path: ".symlinks/plugins/sy_flutter_wechat/ios"
   tencent_im_plugin:
     :path: ".symlinks/plugins/tencent_im_plugin/ios"
 
@@ -109,8 +117,10 @@ SPEC CHECKSUMS:
   sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
   SwiftProtobuf: ecbec1be9036d15655f6b3443a1c4ea693c97932
   sy_flutter_alipay: 91026ef117961bec68f9d32537336f1e528b1213
+  sy_flutter_wechat: 0019f3ae26130b18a55e893c711f2a3ca6862b9e
   tencent_im_plugin: 3067e9b6f9dea82aab41d9dc2f99387f8ff938be
   TXIMSDK_iOS: ae26f78e028e01beed47127ea6bde03c11156208
+  WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
 
 PODFILE CHECKSUM: 17dff16040aff4cbddd483bae67e01fea150125d
 

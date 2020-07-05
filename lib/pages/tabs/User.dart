@@ -6,17 +6,6 @@ import '../../services/ScreenAdaper.dart';
 import '../../widget/GHDialog.dart';
 import '../../widget/GHLoading.dart';
 
-typedef OnSuccess = void Function(Object o);
-typedef OnError = void Function(Exception e);
-
-
-class HttpCallback {
-  OnSuccess onSuccess;
-  OnError onError;
-
-  HttpCallback({OnSuccess this.onSuccess, OnError this.onError});
-}
-
 class UserPage extends StatefulWidget {
   UserPage({Key key}) : super(key: key);
 
@@ -27,12 +16,10 @@ class _UserPageState extends State<UserPage> {
   List list = [];
   var actionEventBus;
 
-  OnSuccess onSuccess;
-  OnError onError;
-
   getUserInfo() {
     sq.query().then((value) {
       setState(() {
+        print(value);
         this.list = value;
         print(this.list.length);
       });
@@ -105,7 +92,7 @@ class _UserPageState extends State<UserPage> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "电话${this.list.last["tel"]}",
+                      "电话${this.list.last["mobilePhone"]}",
                       style: TextStyle(color: Colors.white, fontSize: 14),
                     ),
                   ],
@@ -184,7 +171,6 @@ class _UserPageState extends State<UserPage> {
                       child: GHButton(
                         "退出",
                         tapAction: () {
-
                           showDialog(
                               context: context,
                               builder: (BuildContext context) {

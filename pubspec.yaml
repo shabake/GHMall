@@ -41,6 +41,7 @@ dependencies:
   barcode_scan: 3.0.1
   tencent_im_plugin: ^0.2.33
   sy_flutter_alipay: ^0.2.1
+  sy_flutter_wechat: ^0.2.2
 
 dev_dependencies:
   flutter_test:
