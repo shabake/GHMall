@@ -2,25 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Runner.entitlements" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/GHMall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GHMall.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/RegisiteredSecond.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/RegisteredFirst.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/RegisteredThird.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/Test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/User.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/Login.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/Tabs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/Tabs.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/User.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routers/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routers/router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/gh_sqflite.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/gh_sqflite.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,10 +31,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pages/Login.dart">
+        <entry file="file://$PROJECT_DIR$/lib/pages/GHLoginPage.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+            <state relative-caret-position="304">
+              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -78,11 +63,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pages/tabs/User.dart">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHUserPage.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1671">
-              <caret line="97" column="54" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
+            <state relative-caret-position="266">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pages/GHAddressEdit.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="14" column="16" selection-start-line="14" selection-end-line="15" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pages/tabs/Tabs.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -105,11 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/routers/router.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+            <state relative-caret-position="361">
+              <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -191,7 +200,6 @@
         <option value="$PROJECT_DIR$/lib/model/GHGoodsModel.dart" />
         <option value="$PROJECT_DIR$/lib/services/ScreenAdaper.dart" />
         <option value="$PROJECT_DIR$/lib/model/GHGoodDetailsModel.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/tabs/Tabs.dart" />
         <option value="$PROJECT_DIR$/lib/services/GHLog.dart" />
         <option value="$PROJECT_DIR$/lib/pages/CheckOut.dart" />
         <option value="$PROJECT_DIR$/lib/pages/GHGoodsList.dart" />
@@ -210,9 +218,12 @@
         <option value="$PROJECT_DIR$/lib/pages/RegisiteredSecond.dart" />
         <option value="$PROJECT_DIR$/lib/pages/RegisteredThird.dart" />
         <option value="$PROJECT_DIR$/lib/services/gh_sqflite.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/tabs/User.dart" />
         <option value="$PROJECT_DIR$/lib/pages/Login.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/tabs/User.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/GHLoginPage.dart" />
         <option value="$PROJECT_DIR$/lib/routers/router.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/tabs/Tabs.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/tabs/GHUserPage.dart" />
       </list>
     </option>
   </component>
@@ -379,23 +390,10 @@
           <line>54</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/pages/tabs/User.dart</url>
-          <line>36</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/provider/Cart.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/Cart.dart" />
     <entry file="file://$PROJECT_DIR$/lib/widget/GHCountItemWidget.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -453,16 +451,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/CheckOut.dart" />
-    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/Tabs.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/widgets/framework.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -1372,16 +1360,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/GHAddressEdit.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="14" column="16" selection-start-line="14" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/widget/GHRichTextPriceWidget.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -1430,16 +1408,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/GHCheckOut.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -1462,13 +1430,6 @@
             <element signature="e#754#841#0" />
             <element signature="e#1290#1296#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/widget/GHTextWidget.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -1512,30 +1473,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/User.dart">
+    <entry file="file://$PROJECT_DIR$/lib/pages/Login.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1671">
-          <caret line="97" column="54" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
+        <state relative-caret-position="171">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/Login.dart">
+    <entry file="file://$PROJECT_DIR$/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+        <state relative-caret-position="380">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/GHLoginPage.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/User.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="199" column="1" lean-forward="true" selection-start-line="199" selection-start-column="1" selection-end-line="199" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/widget/GHTextWidget.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/routers/router.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        <state relative-caret-position="361">
+          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/GHAddressEdit.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="14" column="16" selection-start-line="14" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/Tabs.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/tabs/GHUserPage.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

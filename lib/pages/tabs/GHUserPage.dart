@@ -6,13 +6,13 @@ import '../../services/ScreenAdaper.dart';
 import '../../widget/GHDialog.dart';
 import '../../widget/GHLoading.dart';
 
-class UserPage extends StatefulWidget {
-  UserPage({Key key}) : super(key: key);
+class GHUserPage extends StatefulWidget {
+  GHUserPage({Key key}) : super(key: key);
 
-  _UserPageState createState() => _UserPageState();
+  _GHUserPageState createState() => _GHUserPageState();
 }
 
-class _UserPageState extends State<UserPage> {
+class _GHUserPageState extends State<GHUserPage> {
   List list = [];
   var actionEventBus;
 

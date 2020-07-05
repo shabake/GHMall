@@ -9,12 +9,12 @@ import 'dart:core';
 import '../services/httptool.dart';
 
 /// 登录页面
-class LoginPage extends StatefulWidget {
+class GHLoginPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _GHLoginPageState createState() => _GHLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _GHLoginPageState extends State<GHLoginPage> {
   /// 手机号码
   TextEditingController _mobilePhoneNumberEditingController =
       TextEditingController();

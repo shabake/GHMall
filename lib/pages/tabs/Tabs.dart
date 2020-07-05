@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'User.dart';
+import 'GHUserPage.dart';
 import '../../services/ScreenAdaper.dart';
 import '../../services/gh_sqflite.dart';
 import 'GHHomePage.dart';
@@ -38,7 +38,7 @@ class _TabsState extends State<Tabs> {
     GHHomePage(),
     GHCategoryPage(),
     GHShopCart(),
-    UserPage()
+    GHUserPage()
   ];
 
   @override

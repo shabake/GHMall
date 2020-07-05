@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pages/tabs/Tabs.dart';
 import '../pages/Search.dart';
-import '../pages/Login.dart';
-import '../pages/GHCheckOut.dart';
+import '../pages/GHLoginPage.dart';
 import '../pages/GHAddressList.dart';
 import '../pages/GHAddressEdit.dart';
 import '../pages/GHOnlinePayments.dart';
@@ -15,7 +14,7 @@ final routes = {
   '/': (context,{arguments}) => Tabs(arguments:arguments),
   '/Test': (context) => AliPay(),
   '/search': (context) => SearchPage(),
-  '/login': (context) => LoginPage(),
+  '/login': (context) => GHLoginPage(),
   '/GHAddressList': (context,{arguments}) => GHAddressList(),
   '/GHAddressEdit': (context,{arguments}) => GHAddressEdit(arguments:arguments),
   '/OnlinePayments': (context,{arguments}) => GHOnlinePayments(arguments:arguments),
