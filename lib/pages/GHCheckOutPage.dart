@@ -8,16 +8,17 @@ import '../model/GHGoodDetailsModel.dart';
 import '../widget/GHRichTextPriceWidget.dart';
 
 /// 订单确认页
-class GHCheckOut extends StatefulWidget {
+class GHCheckOutPage extends StatefulWidget {
   final Map arguments;
 
   @override
-  GHCheckOut({Key key, this.arguments}) : super(key: key);
 
-  _GHCheckOutState createState() => _GHCheckOutState();
+  GHCheckOutPage({Key key, this.arguments}) : super(key: key);
+
+  _GHCheckOutPageState createState() => _GHCheckOutPageState();
 }
 
-class _GHCheckOutState extends State<GHCheckOut> {
+class _GHCheckOutPageState extends State<GHCheckOutPage> {
   List _goodList = [];
 
   double _total = 0;

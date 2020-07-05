@@ -8,6 +8,8 @@ import '../pages/GHOnlinePayments.dart';
 import '../pages/GHGoodsList.dart';
 import '../pages/GHGoodsDetails.dart';
 import '../pages/Test.dart';
+import '../pages/GHCheckOutPage.dart';
+
 
 //配置路由
 final routes = {
@@ -15,6 +17,7 @@ final routes = {
   '/Test': (context) => AliPay(),
   '/search': (context) => SearchPage(),
   '/login': (context) => GHLoginPage(),
+  '/GHCheckOutPage': (context,{arguments}) => GHCheckOutPage(arguments:arguments),
   '/GHAddressList': (context,{arguments}) => GHAddressList(),
   '/GHAddressEdit': (context,{arguments}) => GHAddressEdit(arguments:arguments),
   '/OnlinePayments': (context,{arguments}) => GHOnlinePayments(arguments:arguments),

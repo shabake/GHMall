@@ -21,7 +21,6 @@ class _GHUserPageState extends State<GHUserPage> {
       setState(() {
         print(value);
         this.list = value;
-        print(this.list.length);
       });
     });
   }
