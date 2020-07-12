@@ -45,9 +45,6 @@ class _GHGoodsListState extends State<GHGoodsList> {
   /// 用户点击价格的次数
   int _count = 0;
 
-  /// _flag
-  bool _flag = true;
-
   /// 所有的商品数据
   List _list = [];
 
@@ -200,14 +197,14 @@ class _GHGoodsListState extends State<GHGoodsList> {
   }
 
   /// 改变筛选菜单状态
-  _changeFilterStatus(index, seletecd) {
+  void _changeFilterStatus(index, seletecd) {
     Map map = this._filterList[index];
     map["seletecd"] = seletecd;
     setState(() {});
   }
 
   /// 重置所有数据
-  _reastData() {
+  void _reastData() {
     this._seletecdList.forEach((element) {
       setState(() {
         element["seletecd"] = "0";
@@ -220,7 +217,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
   }
 
   /// 点击确定
-  _clickSure() {
+  void _clickSure() {
     if ((this._seletecdList != null && this._seletecdList.length > 0) ||
         this._maxPriceEditingController.text.length > 0 ||
         this._minPriceEditingController.text.length > 0) {

@@ -6,14 +6,17 @@ import '../../services/ScreenAdaper.dart';
 import "../../model/GHGoodDetailsModel.dart";
 import '../../widget/GHCountItemWidget.dart';
 import '../../widget/LoadingWidget.dart';
+import '../../services/gh_sqflite.dart';
 
 /// 购物车
-class GHShopCart extends StatefulWidget {
+class GHShopCartPage extends StatefulWidget {
   @override
-  _GHShopCartState createState() => _GHShopCartState();
+  _GHShopCartPageState createState() => _GHShopCartPageState();
 }
 
-class _GHShopCartState extends State<GHShopCart> {
+class _GHShopCartPageState extends State<GHShopCartPage> {
+  List _userList = [];
+
   /// 热卖商品
   List _hotGoodsList = [];
 
@@ -30,12 +33,22 @@ class _GHShopCartState extends State<GHShopCart> {
   double _total = 0;
 
   @override
-
   void initState() {
     super.initState();
 
     this._getHotGoodsData();
     this._getShopCartList();
+    this._getUserInfo();
+  }
+
+  /// 获取用户信息
+  void _getUserInfo() {
+    GHSqflite sq = GHSqflite();
+    sq.query().then((res) {
+      setState(() {
+        this._userList = res;
+      });
+    });
   }
 
   /// 获取购物车列表
@@ -103,13 +116,13 @@ class _GHShopCartState extends State<GHShopCart> {
   }
 
   /// 创建订单
-  void _creatOrder () async {
+  void _creatOrder() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList";
 
     List jsons = [];
-    for(var i = 0 ; i < this._shopCartList.length;i++) {
+    for (var i = 0; i < this._shopCartList.length; i++) {
       GHGoodDetailsModel goodDetailsModel = this._shopCartList[i];
-      if (goodDetailsModel.check ==  true) {
+      if (goodDetailsModel.check == true) {
         jsons.add(goodDetailsModel.toJson());
       }
     }
@@ -118,12 +131,13 @@ class _GHShopCartState extends State<GHShopCart> {
       "goodList": jsons,
       "total": this._total,
     };
-    await HttpRequest.request(url, method: 'POST', params: params).then((value) {
+    await HttpRequest.request(url, method: 'POST', params: params)
+        .then((value) {
       var objectId = value["objectId"];
       if (objectId != null) {
         print("创建订单成功");
-        Navigator.pushNamed(context, '/GHCheckOut',arguments: {
-          "id":objectId,
+        Navigator.pushNamed(context, '/GHCheckOut', arguments: {
+          "id": objectId,
         });
       } else {
         print("创建订单失败");
@@ -567,7 +581,7 @@ class _GHShopCartState extends State<GHShopCart> {
   /// 购物车子项
   Widget _shopCartItem(GHGoodDetailsModel goodDetailsModel) {
     return Container(
-        padding: EdgeInsets.only(left: 20,right: 10,bottom: 10,top: 10),
+        padding: EdgeInsets.only(left: 20, right: 10, bottom: 10, top: 10),
         height: 130,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -585,8 +599,7 @@ class _GHShopCartState extends State<GHShopCart> {
                     },
                     child: goodDetailsModel.check == true
                         ? Image.asset('images/checkSelected.png')
-                        : Image.asset('images/checkNormal.png'))
-            ),
+                        : Image.asset('images/checkNormal.png'))),
             Expanded(
                 flex: 1,
                 child: GestureDetector(
@@ -730,7 +743,7 @@ class _GHShopCartState extends State<GHShopCart> {
         Container(
             color: Colors.white,
             margin: EdgeInsets.only(bottom: 50),
-            height: ScreenAdaper.getScreenHeight() ,
+            height: ScreenAdaper.getScreenHeight(),
             child: ListView.builder(
                 itemCount: this._shopCartList.length,
                 itemBuilder: (BuildContext context, index) {

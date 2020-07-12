@@ -10,6 +10,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import '../model/GHAddressModel.dart';
 import '../widget/GHCountItemWidget.dart';
 import '../widget/GHLoading.dart';
+import '../services/gh_sqflite.dart';
 
 class GHGoodsDetails extends StatefulWidget {
   Map arguments;
@@ -21,13 +22,15 @@ class GHGoodsDetails extends StatefulWidget {
 }
 
 class _GHGoodsDetailsState extends State<GHGoodsDetails> {
+
+  List _userList = [];
+
   /// 滚动控制器
   ScrollController _scrollController = new ScrollController();
 
   /// 用户选择数量
   int _count = 1;
 
-  Color _actionColor;
 
   /// 用户选择的规格型号
   String _seletecdStrings = "";
@@ -46,12 +49,22 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     super.initState();
     this._loadData();
     this._getAddressList();
-    double height = ScreenAdaper.height(400);
     this._scrollController.addListener(() {});
 
     this._getSeletecdList();
+    this._getUserInfo();
   }
 
+  /// 获取用户信息
+  void _getUserInfo() {
+    GHSqflite sq = GHSqflite();
+    sq.query().then((res) {
+      setState(() {
+        this._userList = res;
+        print(res);
+      });
+    });
+  }
   /// 请求数据
   void _loadData() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/" +
@@ -95,6 +108,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
       "url": this._goodDetailsModel.url,
       "check": true,
       "goodId": this._goodDetailsModel.objectId,
+      "userId": this._userList.first["objectId"],
     };
     await HttpRequest.request(url, method: 'POST', params: params)
         .then((value) {
