@@ -2,7 +2,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ScreenAdaper {
   static init(context) {
-    ScreenUtil.init(width: 750, height: 1334);
+    ScreenUtil.init(context, width: 750, height: 1334);
   }
 
   static height(double value) {

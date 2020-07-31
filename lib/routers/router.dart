@@ -14,7 +14,6 @@ import '../pages/GHCheckOutPage.dart';
 //配置路由
 final routes = {
   '/': (context,{arguments}) => Tabs(arguments:arguments),
-  '/Test': (context) => AliPay(),
   '/search': (context) => SearchPage(),
   '/login': (context) => GHLoginPage(),
   '/GHCheckOutPage': (context,{arguments}) => GHCheckOutPage(arguments:arguments),

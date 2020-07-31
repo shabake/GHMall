@@ -8,7 +8,7 @@ import 'dart:convert';
 import 'package:transparent_image/transparent_image.dart';
 import '../../widget/GHCustomAppbar.dart';
 import '../../services/GHToast.dart';
-import 'package:image_picker/image_picker.dart';
+//import 'package:image_picker/image_picker.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 
 /// 分类
@@ -38,7 +38,7 @@ class _GHCategoryPageState extends State<GHCategoryPage>
   /// 第二组商品
   List _secondGoods = [];
 
-  final picker = ImagePicker();
+//  final picker = ImagePicker();
 
 
   @override
