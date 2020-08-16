@@ -19,13 +19,14 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
   bool _seletecd = true;
   String _orderId = "";
   double _total = 0;
+  List _goodList = [];
 
   /// 获取订单详情
   void _getOrderDetails(String id) async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList/${id}";
     await HttpRequest.request(url, method: 'GET').then((res) {
       print(res);
-      List _tempgoodList = res["goodList"];
+      _goodList = res["goodList"];
       double _temptotal = res["total"];
       setState(() {
         this._total = _temptotal;
@@ -33,21 +34,56 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
     });
   }
 
+  /// 增加用户支付方式
   void _addPayway(String id, String payway) async {
     Map<String, dynamic> params = {
       "payway": payway,
     };
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList/${id}";
     await HttpRequest.request(url, method: 'PUT', params: params).then((res) {
-      print(res);
       String updatedAt = res["updatedAt"];
       if (updatedAt != null) {
         GHToast.showTost("选择支付方式成功");
+        List _goodIds = [];
+        for (var dict in _goodList) {
+          String goodId = dict["goodId"];
+          _goodIds.add(goodId);
+        }
+        this._deletedGoods(_goodIds);
+
+      } else {
+        GHToast.showTost("选择支付方式失败");
+      }
+    });
+  }
+
+  /// 批量删除购物车中的商品
+  void _deletedGoods(List goods) async {
+    List maps = [];
+    for (var i = 0; i < goods.length; i++) {
+      String gooodId = goods[i];
+      print("商品id是");
+      print(gooodId);
+      Map map = {
+        "method": "DELETE",
+        "path": "/1.1/classes/shopCartList/${gooodId}"
+      };
+      maps.add(map);
+    }
+
+    print(maps);
+
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/batch";
+    Map<String, dynamic> params = {"requests": maps};
+    HttpRequest.request(url, method: 'POST', params: params).then((value) {
+      print(value);
+      if (value != null) {
+        GHToast.showTost("成功");
         Navigator.pushNamed(context, '/', arguments: {
           "index": 2,
         });
       } else {
-        GHToast.showTost("选择支付方式失败");
+        GHToast.showTost("删除失败");
       }
     });
   }

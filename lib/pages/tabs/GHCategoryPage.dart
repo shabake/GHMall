@@ -38,8 +38,6 @@ class _GHCategoryPageState extends State<GHCategoryPage>
   List _secondGoods = [];
 
 //  final picker = ImagePicker();
-
-
   @override
 
   /// 保持页面状态

@@ -60,8 +60,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
       List _tempList = [];
       List _results = res["results"];
       _results.forEach((item) {
-        GHGoodDetailsModel goodDetailsModel =
-            new GHGoodDetailsModel.fromJson(item);
+        GHGoodDetailsModel goodDetailsModel = GHGoodDetailsModel.fromJson(item);
         _tempList.add(goodDetailsModel);
       });
 

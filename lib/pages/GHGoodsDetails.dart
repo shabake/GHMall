@@ -22,7 +22,6 @@ class GHGoodsDetails extends StatefulWidget {
 }
 
 class _GHGoodsDetailsState extends State<GHGoodsDetails> {
-
   List _userList = [];
 
   /// 滚动控制器
@@ -30,7 +29,6 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   /// 用户选择数量
   int _count = 1;
-
 
   /// 用户选择的规格型号
   String _seletecdStrings = "";
@@ -50,7 +48,6 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     this._loadData();
     this._getAddressList();
     this._scrollController.addListener(() {});
-
     this._getSeletecdList();
     this._getUserInfo();
   }
@@ -65,6 +62,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
       });
     });
   }
+
   /// 请求数据
   void _loadData() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/" +
@@ -1174,9 +1172,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                                         fontSize: 10,
                                                         fontWeight:
                                                             FontWeight.bold)),
-                                              ]
-                                              )
-                                          ),
+                                              ])),
                                         ),
                                         Container(
                                           child: Text(

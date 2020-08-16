@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/.last_build_id" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/.last_build_id" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHCheckOutPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHCheckOutPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHShopCartPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHShopCartPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routers/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routers/router.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,39 +71,39 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="348" y="224" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1596424380965" />
-    <state width="1854" height="446" key="GridCell.Tab.0.bottom" timestamp="1597584835608">
+    <state width="1854" height="211" key="GridCell.Tab.0.bottom" timestamp="1597589054476">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state width="1358" height="216" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1596217457984" />
-    <state width="1854" height="446" key="GridCell.Tab.0.bottom/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584835608" />
+    <state width="1854" height="211" key="GridCell.Tab.0.bottom/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597589054476" />
     <state width="1358" height="216" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1596614674903" />
-    <state width="1854" height="446" key="GridCell.Tab.0.center" timestamp="1597584835607">
+    <state width="1854" height="211" key="GridCell.Tab.0.center" timestamp="1597589054474">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state width="1358" height="216" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1596217457983" />
-    <state width="1854" height="446" key="GridCell.Tab.0.center/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584835607" />
+    <state width="1854" height="211" key="GridCell.Tab.0.center/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597589054474" />
     <state width="1358" height="216" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1596614674903" />
-    <state width="1854" height="446" key="GridCell.Tab.0.left" timestamp="1597584835606">
+    <state width="1854" height="211" key="GridCell.Tab.0.left" timestamp="1597589054474">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state width="1358" height="216" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1596217457983" />
-    <state width="1854" height="446" key="GridCell.Tab.0.left/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584835606" />
+    <state width="1854" height="211" key="GridCell.Tab.0.left/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597589054474" />
     <state width="1358" height="216" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1596614674903" />
-    <state width="1854" height="446" key="GridCell.Tab.0.right" timestamp="1597584835608">
+    <state width="1854" height="211" key="GridCell.Tab.0.right" timestamp="1597589054475">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state width="1358" height="216" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1596217457984" />
-    <state width="1854" height="446" key="GridCell.Tab.0.right/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584835608" />
+    <state width="1854" height="211" key="GridCell.Tab.0.right/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597589054475" />
     <state width="1358" height="216" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1596614674903" />
     <state x="-1392" y="212" key="SettingsEditor" timestamp="1597587406095">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state x="-1392" y="212" key="SettingsEditor/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597587406095" />
     <state x="396" y="90" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1597471167292" />
-    <state x="-1441" y="343" width="927" height="586" key="find.popup" timestamp="1597587220366">
+    <state x="-1463" y="602" width="927" height="586" key="find.popup" timestamp="1597590297486">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
-    <state x="-1441" y="343" width="927" height="586" key="find.popup/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597587220366" />
+    <state x="-1463" y="602" width="927" height="586" key="find.popup/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597590297486" />
     <state x="359" y="199" width="695" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1597148703361" />
     <state x="-1283" y="358" width="670" height="676" key="search.everywhere.popup" timestamp="1597586009151">
       <screen x="-1920" y="131" width="1920" height="1057" />
@@ -125,7 +124,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart</url>
-          <line>302</line>
+          <line>300</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
