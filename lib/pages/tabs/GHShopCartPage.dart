@@ -232,7 +232,8 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                     ),
                   )
                 ],
-              ));
+              )
+          );
         }).toList(),
       ),
     );
@@ -256,7 +257,9 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
-                  print("点击登录");
+                  Navigator.pushNamed(context, '/', arguments: {
+                    "index": 3,
+                  });
                 },
                 child: Text(
                   "登录",
@@ -303,6 +306,11 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                 border: Border.all(
                     color: Color.fromRGBO(200, 200, 200, 1), width: 1)),
             child: GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, '/', arguments: {
+                  "index": 1,
+                });
+              },
               behavior: HitTestBehavior.opaque,
               child: Text("随便看看",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
@@ -375,7 +383,6 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
             height: 10,
           ),
           this._recommendWidget(),
-
           /// 热门推荐
           this._hotGoodstWidget(),
         ],
@@ -408,7 +415,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                     ),
                     Container(
                       child: Text(
-                        "2",
+                        "北京",
                         style: TextStyle(fontSize: 12, color: Colors.black38),
                       ),
                     ),
@@ -418,6 +425,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
         ),
       ),
       actions: <Widget>[
+        this._userList.length > 0 ?
         Container(
             margin: EdgeInsets.only(right: 20),
             alignment: Alignment.center,
@@ -431,7 +439,8 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                 child: Text(
                   this._isEdit == false ? "编辑" : "完成",
                   style: TextStyle(fontSize: 14, color: Colors.black38),
-                )))
+                ))
+        ):SizedBox.shrink()
       ],
     );
   }
@@ -768,7 +777,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: this._appBar(),
-      body: this._bodyWidgt(),
+      body: this._userList.length > 0 ? this._bodyWidgt():_notLoginWidgte()
     );
   }
 }

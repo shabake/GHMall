@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHShopCartPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHShopCartPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHUserPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHUserPage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

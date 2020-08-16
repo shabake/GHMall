@@ -124,26 +124,15 @@ class _GHUserPageState extends State<GHUserPage> {
                   title: Text("全部订单"),
                 ),
               ),
-              Divider(),
               ListTile(
-                leading: Icon(Icons.payment, color: Colors.red),
-                title: Text("待付款"),
-              ),
-              Divider(),
-              ListTile(
-                onTap: () {},
-                leading: Icon(Icons.shopping_cart, color: Colors.red),
-                title: Text("待收货"),
+                leading: Icon(Icons.collections_bookmark, color: Colors.red),
+                title: Text("我的收藏"),
               ),
               Container(
                 height: 10,
                 color: Color.fromRGBO(245, 245, 245, 1),
               ),
-              ListTile(
-                leading: Icon(Icons.collections_bookmark, color: Colors.red),
-                title: Text("我的收藏"),
-              ),
-              Divider(),
+
               ListTile(
                 leading: Icon(Icons.people, color: Colors.red),
                 title: Text("在线客服"),
@@ -152,7 +141,6 @@ class _GHUserPageState extends State<GHUserPage> {
                 height: 10,
                 color: Color.fromRGBO(245, 245, 245, 1),
               ),
-              Divider(),
               ListTile(
                 onTap: () {
                   Navigator.pushNamed(context, '/GHAddressList');
