@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widget/GHButton.dart';
 import '../services/httptool.dart';
 import '../widget/GHRichTextPriceWidget.dart';
+import '../services/GHToast.dart';
 
 /// 在线支付
 class GHOnlinePayments extends StatefulWidget {
@@ -14,6 +15,7 @@ class GHOnlinePayments extends StatefulWidget {
 }
 
 class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
+  /// 支付方式 true 微信 false 支付宝
   bool _seletecd = true;
   String _orderId = "";
   double _total = 0;
@@ -22,12 +24,31 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
   void _getOrderDetails(String id) async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList/${id}";
     await HttpRequest.request(url, method: 'GET').then((res) {
+      print(res);
       List _tempgoodList = res["goodList"];
       double _temptotal = res["total"];
-
       setState(() {
         this._total = _temptotal;
       });
+    });
+  }
+
+  void _addPayway(String id, String payway) async {
+    Map<String, dynamic> params = {
+      "payway": payway,
+    };
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList/${id}";
+    await HttpRequest.request(url, method: 'PUT', params: params).then((res) {
+      print(res);
+      String updatedAt = res["updatedAt"];
+      if (updatedAt != null) {
+        GHToast.showTost("选择支付方式成功");
+        Navigator.pushNamed(context, '/', arguments: {
+          "index": 2,
+        });
+      } else {
+        GHToast.showTost("选择支付方式失败");
+      }
     });
   }
 
@@ -41,7 +62,7 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("在线支付"),
+        title: Text("支付方式"),
       ),
       body: Container(
         padding: EdgeInsets.all(20),
@@ -148,7 +169,7 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
                       child: GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {},
-                    child: Text("支付"),
+                    child: Text("待支付金额"),
                   )),
                   SizedBox(
                     width: 5,
@@ -162,10 +183,17 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
             Container(
               padding: EdgeInsets.all(10),
               child: GHButton(
-                "支付",
-                tapAction: () {},
+                "确定",
+                tapAction: () {
+                  this._addPayway(widget.arguments["id"],
+                      this._seletecd == true ? "微信" : "支付宝");
+                },
               ),
-            )
+            ),
+            Container(
+                alignment: Alignment.centerRight,
+                padding: EdgeInsets.all(10),
+                child: Text("线上下单,线下支付")),
           ],
         ),
       ),

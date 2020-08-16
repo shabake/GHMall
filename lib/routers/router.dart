@@ -16,12 +16,15 @@ final routes = {
   '/': (context,{arguments}) => Tabs(arguments:arguments),
   '/search': (context) => SearchPage(),
   '/login': (context) => GHLoginPage(),
-  '/GHCheckOutPage': (context,{arguments}) => GHCheckOutPage(arguments:arguments),
   '/GHAddressList': (context,{arguments}) => GHAddressList(),
   '/GHAddressEdit': (context,{arguments}) => GHAddressEdit(arguments:arguments),
   '/OnlinePayments': (context,{arguments}) => GHOnlinePayments(arguments:arguments),
   '/GHGoodsList': (context,{arguments}) => GHGoodsList(),
   '/GHGoodsDetails': (context,{arguments}) => GHGoodsDetails(arguments:arguments),
+
+  /// 订单确认页
+  '/GHCheckOutPage': (context,{arguments}) => GHCheckOutPage(arguments:arguments),
+
 };
 
 /// 固定写法不需要改动

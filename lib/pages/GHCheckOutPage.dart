@@ -7,12 +7,11 @@ import 'package:transparent_image/transparent_image.dart';
 import '../model/GHGoodDetailsModel.dart';
 import '../widget/GHRichTextPriceWidget.dart';
 
-/// 订单确认页
+/// 订单详情
 class GHCheckOutPage extends StatefulWidget {
   final Map arguments;
 
   @override
-
   GHCheckOutPage({Key key, this.arguments}) : super(key: key);
 
   _GHCheckOutPageState createState() => _GHCheckOutPageState();
@@ -23,6 +22,7 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
 
   double _total = 0;
   Results results;
+
   /// 获取地址
   void _getAddressList() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
@@ -143,7 +143,7 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
             child: GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, '/GHGoodsDetails', arguments: {
-//                      'id': goodDetailsModel.goodId,
+                    'id': goodDetailsModel.goodId,
                   });
                 },
                 child: Column(
@@ -357,6 +357,7 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
+              padding: EdgeInsets.only(top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
@@ -383,8 +384,8 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
                 child: GestureDetector(
                   behavior: HitTestBehavior.opaque,
                   onTap: () {
-                    Navigator.pushNamed(context, '/OnlinePayments' ,arguments: {
-                      "id":widget.arguments["id"],
+                    Navigator.pushNamed(context, '/OnlinePayments', arguments: {
+                      "id": widget.arguments["id"],
                     });
                   },
                   child: Text(

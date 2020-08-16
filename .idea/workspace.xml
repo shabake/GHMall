@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GHMall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GHMall.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/.last_build_id" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/.last_build_id" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHCheckOutPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHCheckOutPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHShopCartPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHShopCartPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routers/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routers/router.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +43,7 @@
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
@@ -74,39 +72,44 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="348" y="224" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1596424380965" />
-    <state width="1854" height="303" key="GridCell.Tab.0.bottom" timestamp="1597584340120">
+    <state width="1854" height="446" key="GridCell.Tab.0.bottom" timestamp="1597584835608">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state width="1358" height="216" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1596217457984" />
-    <state width="1854" height="303" key="GridCell.Tab.0.bottom/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584340120" />
+    <state width="1854" height="446" key="GridCell.Tab.0.bottom/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584835608" />
     <state width="1358" height="216" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1596614674903" />
-    <state width="1854" height="303" key="GridCell.Tab.0.center" timestamp="1597584340119">
+    <state width="1854" height="446" key="GridCell.Tab.0.center" timestamp="1597584835607">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state width="1358" height="216" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1596217457983" />
-    <state width="1854" height="303" key="GridCell.Tab.0.center/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584340119" />
+    <state width="1854" height="446" key="GridCell.Tab.0.center/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584835607" />
     <state width="1358" height="216" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1596614674903" />
-    <state width="1854" height="303" key="GridCell.Tab.0.left" timestamp="1597584340119">
+    <state width="1854" height="446" key="GridCell.Tab.0.left" timestamp="1597584835606">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state width="1358" height="216" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1596217457983" />
-    <state width="1854" height="303" key="GridCell.Tab.0.left/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584340119" />
+    <state width="1854" height="446" key="GridCell.Tab.0.left/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584835606" />
     <state width="1358" height="216" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1596614674903" />
-    <state width="1854" height="303" key="GridCell.Tab.0.right" timestamp="1597584340120">
+    <state width="1854" height="446" key="GridCell.Tab.0.right" timestamp="1597584835608">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state width="1358" height="216" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1596217457984" />
-    <state width="1854" height="303" key="GridCell.Tab.0.right/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584340120" />
+    <state width="1854" height="446" key="GridCell.Tab.0.right/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597584835608" />
     <state width="1358" height="216" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1596614674903" />
-    <state x="396" y="90" key="SettingsEditor" timestamp="1597471167292">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="-1392" y="212" key="SettingsEditor" timestamp="1597587406095">
+      <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
-    <state x="-1392" y="212" key="SettingsEditor/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1596298068346" />
+    <state x="-1392" y="212" key="SettingsEditor/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597587406095" />
     <state x="396" y="90" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1597471167292" />
-    <state x="359" y="199" width="695" height="486" key="find.popup" timestamp="1597148703361">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="-1441" y="343" width="927" height="586" key="find.popup" timestamp="1597587220366">
+      <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
+    <state x="-1441" y="343" width="927" height="586" key="find.popup/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597587220366" />
     <state x="359" y="199" width="695" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1597148703361" />
+    <state x="-1283" y="358" width="670" height="676" key="search.everywhere.popup" timestamp="1597586009151">
+      <screen x="-1920" y="131" width="1920" height="1057" />
+    </state>
+    <state x="-1283" y="358" width="670" height="676" key="search.everywhere.popup/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1597586009151" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -120,83 +123,12 @@
           <line>10</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart</url>
+          <line>302</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>GHMall</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Dart Packages</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

@@ -116,19 +116,18 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
   }
 
   /// 创建订单
-  void _creatOrder() async {
+  void _createGoodOrder() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList";
-
-    List jsons = [];
+    List _jsons = [];
     for (var i = 0; i < this._shopCartList.length; i++) {
       GHGoodDetailsModel goodDetailsModel = this._shopCartList[i];
       if (goodDetailsModel.check == true) {
-        jsons.add(goodDetailsModel.toJson());
+        _jsons.add(goodDetailsModel.toJson());
       }
     }
 
     Map<String, dynamic> params = {
-      "goodList": jsons,
+      "goodList": _jsons,
       "total": this._total,
     };
     await HttpRequest.request(url, method: 'POST', params: params)
@@ -136,7 +135,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
       var objectId = value["objectId"];
       if (objectId != null) {
         print("创建订单成功");
-        Navigator.pushNamed(context, '/GHCheckOut', arguments: {
+        Navigator.pushNamed(context, '/GHCheckOutPage', arguments: {
           "id": objectId,
         });
       } else {
@@ -541,7 +540,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                             child: GestureDetector(
                               behavior: HitTestBehavior.opaque,
                               onTap: () {
-                                this._creatOrder();
+                                this._createGoodOrder();
                               },
                               child: Center(
                                 child: Text(
