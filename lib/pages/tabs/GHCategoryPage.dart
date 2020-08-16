@@ -8,8 +8,7 @@ import 'dart:convert';
 import 'package:transparent_image/transparent_image.dart';
 import '../../widget/GHCustomAppbar.dart';
 import '../../services/GHToast.dart';
-//import 'package:image_picker/image_picker.dart';
-import 'package:barcode_scan/barcode_scan.dart';
+//import 'package:barcode_scan/barcode_scan.dart';
 
 /// 分类
 class GHCategoryPage extends StatefulWidget {
@@ -292,8 +291,8 @@ class _GHCategoryPageState extends State<GHCategoryPage>
   void _takePhoto() async {
 //    final pickedFile = await picker.getImage(source: ImageSource.camera);
     /// 开始二维码扫描
-    var result = await BarcodeScanner.scan();
-    print(result);
+//    var result = await BarcodeScanner.scan();
+//    print(result);
   }
 
   @override
