@@ -12,7 +12,7 @@ class GHButton extends StatelessWidget {
 
   @override
   GHButton(this.title,
-      {Key key, this.tapAction = null, this.backGroudColor = Colors.red})
+      {Key key, this.tapAction, this.backGroudColor = Colors.red})
       : super(key: key);
 
   Widget build(BuildContext context) {
