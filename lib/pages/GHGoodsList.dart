@@ -87,13 +87,12 @@ class _GHGoodsListState extends State<GHGoodsList> {
 
   /// 构造筛选Map
   List _thirdList = [
-    {"id": "1", "title": "得力", "type": "1", "seletecd": "0"},
-    {"id": "2", "title": "广博", "type": "1", "seletecd": "0"},
-    {"id": "3", "title": "TANGO", "type": "1", "seletecd": "0"},
-    {"id": "1", "title": "晨光", "type": "1", "seletecd": "0"},
-    {"id": "2", "title": "齐心", "type": "1", "seletecd": "0"},
-    {"id": "3", "title": "3M", "type": "1", "seletecd": "0"},
+    {"id": "1", "title": "32G", "type": "6", "seletecd": "0"},
+    {"id": "2", "title": "64G", "type": "7", "seletecd": "0"},
+    {"id": "3", "title": "128G", "type": "8", "seletecd": "0"},
+    {"id": "1", "title": "256", "type": "9", "seletecd": "0"}
   ];
+
 
   /// 网络运营商
   List _fourList = [

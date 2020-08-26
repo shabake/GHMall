@@ -9,6 +9,7 @@ import '../pages/GHGoodsList.dart';
 import '../pages/GHGoodsDetails.dart';
 import '../pages/Test.dart';
 import '../pages/GHCheckOutPage.dart';
+import '../pages/GHOrderList.dart';
 
 
 //配置路由
@@ -22,9 +23,10 @@ final routes = {
   '/GHGoodsList': (context,{arguments}) => GHGoodsList(),
   '/GHGoodsDetails': (context,{arguments}) => GHGoodsDetails(arguments:arguments),
 
-  /// 订单确认页
+   /// 订单确认页
   '/GHCheckOutPage': (context,{arguments}) => GHCheckOutPage(arguments:arguments),
-
+   /// 订单列表
+  '/GHOrderListPage': (context) => GHOrderListPage(),
 };
 
 /// 固定写法不需要改动

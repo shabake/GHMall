@@ -5,6 +5,7 @@ import '../../widget/GHButton.dart';
 import '../../services/ScreenAdaper.dart';
 import '../../widget/GHDialog.dart';
 import '../../widget/GHLoading.dart';
+import '../GHOrderList.dart';
 
 class GHUserPage extends StatefulWidget {
   GHUserPage({Key key}) : super(key: key);
@@ -72,10 +73,7 @@ class _GHUserPageState extends State<GHUserPage> {
                   },
                   child: Text(
                     "登录/注册",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                        color: Colors.white),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
                   ),
                 ))
               : Container(
@@ -85,10 +83,7 @@ class _GHUserPageState extends State<GHUserPage> {
                   children: <Widget>[
                     Text(
                       "用户名${this.list.last["username"]}",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "电话${this.list.last["mobilePhone"]}",
@@ -116,9 +111,10 @@ class _GHUserPageState extends State<GHUserPage> {
                 child: ListTile(
                   onTap: () {
                     print("点击");
+                    Navigator.pushNamed(context, '/GHOrderListPage');
                   },
                   leading: Icon(
-                    Icons.playlist_add,
+                    Icons.star_border,
                     color: Colors.red,
                   ),
                   title: Text("全部订单"),
@@ -132,7 +128,6 @@ class _GHUserPageState extends State<GHUserPage> {
                 height: 10,
                 color: Color.fromRGBO(245, 245, 245, 1),
               ),
-
               ListTile(
                 leading: Icon(Icons.people, color: Colors.red),
                 title: Text("在线客服"),
