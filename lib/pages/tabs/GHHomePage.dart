@@ -16,8 +16,7 @@ class GHHomePage extends StatefulWidget {
   _GHHomePageState createState() => _GHHomePageState();
 }
 
-class _GHHomePageState extends State<GHHomePage>
-    with AutomaticKeepAliveClientMixin {
+class _GHHomePageState extends State<GHHomePage> with AutomaticKeepAliveClientMixin {
   /// 猜你喜欢
   List _getGuessLikeList = [];
 
@@ -36,7 +35,11 @@ class _GHHomePageState extends State<GHHomePage>
 
     /// 获取轮播图数据
     _getCarouselData();
+
+    /// 猜你喜欢
     _getGuessLicktData();
+
+    /// 热门商品
     _getHotGoodsData();
   }
 
@@ -84,8 +87,7 @@ class _GHHomePageState extends State<GHHomePage>
       width: double.infinity,
       child: Swiper(
           itemBuilder: (BuildContext context, int index) {
-            GHomeCarouselDataItemModel carouselModel =
-                this._carouselDataList[index];
+            GHomeCarouselDataItemModel carouselModel = this._carouselDataList[index];
             return GestureDetector(
               onTap: () {},
               child: Image.network(
@@ -156,11 +158,8 @@ class _GHHomePageState extends State<GHHomePage>
                 });
               },
               child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Color.fromRGBO(233, 233, 233, 0.9), width: 1)),
-                  padding:
-                      EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
+                  decoration: BoxDecoration(border: Border.all(color: Color.fromRGBO(233, 233, 233, 0.9), width: 1)),
+                  padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
                   width: (ScreenAdaper.getScreenWidth() - 30) / 2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -196,16 +195,13 @@ class _GHHomePageState extends State<GHHomePage>
                                 Container(
                                   child: Text(
                                     "￥",
-                                    style: TextStyle(
-                                        fontSize: 10, color: Colors.red),
+                                    style: TextStyle(fontSize: 10, color: Colors.red),
                                   ),
                                 ),
                                 Container(
                                   child: Text(
                                     "${value.price}",
-                                    style: TextStyle(
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.bold),
+                                    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
                                   ),
                                 )
                               ],
@@ -223,8 +219,7 @@ class _GHHomePageState extends State<GHHomePage>
                               ),
                               child: Text(
                                 "看详情",
-                                style: TextStyle(
-                                    color: Colors.black54, fontSize: 10),
+                                style: TextStyle(color: Colors.black54, fontSize: 10),
                               ),
                             )
                           ],
@@ -306,55 +301,54 @@ class _GHHomePageState extends State<GHHomePage>
       top: false,
       bottom: false,
       child: Scaffold(
-        body: ListView(
-          padding: EdgeInsets.only(top: 0),
-          children: <Widget>[
-            /// 轮播图
-            this._swiperWidget(),
+        body: Container(
+          color: Colors.white,
+          child: ListView(
+            padding: EdgeInsets.only(top: 0),
+            children: <Widget>[
+              /// 轮播图
+              this._swiperWidget(),
 
-            /// 超级秒杀
-            this._superspike(),
-            SizedBox(height: ScreenAdaper.height(20)),
+              /// 超级秒杀
+              this._superspike(),
+              SizedBox(height: ScreenAdaper.height(20)),
 
-            /// 猜你喜欢
-            this._titleWidget("猜你喜欢"),
+              /// 猜你喜欢
+              this._titleWidget("猜你喜欢"),
 
-            /// 猜你喜欢
-            this._guessLiketWidget(),
-            Container(
-              padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
-              child: Row(
-                children: <Widget>[
-                  _boutique(
-                      "https://upload-images.jianshu.io/upload_images/1419035-84f72de1cfe0dc5e.jpg"),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  _boutique(
-                      "https://upload-images.jianshu.io/upload_images/1419035-6c2ca47d7cd45566.jpg"),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  _boutique(
-                      "https://upload-images.jianshu.io/upload_images/1419035-983a85c7b5a9a35a.jpg"),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  _boutique(
-                      "https://upload-images.jianshu.io/upload_images/1419035-216bcc1143e07d0a.jpg"),
-                ],
+              /// 猜你喜欢
+              this._guessLiketWidget(),
+              Container(
+                padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                child: Row(
+                  children: <Widget>[
+                    _boutique("https://upload-images.jianshu.io/upload_images/1419035-84f72de1cfe0dc5e.jpg"),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    _boutique("https://upload-images.jianshu.io/upload_images/1419035-6c2ca47d7cd45566.jpg"),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    _boutique("https://upload-images.jianshu.io/upload_images/1419035-983a85c7b5a9a35a.jpg"),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    _boutique("https://upload-images.jianshu.io/upload_images/1419035-216bcc1143e07d0a.jpg"),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: ScreenAdaper.height(5)),
+              SizedBox(height: ScreenAdaper.height(5)),
 
-            /// 热门推荐
-            this._titleWidget("热门推荐"),
+              /// 热门推荐
+              this._titleWidget("热门推荐"),
 
-            SizedBox(height: ScreenAdaper.height(10)),
+              SizedBox(height: ScreenAdaper.height(10)),
 
-            /// 热门推荐
-            this._hotGoodstWidget(),
-          ],
+              /// 热门推荐
+              this._hotGoodstWidget(),
+            ],
+          ),
         ),
       ),
     );

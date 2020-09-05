@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../services/ScreenAdaper.dart';
 import 'package:flutter/gestures.dart';
 import '../services/httptool.dart';
-import 'dart:convert';
 import '../model/GHGoodDetailsModel.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import '../model/GHAddressModel.dart';
@@ -39,8 +38,8 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   /// 商品详情模型
   GHGoodDetailsModel _goodDetailsModel;
 
-  /// 地址模型
-  Results _addressModel;
+  /// 地址模型数组
+  List _addressList = [];
 
   @override
   void initState() {
@@ -65,10 +64,8 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   /// 请求数据
   void _loadData() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/" +
-        "shopGoodsList/${widget.arguments["id"]}";
+    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/" + "shopGoodsList/${widget.arguments["id"]}";
     await HttpRequest.request(url, method: 'GET').then((value) {
-      var json = jsonEncode(value);
       GHGoodDetailsModel goodDetailsModel = GHGoodDetailsModel.fromJson(value);
       setState(() {
         this._goodDetailsModel = goodDetailsModel;
@@ -76,16 +73,17 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     });
   }
 
-  /// 请求地址
+  /// 请求地址 获取第一个地址
   void _getAddressList() async {
     var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
     var c = Uri.encodeComponent('-createdAt');
     url = url + '?' + "order=" + c;
-
     HttpRequest.request(url, method: 'GET').then((res) {
-      var list = new GHAddressModel.fromJson(res).results;
+      var list = GHAddressModel.fromJson(res).results;
       setState(() {
-        this._addressModel = list.first;
+        print("打印地址");
+        print(list.first);
+        _addressList.add(list.first);
       });
     });
   }
@@ -98,18 +96,17 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
       "price": this._goodDetailsModel.price,
       "seletecdStrings": this._seletecdStrings,
       "count": this._count,
-      "province": this._addressModel.province,
-      "city": this._addressModel.city,
-      "area": this._addressModel.area,
-      "detailsAddress": this._addressModel.detailsAddress,
+      "province": this._addressList.first.province,
+      "city": this._addressList.first.city,
+      "area": this._addressList.first.area,
+      "detailsAddress": this._addressList.first.detailsAddress,
       "urls": this._goodDetailsModel.urls,
       "url": this._goodDetailsModel.url,
       "check": true,
       "goodId": this._goodDetailsModel.objectId,
       "userId": this._userList.first["objectId"],
     };
-    await HttpRequest.request(url, method: 'POST', params: params)
-        .then((value) {
+    await HttpRequest.request(url, method: 'POST', params: params).then((value) {
       GHLoading.hideLoading(context);
 
       var objectId = value["objectId"];
@@ -283,9 +280,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                       width: 5,
                     )),
                     TextSpan(
-                        text: goodDetailsModel.title.length > 0
-                            ? "${goodDetailsModel.title}"
-                            : "",
+                        text: goodDetailsModel.title.length > 0 ? "${goodDetailsModel.title}" : "",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -299,9 +294,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                 child: Text.rich(TextSpan(
                   children: <InlineSpan>[
                     TextSpan(
-                        text: goodDetailsModel.description.length > 0
-                            ? "${goodDetailsModel.description}"
-                            : "",
+                        text: goodDetailsModel.description.length > 0 ? "${goodDetailsModel.description}" : "",
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.normal,
@@ -435,8 +428,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
       children: <Widget>[
         Container(
             padding: EdgeInsets.only(left: 5, right: 5),
-            decoration:
-                BoxDecoration(border: Border.all(color: Colors.red, width: 1)),
+            decoration: BoxDecoration(border: Border.all(color: Colors.red, width: 1)),
             child: Text(
               title,
               style: TextStyle(fontSize: 12, color: Colors.red),
@@ -512,10 +504,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                     this._showBottomSheet(goodDetailsModel);
                   },
                   child: Container(
-                    child: Text(
-                        this._seletecdStrings.length > 0
-                            ? this._seletecdStrings
-                            : "请选择",
+                    child: Text(this._seletecdStrings.length > 0 ? this._seletecdStrings : "请选择",
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
@@ -593,12 +582,13 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                             SizedBox(
                               width: 5,
                             ),
-                            Container(
+                            Expanded(
                               child: Text(
-                                this._addressModel.province +
-                                    this._addressModel.city +
-                                    this._addressModel.area +
-                                    this._addressModel.detailsAddress,
+                                // ignore: null_aware_before_operator
+                                this._addressList?.first?.province +
+                                    this._addressList?.first?.city +
+                                    this._addressList?.first?.area +
+                                    this._addressList?.first?.detailsAddress,
                               ),
                             )
                           ],
@@ -607,18 +597,11 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                           child: RichText(
                               text: TextSpan(
                                   text: "11:10",
-                                  style: TextStyle(
-                                      color: Colors.red,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.red, fontSize: 12, fontWeight: FontWeight.bold),
                                   children: [
                                 TextSpan(
-                                    text:
-                                        "前下单,预计今天(06月26日)送达,受道路封闭影响,您的订单可能会有所延迟,我们将尽快为您送达,请您耐心等待",
-                                    style: TextStyle(
-                                        color: Colors.black87,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold)),
+                                    text: "前下单,预计今天(06月26日)送达,受道路封闭影响,您的订单可能会有所延迟,我们将尽快为您送达,请您耐心等待",
+                                    style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.bold)),
                               ])),
                         )
                       ],
@@ -673,10 +656,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
             ),
             Container(
               child: Text(
-                this._addressModel.province +
-                    this._addressModel.city +
-                    this._addressModel.area +
-                    "1号店",
+                this._addressList.first.province + this._addressList.first.city + this._addressList.first.area + "1号店",
               ),
             ),
             Container(
@@ -788,8 +768,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
             child: GridView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 10),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 10),
               itemBuilder: (context, index) {
                 return Container(
                   color: index % 2 == 0 ? Colors.red : Colors.orange,
@@ -820,8 +799,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
         child: ListView(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.only(
-          top: 0, bottom: ScreenAdaper.height(80) + bottomPadding),
+      padding: EdgeInsets.only(top: 0, bottom: ScreenAdaper.height(80) + bottomPadding),
       children: <Widget>[
         this._superspike(),
         this._goodInfo(goodDetailsModel),
@@ -837,7 +815,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
           color: Color.fromRGBO(245, 245, 245, 1),
         ),
         this._goodSelected(goodDetailsModel),
-        this._goodAddress(),
+        this._addressList.length > 0 ? this._goodAddress() : SizedBox.shrink(),
         Divider(),
         this._goodShops(),
         Container(
@@ -949,17 +927,14 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(
                       width: 0.5,
-                      color: map["seletecd"] == "0"
-                          ? Colors.transparent
-                          : Colors.red,
+                      color: map["seletecd"] == "0" ? Colors.transparent : Colors.red,
                     )),
                 alignment: Alignment.center,
                 height: 36,
                 width: 80,
                 child: Chip(
-                  backgroundColor: map["seletecd"] == "0"
-                      ? Color.fromRGBO(240, 240, 240, 1)
-                      : Color.fromRGBO(245, 245, 245, 0.2),
+                  backgroundColor:
+                      map["seletecd"] == "0" ? Color.fromRGBO(240, 240, 240, 1) : Color.fromRGBO(245, 245, 245, 0.2),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
@@ -971,19 +946,14 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                           width: double.infinity,
                           child: Text(
                             "#####",
-                            style: TextStyle(
-                                color: Colors.transparent, fontSize: 12),
+                            style: TextStyle(color: Colors.transparent, fontSize: 12),
                           ),
                         ),
                       ),
                       Container(
                         child: Text(
                           "${map["title"]}",
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: map["seletecd"] == "1"
-                                  ? Colors.red
-                                  : Colors.black),
+                          style: TextStyle(fontSize: 12, color: map["seletecd"] == "1" ? Colors.red : Colors.black),
                         ),
                       ),
                     ],
@@ -1040,26 +1010,19 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              this._bottomSpecificationItem(
-                                  "容量", this._thirdList, setBottomState, true),
-                              this._bottomSpecificationItem(
-                                  "网络", this._fourList, setBottomState, true),
-                              this._bottomSpecificationItem(
-                                  "容量", this._fiveList, setBottomState, true),
-                              this._bottomSpecificationItem(
-                                  "颜色", this._sixList, setBottomState, true),
+                              this._bottomSpecificationItem("容量", this._thirdList, setBottomState, true),
+                              this._bottomSpecificationItem("网络", this._fourList, setBottomState, true),
+                              this._bottomSpecificationItem("容量", this._fiveList, setBottomState, true),
+                              this._bottomSpecificationItem("颜色", this._sixList, setBottomState, true),
                               Container(
                                   padding: EdgeInsets.all(5),
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Container(
                                         child: Text(
                                           "数量",
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold),
+                                          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                                         ),
                                       ),
                                       GHCountItemWidger(
@@ -1107,8 +1070,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                 color: Colors.red,
                                 child: Text(
                                   "确 定",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
+                                  style: TextStyle(color: Colors.white, fontSize: 18),
                                 ),
                               ))
                         ],
@@ -1146,32 +1108,22 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                     Expanded(
                                         child: Column(
                                       mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Container(
                                           child: RichText(
                                               text: TextSpan(
                                                   text: "¥",
-                                                  style: TextStyle(
-                                                      color: Colors.red,
-                                                      fontSize: 10),
+                                                  style: TextStyle(color: Colors.red, fontSize: 10),
                                                   children: [
                                                 TextSpan(
-                                                    text:
-                                                        "${goodDetailsModel?.price}",
+                                                    text: "${goodDetailsModel?.price}",
                                                     style: TextStyle(
-                                                        color: Colors.red,
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
+                                                        color: Colors.red, fontSize: 20, fontWeight: FontWeight.bold)),
                                                 TextSpan(
                                                     text: ".00",
                                                     style: TextStyle(
-                                                        color: Colors.red,
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
+                                                        color: Colors.red, fontSize: 10, fontWeight: FontWeight.bold)),
                                               ])),
                                         ),
                                         Container(
@@ -1196,60 +1148,63 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
   /// 底部工具条
   Widget _bottomToolBar(GHGoodDetailsModel goodDetailsModel) {
     final double bottomPadding = MediaQuery.of(context).padding.bottom;
+    print(bottomPadding);
     return Positioned(
         bottom: 0,
         width: ScreenAdaper.getScreenWidth(),
-        height: ScreenAdaper.height(80) + bottomPadding,
+        height: 50 + bottomPadding,
         child: Container(
-          child: Row(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {},
-                      child: _iconWidget('images/customerService.png', "联系客服"),
-                    ),
-                    _iconWidget('images/shop.png', "店铺"),
-                    _iconWidget('images/shoppingCart.png', "购物车"),
-                  ],
+          child: Center(
+            child: Row(
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.center,
+                  child: Row(
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(child: _iconWidget('images/customerService.png', "联系客服")),
+                      ),
+                      _iconWidget('images/shop.png', "店铺"),
+                      _iconWidget('images/shoppingCart.png', "购物车"),
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                  flex: 1,
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () {
-                      this._showBottomSheet(goodDetailsModel);
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: ScreenAdaper.height(80) - 10,
-                      color: Colors.red,
-                      child: Text(
-                        "加入购物车",
-                        style: TextStyle(fontSize: 14, color: Colors.white),
+                Expanded(
+                    flex: 1,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {
+                        this._showBottomSheet(goodDetailsModel);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 50,
+                        color: Colors.red,
+                        child: Text(
+                          "加入购物车",
+                          style: TextStyle(fontSize: 14, color: Colors.white),
+                        ),
                       ),
-                    ),
-                  )),
-              Expanded(
-                  flex: 1,
-                  child: GestureDetector(
-                    onTap: () {
-                      this._showBottomSheet(goodDetailsModel);
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: ScreenAdaper.height(80) - 10,
-                      color: Colors.orange,
-                      child: Text(
-                        "立即购买",
-                        style: TextStyle(fontSize: 14, color: Colors.white),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: GestureDetector(
+                      onTap: () {
+                        this._showBottomSheet(goodDetailsModel);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 50,
+                        color: Colors.orange,
+                        child: Text(
+                          "立即购买",
+                          style: TextStyle(fontSize: 14, color: Colors.white),
+                        ),
                       ),
-                    ),
-                  )),
-            ],
+                    )),
+              ],
+            ),
           ),
           decoration: BoxDecoration(
               color: Colors.white,
@@ -1265,24 +1220,19 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     return Container(
         padding: EdgeInsets.all(10),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: 20,
-              width: 20,
+              height: 15,
+              width: 15,
               child: Image.asset(
                 imagePath,
               ),
             ),
-            SizedBox(
-              height: 3,
-            ),
             Container(
               child: Text(
                 text,
-                style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.black38,
-                    fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 10, color: Colors.black54, fontWeight: FontWeight.bold),
               ),
             )
           ],
@@ -1309,23 +1259,12 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
           children: <Widget>[
             Container(
               child: RichText(
-                  text: TextSpan(
-                      text: "¥",
-                      style: TextStyle(color: Colors.red, fontSize: 10),
-                      children: [
-                    TextSpan(
-                        text: "${goodDetailsModel?.price}",
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
-                    TextSpan(
-                        text: ".00",
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold)),
-                  ])),
+                  text: TextSpan(text: "¥", style: TextStyle(color: Colors.red, fontSize: 10), children: [
+                TextSpan(
+                    text: "${goodDetailsModel?.price}",
+                    style: TextStyle(color: Colors.red, fontSize: 20, fontWeight: FontWeight.bold)),
+                TextSpan(text: ".00", style: TextStyle(color: Colors.red, fontSize: 10, fontWeight: FontWeight.bold)),
+              ])),
             ),
             this._goodRightItem(),
           ],
