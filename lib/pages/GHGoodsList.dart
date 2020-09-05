@@ -20,12 +20,10 @@ class GHGoodsList extends StatefulWidget {
 
 class _GHGoodsListState extends State<GHGoodsList> {
   /// 最低价
-  TextEditingController _minPriceEditingController =
-      new TextEditingController();
+  TextEditingController _minPriceEditingController = new TextEditingController();
 
   /// 最高价
-  TextEditingController _maxPriceEditingController =
-      new TextEditingController();
+  TextEditingController _maxPriceEditingController = new TextEditingController();
 
   //Scaffold key 用于打开侧滑筛选菜单
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -59,13 +57,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
       "sort": "1",
       "seletecd": "1",
     },
-    {
-      "id": "2",
-      "title": "销量",
-      "fileds": 'saleCount',
-      "sort": "1",
-      "seletecd": "0"
-    },
+    {"id": "2", "title": "销量", "fileds": 'saleCount', "sort": "1", "seletecd": "0"},
     {"id": "3", "title": "价格", "fileds": 'price', "sort": "1", "seletecd": "0"},
     {"id": "4", "title": "筛选", "seletecd": "0"}
   ];
@@ -92,7 +84,6 @@ class _GHGoodsListState extends State<GHGoodsList> {
     {"id": "3", "title": "128G", "type": "8", "seletecd": "0"},
     {"id": "1", "title": "256", "type": "9", "seletecd": "0"}
   ];
-
 
   /// 网络运营商
   List _fourList = [
@@ -295,9 +286,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                               this.seletect = !this.seletect;
                             });
                           },
-                          child: this.seletect == true
-                              ? Icon(Icons.arrow_drop_down)
-                              : Icon(Icons.arrow_drop_up),
+                          child: this.seletect == true ? Icon(Icons.arrow_drop_down) : Icon(Icons.arrow_drop_up),
                         ),
                       )
                     : Text(""),
@@ -366,17 +355,14 @@ class _GHGoodsListState extends State<GHGoodsList> {
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(
                       width: 0.5,
-                      color: map["seletecd"] == "0"
-                          ? Colors.transparent
-                          : Colors.red,
+                      color: map["seletecd"] == "0" ? Colors.transparent : Colors.red,
                     )),
                 alignment: Alignment.center,
                 height: 36,
                 width: 103,
                 child: Chip(
-                  backgroundColor: map["seletecd"] == "0"
-                      ? Color.fromRGBO(240, 240, 240, 1)
-                      : Color.fromRGBO(245, 245, 245, 0.2),
+                  backgroundColor:
+                      map["seletecd"] == "0" ? Color.fromRGBO(240, 240, 240, 1) : Color.fromRGBO(245, 245, 245, 0.2),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
@@ -395,11 +381,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                       Container(
                         child: Text(
                           "${map["title"]}",
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: map["seletecd"] == "1"
-                                  ? Colors.red
-                                  : Colors.black),
+                          style: TextStyle(fontSize: 12, color: map["seletecd"] == "1" ? Colors.red : Colors.black),
                         ),
                       ),
                     ],
@@ -628,7 +610,6 @@ class _GHGoodsListState extends State<GHGoodsList> {
                       if (id == "4") {
                         this._scaffoldKey.currentState.openEndDrawer();
                       }
-
                       if (id == "2") {
                         /// 点击销量
                         if (value["seletecd"] == "1") {
@@ -713,9 +694,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
-                                      color: value["seletecd"] == "1"
-                                          ? Colors.red
-                                          : Colors.black87,
+                                      color: value["seletecd"] == "1" ? Colors.red : Colors.black87,
                                     ),
                                   ),
                                 ),
@@ -726,8 +705,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                                     ? Container(
                                         height: ScreenAdaper.height(60),
                                         child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
                                             Container(
                                               height: 6,
@@ -752,8 +730,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                                         width: 20,
                                         child: value["seletecd"] == "0"
                                             ? Image.asset("images/filter.png")
-                                            : Image.asset(
-                                                "images/filterSeletecd.png"),
+                                            : Image.asset("images/filterSeletecd.png"),
                                       )
                                     : Text(""),
                               ],
@@ -902,8 +879,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                           Container(
                             child: Text(
                               goodsItemModel.description,
-                              style: TextStyle(
-                                  fontSize: 10, color: Colors.black38),
+                              style: TextStyle(fontSize: 10, color: Colors.black38),
                             ),
                           ),
                         ],
@@ -919,17 +895,13 @@ class _GHGoodsListState extends State<GHGoodsList> {
                                 Container(
                                   child: Text(
                                     "￥",
-                                    style: TextStyle(
-                                        fontSize: 10, color: Colors.red),
+                                    style: TextStyle(fontSize: 10, color: Colors.red),
                                   ),
                                 ),
                                 Container(
                                   child: Text(
                                     "${goodsItemModel.price}",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontSize: 14, color: Colors.red, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ],
@@ -950,8 +922,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                                               height: 16,
                                               width: 30,
                                               decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
+                                                borderRadius: BorderRadius.circular(5),
                                                 color: Colors.red,
                                               ),
                                               child: Text(
@@ -972,19 +943,15 @@ class _GHGoodsListState extends State<GHGoodsList> {
                                               width: 0,
                                             ),
                                       Container(
-                                        child: Text(
-                                            "${goodsItemModel.evaluate}条评价",
-                                            style: TextStyle(
-                                                fontSize: 10,
-                                                color: Colors.black54)),
+                                        child: Text("${goodsItemModel.evaluate}条评价",
+                                            style: TextStyle(fontSize: 10, color: Colors.black54)),
                                       ),
                                     ],
                                   ),
                                 ),
                                 Container(
                                   child: Text("月售${goodsItemModel.sales}",
-                                      style: TextStyle(
-                                          fontSize: 10, color: Colors.black54)),
+                                      style: TextStyle(fontSize: 10, color: Colors.black54)),
                                 ),
                               ],
                             )),

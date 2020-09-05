@@ -654,11 +654,11 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                 ],
               ),
             ),
-            Container(
+            this._addressList.length >0 ?Container(
               child: Text(
                 this._addressList.first.province + this._addressList.first.city + this._addressList.first.area + "1号店",
               ),
-            ),
+            ):SizedBox.shrink(),
             Container(
                 child: Wrap(
               spacing: 0,

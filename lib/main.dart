@@ -20,18 +20,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [ChangeNotifierProvider(builder: (_) => Cart())],
-      child: MaterialApp(
-        /// 隐藏debug
-        debugShowCheckedModeBanner: false,
-        /// 配置路由
-        initialRoute: '/',
-        onGenerateRoute: onGenerateRoute,
-        /// 设置主题
-        theme: ThemeData(
-          primaryColor: Colors.white,
-        ),
+    return MaterialApp(
+      /// 隐藏debug
+      debugShowCheckedModeBanner: false,
+      /// 配置路由
+      initialRoute: '/',
+      onGenerateRoute: onGenerateRoute,
+      /// 设置主题
+      theme: ThemeData(
+        primaryColor: Colors.white,
       ),
     );
   }
