@@ -11,7 +11,7 @@
 git clone 
 ```
 ```
-flutetr pub get 
+flutter pub get 
 ```
 
 
