@@ -124,7 +124,7 @@
         <entry key="flutter_easyrefresh">
           <value>
             <list>
-              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_easyrefresh-2.1.4/lib" />
+              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_easyrefresh-2.1.5/lib" />
             </list>
           </value>
         </entry>
@@ -434,7 +434,7 @@
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/event_bus-1.1.1/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/fake_async-1.1.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/file-5.2.1/lib" />
-      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_easyrefresh-2.1.4/lib" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_easyrefresh-2.1.5/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_page_indicator-0.0.3/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_screenutil-2.3.1/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_swiper-1.1.6/lib" />

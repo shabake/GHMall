@@ -35,7 +35,7 @@ dependencies:
   sqflite: ^1.1.5
   city_pickers: ^0.1.30
   common_utils: ^1.2.1
-  flutter_easyrefresh: ^2.1.1
+  flutter_easyrefresh: ^2.1.5
   transparent_image: ^1.0.0
 #  image_picker: 0.6.7+2
 #  barcode_scan: ^3.0.1
