@@ -80,10 +80,8 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     url = url + '?' + "order=" + c;
     HttpRequest.request(url, method: 'GET').then((res) {
       var list = GHAddressModel.fromJson(res).results;
-      setState(() {
-        print("打印地址");
-        print(list.first);
-        _addressList.add(list.first);
+      setState(() {;
+        this._addressList.add(list.first);
       });
     });
   }
