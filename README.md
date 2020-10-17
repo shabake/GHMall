@@ -12,6 +12,10 @@ git clone
 ```
 flutter pub get 
 ```
+```
+flutter run
+
+```
 
 ##  插件
 
