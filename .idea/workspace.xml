@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2f7f1a6d17a91f4167b85af5a47c65b131f3a64268732-eYhpx3_fw658.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,9 +64,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="348" y="224" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596424380965">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="-1941" y="348" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602490886957">
+      <screen x="-2560" y="23" width="2560" height="1417" />
     </state>
+    <state x="-1941" y="348" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.784/-2560.23.2560.1417@-2560.23.2560.1417" timestamp="1602490886957" />
     <state x="348" y="224" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1596424380965" />
     <state width="1858" height="242" key="GridCell.Tab.0.bottom" timestamp="1599355965867">
       <screen x="-1920" y="131" width="1920" height="1057" />
@@ -100,11 +102,11 @@
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state x="-1190" y="583" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1598792635063" />
-    <state x="-1950" y="653" width="1238" height="787" key="find.popup" timestamp="1599621891306">
+    <state x="-2104" y="404" width="1238" height="787" key="find.popup" timestamp="1601286056849">
       <screen x="-2560" y="23" width="2560" height="1417" />
     </state>
     <state x="-1463" y="602" width="927" height="586" key="find.popup/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1599355920172" />
-    <state x="-1950" y="653" width="1238" height="787" key="find.popup/0.23.1440.877/-2560.23.2560.1417@-2560.23.2560.1417" timestamp="1599621891306" />
+    <state x="-2104" y="404" width="1238" height="787" key="find.popup/0.23.1440.877/-2560.23.2560.1417@-2560.23.2560.1417" timestamp="1601286056849" />
     <state x="343" y="413" width="696" height="487" key="find.popup/0.23.1440.877/-2560.23.2560.1417@0.23.1440.877" timestamp="1598259789301" />
     <state x="359" y="199" width="695" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1597148703361" />
     <state x="478" y="211" width="670" height="561" key="search.everywhere.popup" timestamp="1598376917460">
