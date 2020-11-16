@@ -1,5 +1,5 @@
 # GHMall
-![](https://oscimg.oschina.net/oscnet/up-81dfa99dfef25b087751fd9fb992284427b.png)![](https://oscimg.oschina.net/oscnet/up-87745efcb7ecc2f6039367161d2348fa38c.png)
+![](https://oscimg.oschina.net/oscnet/up-81dfa99dfef25b087751fd9fb992284427b.png)
 ![2f7f1a6d17a91f4167b85af5a47c65b131f3a64268732-eYhpx3_fw658副本.png](https://upload-images.jianshu.io/upload_images/668798-fe7c1d5f80822290.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 一个练习的flutter电商项目，基本功能已经完成。
 
