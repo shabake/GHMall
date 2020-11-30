@@ -1,22 +1,50 @@
 # GHMall
-![](https://oscimg.oschina.net/oscnet/up-81dfa99dfef25b087751fd9fb992284427b.png)
+
 ![2f7f1a6d17a91f4167b85af5a47c65b131f3a64268732-eYhpx3_fw658副本.png](https://upload-images.jianshu.io/upload_images/668798-fe7c1d5f80822290.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 一个练习的flutter电商项目，基本功能已经完成。
 
+
+如果还没有配置环境，[跳转](https://github.com/shabake/Configure-the-Flutter-environment)配置`Flutter`环境
 
 #### 安装方法:
 
 ```
-git clone 
+cd 你要存放的目录
 ```
+
+```
+git clone https://github.com/shabake/GHMall.git
+```
+
 ```
 flutter pub get 
 ```
-```
-flutter run
-```
 
-##  插件
+如果中断输出
+
+```
+Waiting for another flutter command to release the startup lock
+```
+找到`flutterSDK`文件夹
+
+如`flutter/bin/cache`
+
+删除`lockfile`
+
+重新执行`flutter pub get `
+
+运行一个`iOS`或安卓模拟器
+
+如果连接真机`iOS`打开在`GHMall/ios/Runner.xcworkspace`
+
+配置开发者账户
+
+最后执行`flutter run`
+
+
+
+##  项目中用到的插件
 
 | 名称                          | 描述         |
 | ----------------------------- | ------------ |
