@@ -12,9 +12,9 @@ PODS:
   - HandyJSON (5.0.2)
   - shared_preferences (0.0.1):
     - Flutter
-  - sqflite (0.0.1):
+  - sqflite (0.0.2):
     - Flutter
-    - FMDB (~> 2.7.2)
+    - FMDB (>= 2.7.5)
   - tencent_im_plugin (0.0.1):
     - Flutter
     - HandyJSON
@@ -60,7 +60,7 @@ SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
-  sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
+  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   tencent_im_plugin: a055ed155fd2cae7f006e756dbec96255b4aa0a3
   TXIMSDK_iOS: d4231ccd8a045f54ca04d008dba46fdbf25687fb
 

@@ -21,7 +21,7 @@ git clone https://github.com/shabake/GHMall.git
 flutter pub get 
 ```
 
-如果中断输出
+如果终端输出
 
 ```
 Waiting for another flutter command to release the startup lock
