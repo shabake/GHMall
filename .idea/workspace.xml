@@ -3,33 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/kotlin/com/example/ghome_project/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/ghome_project_android.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/.last_build_id" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/.last_build_id" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Runner-Bridging-Header.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Runner-Bridging-Header.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Runner.entitlements" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/pod.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/pod.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_30" />
   <component name="FavoritesManager">
     <favorites_list name="GHMall" />
   </component>
@@ -88,44 +70,32 @@
       <screen x="-2560" y="23" width="2560" height="1417" />
     </state>
     <state x="-1941" y="348" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.784/-2560.23.2560.1417@-2560.23.2560.1417" timestamp="1602490886957" />
-    <state width="1724" height="219" key="GridCell.Tab.0.bottom" timestamp="1606964090096">
+    <state width="1724" height="309" key="GridCell.Tab.0.bottom" timestamp="1607663447792">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1724" height="219" key="GridCell.Tab.0.bottom/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1606964090096" />
+    <state width="1724" height="309" key="GridCell.Tab.0.bottom/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1607663447792" />
     <state width="1858" height="242" key="GridCell.Tab.0.bottom/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1599355965867" />
-    <state width="1398" height="192" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1598376479814" />
-    <state width="1724" height="219" key="GridCell.Tab.0.center" timestamp="1606964090094">
+    <state width="1724" height="309" key="GridCell.Tab.0.center" timestamp="1607663447792">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1724" height="219" key="GridCell.Tab.0.center/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1606964090094" />
+    <state width="1724" height="309" key="GridCell.Tab.0.center/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1607663447792" />
     <state width="1858" height="242" key="GridCell.Tab.0.center/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1599355965867" />
-    <state width="1398" height="192" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1598376479813" />
-    <state width="1724" height="219" key="GridCell.Tab.0.left" timestamp="1606964090093">
+    <state width="1724" height="309" key="GridCell.Tab.0.left" timestamp="1607663447791">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1724" height="219" key="GridCell.Tab.0.left/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1606964090093" />
+    <state width="1724" height="309" key="GridCell.Tab.0.left/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1607663447791" />
     <state width="1858" height="242" key="GridCell.Tab.0.left/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1599355965866" />
-    <state width="1398" height="192" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1598376479813" />
-    <state width="1724" height="219" key="GridCell.Tab.0.right" timestamp="1606964090095">
+    <state width="1724" height="309" key="GridCell.Tab.0.right" timestamp="1607663447792">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1724" height="219" key="GridCell.Tab.0.right/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1606964090095" />
+    <state width="1724" height="309" key="GridCell.Tab.0.right/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1607663447792" />
     <state width="1858" height="242" key="GridCell.Tab.0.right/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1599355965867" />
-    <state width="1398" height="192" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1598376479814" />
-    <state x="-1190" y="583" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598792635063">
-      <screen x="-1920" y="131" width="1920" height="1057" />
-    </state>
-    <state x="-1190" y="583" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1598792635063" />
     <state x="-1578" y="415" width="929" height="588" key="find.popup" timestamp="1606922777932">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state x="-1578" y="415" width="929" height="588" key="find.popup/0.23.1440.796/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1606922777932" />
     <state x="-1463" y="602" width="927" height="586" key="find.popup/0.23.1440.877/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1599355920172" />
     <state x="-2104" y="404" width="1238" height="787" key="find.popup/0.23.1440.877/-2560.23.2560.1417@-2560.23.2560.1417" timestamp="1601286056849" />
-    <state x="478" y="211" width="670" height="561" key="search.everywhere.popup" timestamp="1598376917460">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="478" y="211" width="670" height="561" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1598376917460" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
