@@ -7,6 +7,11 @@
 
 如果还没有配置环境，[跳转](https://github.com/shabake/Configure-the-Flutter-environment)配置`Flutter`环境
 
+
+#### 体验demo
+![](https://oscimg.oschina.net/oscnet/up-57ba5c4e1b829e8577f34fa243208546618.png)
+
+
 #### 安装方法:
 
 ```
