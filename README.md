@@ -4,7 +4,15 @@
 
 一个练习的flutter电商项目，基本功能已经完成。
 
+环境
 
+```
+Flutter 1.22.4 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 1aafb3a8b9 (7 weeks ago) • 2020-11-13 09:59:28 -0800
+Engine • revision 2c956a31c0
+Tools • Dart 2.10.4
+
+```
 如果还没有配置环境，[跳转](https://github.com/shabake/Configure-the-Flutter-environment)配置`Flutter`环境
 
 
