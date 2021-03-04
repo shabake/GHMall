@@ -145,7 +145,7 @@ class _GHAddressListState extends State<GHAddressList> {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             onPressed: () {
               Navigator.pushNamed(context, '/GHAddressEdit');
             },

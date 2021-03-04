@@ -149,7 +149,7 @@ class _GHAddressEditState extends State<GHAddressEdit> {
     return Scaffold(
         appBar: AppBar(
           actions: <Widget>[
-            FlatButton(
+            TextButton(
                 onPressed: () {
                   _contentFocusNode.unfocus();
                   _deletecdAddress(context);

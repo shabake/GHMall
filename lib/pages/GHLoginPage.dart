@@ -142,7 +142,7 @@ class _GHLoginPageState extends State<GHLoginPage> {
                     child: Container(
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black12, width: 1)),
-                      child: FlatButton(
+                      child: TextButton(
                         onPressed: () {
                           this._requestSmsCode(
                               this._mobilePhoneNumberEditingController.text);
@@ -226,7 +226,7 @@ class _GHLoginPageState extends State<GHLoginPage> {
           },
         ),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             onPressed: () {
               GHToast.showTost("点击了联系客服");
             },

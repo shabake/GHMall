@@ -20,8 +20,7 @@ class GHButton extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8), color: Colors.red),
       height: 50,
-      child: FlatButton(
-        disabledColor: Colors.black12,
+      child: TextButton(
         onPressed: this.tapAction,
         child: Text(
           this.title,
