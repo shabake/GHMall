@@ -1,6 +1,4 @@
 PODS:
-  - city_pickers (0.0.1):
-    - Flutter
   - Flutter (1.0.0)
   - flutter_webview_plugin (0.0.1):
     - Flutter
@@ -22,7 +20,6 @@ PODS:
   - TXIMSDK_iOS (4.6.58)
 
 DEPENDENCIES:
-  - city_pickers (from `.symlinks/plugins/city_pickers/ios`)
   - Flutter (from `Flutter`)
   - flutter_webview_plugin (from `.symlinks/plugins/flutter_webview_plugin/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
@@ -37,8 +34,6 @@ SPEC REPOS:
     - TXIMSDK_iOS
 
 EXTERNAL SOURCES:
-  city_pickers:
-    :path: ".symlinks/plugins/city_pickers/ios"
   Flutter:
     :path: Flutter
   flutter_webview_plugin:
@@ -53,8 +48,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/tencent_im_plugin/ios"
 
 SPEC CHECKSUMS:
-  city_pickers: b0370f4c35c201723b5b7fcce10ec29b59d5bc35
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_webview_plugin: ed9e8a6a96baf0c867e90e1bce2673913eeac694
   fluttertoast: b644586ef3b16f67fae9a1f8754cef6b2d6b634b
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a

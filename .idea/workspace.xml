@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/.last_build_id" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/.last_build_id" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHAddressEdit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHAddressEdit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHGoodsList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHGoodsList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,31 +71,34 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1941" y="348" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602490886957">
-      <screen x="-2560" y="23" width="2560" height="1417" />
+    <state x="408" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1614828444079">
+      <screen x="0" y="23" width="1440" height="805" />
     </state>
-    <state x="-1941" y="348" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.784/-2560.23.2560.1417@-2560.23.2560.1417" timestamp="1602490886957" />
-    <state width="1724" height="309" key="GridCell.Tab.0.bottom" timestamp="1609817045697">
-      <screen x="-1920" y="23" width="1920" height="1057" />
+    <state x="408" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614828444079" />
+    <state width="1398" height="251" key="GridCell.Tab.0.bottom" timestamp="1614830698598">
+      <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1724" height="309" key="GridCell.Tab.0.bottom/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045697" />
-    <state width="1724" height="309" key="GridCell.Tab.0.center" timestamp="1609817045696">
-      <screen x="-1920" y="23" width="1920" height="1057" />
+    <state width="1398" height="251" key="GridCell.Tab.0.bottom/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614830698598" />
+    <state width="1398" height="251" key="GridCell.Tab.0.center" timestamp="1614830698598">
+      <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1724" height="309" key="GridCell.Tab.0.center/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045696" />
-    <state width="1724" height="309" key="GridCell.Tab.0.left" timestamp="1609817045696">
-      <screen x="-1920" y="23" width="1920" height="1057" />
+    <state width="1398" height="251" key="GridCell.Tab.0.center/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614830698598" />
+    <state width="1398" height="251" key="GridCell.Tab.0.left" timestamp="1614830698597">
+      <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1724" height="309" key="GridCell.Tab.0.left/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045696" />
-    <state width="1724" height="309" key="GridCell.Tab.0.right" timestamp="1609817045697">
-      <screen x="-1920" y="23" width="1920" height="1057" />
+    <state width="1398" height="251" key="GridCell.Tab.0.left/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614830698597" />
+    <state width="1398" height="251" key="GridCell.Tab.0.right" timestamp="1614830698598">
+      <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1724" height="309" key="GridCell.Tab.0.right/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045697" />
+    <state width="1398" height="251" key="GridCell.Tab.0.right/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614830698598" />
     <state x="-1578" y="415" width="929" height="588" key="find.popup" timestamp="1606922777932">
       <screen x="-1920" y="131" width="1920" height="1057" />
     </state>
     <state x="-1578" y="415" width="929" height="588" key="find.popup/0.23.1440.796/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1606922777932" />
-    <state x="-2104" y="404" width="1238" height="787" key="find.popup/0.23.1440.877/-2560.23.2560.1417@-2560.23.2560.1417" timestamp="1601286056849" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

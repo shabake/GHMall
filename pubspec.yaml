@@ -30,10 +30,10 @@ dependencies:
   flutter_webview_plugin: ^0.3.0
 #  flutter_inappbrowser: 1.2.1
   event_bus: ^1.1.0
-  provider: ^3.0.0+1
+  provider: ^4.3.3
   fluttertoast: ^3.1.0
   sqflite: ^1.1.5
-  city_pickers: ^0.2.0
+#  city_pickers: ^0.2.0
   common_utils: ^1.2.1
   flutter_easyrefresh: ^2.1.6
   transparent_image: ^1.0.0

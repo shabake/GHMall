@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widget/GHButton.dart';
 import '../widget/GHTextWidget.dart';
 import '../services/ScreenAdaper.dart';
-import 'package:city_pickers/city_pickers.dart';
+//import 'package:city_pickers/city_pickers.dart';
 import '../services/httptool.dart';
 import '../widget/GHLoading.dart';
 import '../services/GHToast.dart';
@@ -113,33 +113,33 @@ class _GHAddressEditState extends State<GHAddressEdit> {
   }
 
   _showCityPicker(BuildContext context) async {
-    Result result = await CityPickers.showCityPicker(
-      cancelWidget: Container(
-        child: Text(
-          "取消",
-          style: TextStyle(fontSize: 16),
-        ),
-      ),
-      locationCode: this._locationCode,
-      confirmWidget: Container(
-        child: Text(
-          "确定",
-          style: TextStyle(fontSize: 16),
-        ),
-      ),
-      height: 300,
-      context: context,
-    );
+//    Result result = await CityPickers.showCityPicker(
+//      cancelWidget: Container(
+//        child: Text(
+//          "取消",
+//          style: TextStyle(fontSize: 16),
+//        ),
+//      ),
+//      locationCode: this._locationCode,
+//      confirmWidget: Container(
+//        child: Text(
+//          "确定",
+//          style: TextStyle(fontSize: 16),
+//        ),
+//      ),
+//      height: 300,
+//      context: context,
+//    );
     //{"provinceName":"北京市","provinceId":"110000",
     // "cityName":"北京城区","cityId":"110100",
     // "areaName":"东城区","areaId":"110101"}
-    setState(() {
-      this._province = result.provinceName;
-      this._city = result.cityName;
-      this._area = result.areaName;
-      this._locationCode = result.provinceId;
-      this._fullAddress = _province + _city + _area;
-    });
+//    setState(() {
+//      this._province = result.provinceName;
+//      this._city = result.cityName;
+//      this._area = result.areaName;
+//      this._locationCode = result.provinceId;
+//      this._fullAddress = _province + _city + _area;
+//    });
   }
 
   @override

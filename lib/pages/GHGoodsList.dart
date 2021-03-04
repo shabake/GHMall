@@ -194,8 +194,6 @@ class _GHGoodsListState extends State<GHGoodsList> {
   void initState() {
     super.initState();
   }
-
-
   /// 改变筛选菜单状态
   void _changeFilterStatus(index, seletecd) {
     Map map = this._filterList[index];
