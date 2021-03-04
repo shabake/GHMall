@@ -7,10 +7,10 @@
 环境
 
 ```
-Flutter 1.22.4 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 1aafb3a8b9 (7 weeks ago) • 2020-11-13 09:59:28 -0800
-Engine • revision 2c956a31c0
-Tools • Dart 2.10.4
+Flutter 2.0.0 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 60bd88df91 (10 hours ago) • 2021-03-03 09:13:17 -0800
+Engine • revision 40441def69
+Tools • Dart 2.12.0
 
 ```
 如果还没有配置环境，[跳转](https://github.com/shabake/Configure-the-Flutter-environment)配置`Flutter`环境
