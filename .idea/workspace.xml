@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHAddressEdit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHAddressEdit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHAddressList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHAddressList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHLoginPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHLoginPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/GHButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/GHButton.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,26 +68,26 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="408" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614828444079" />
-    <state width="1398" height="284" key="GridCell.Tab.0.bottom" timestamp="1614838373500">
+    <state width="1398" height="137" key="GridCell.Tab.0.bottom" timestamp="1617949378742">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1724" height="309" key="GridCell.Tab.0.bottom/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045697" />
-    <state width="1398" height="284" key="GridCell.Tab.0.bottom/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614838373500" />
-    <state width="1398" height="284" key="GridCell.Tab.0.center" timestamp="1614838373499">
+    <state width="1398" height="137" key="GridCell.Tab.0.bottom/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1617949378742" />
+    <state width="1398" height="137" key="GridCell.Tab.0.center" timestamp="1617949378741">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1724" height="309" key="GridCell.Tab.0.center/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045696" />
-    <state width="1398" height="284" key="GridCell.Tab.0.center/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614838373499" />
-    <state width="1398" height="284" key="GridCell.Tab.0.left" timestamp="1614838373499">
+    <state width="1398" height="137" key="GridCell.Tab.0.center/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1617949378741" />
+    <state width="1398" height="137" key="GridCell.Tab.0.left" timestamp="1617949378740">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1724" height="309" key="GridCell.Tab.0.left/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045696" />
-    <state width="1398" height="284" key="GridCell.Tab.0.left/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614838373499" />
-    <state width="1398" height="284" key="GridCell.Tab.0.right" timestamp="1614838373499">
+    <state width="1398" height="137" key="GridCell.Tab.0.left/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1617949378740" />
+    <state width="1398" height="137" key="GridCell.Tab.0.right" timestamp="1617949378741">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1724" height="309" key="GridCell.Tab.0.right/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045697" />
-    <state width="1398" height="284" key="GridCell.Tab.0.right/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614838373499" />
+    <state width="1398" height="137" key="GridCell.Tab.0.right/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1617949378741" />
     <state x="100" y="123" width="1240" height="588" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1614838133736">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
@@ -99,7 +95,6 @@
     <state x="257" y="239" width="697" height="486" key="find.popup" timestamp="1614838308405">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
-    <state x="-1578" y="415" width="929" height="588" key="find.popup/0.23.1440.796/-1920.131.1920.1057@-1920.131.1920.1057" timestamp="1606922777932" />
     <state x="257" y="239" width="697" height="486" key="find.popup/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614838308405" />
     <state x="385" y="188" key="run.anything.popup" timestamp="1614838121698">
       <screen x="0" y="23" width="1440" height="805" />
