@@ -17,7 +17,7 @@ Tools • Dart 2.12.0
 
 
 #### 体验demo
-![](https://oscimg.oschina.net/oscnet/up-57ba5c4e1b829e8577f34fa243208546618.png)
+![](https://oscimg.oschina.net/oscnet/up-ce4747b9241fd24f078e0b269925672b53d.png)
 
 
 #### 安装方法:
