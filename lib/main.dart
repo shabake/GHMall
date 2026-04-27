@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'routers/router.dart';
-import 'package:provider/provider.dart';
-import 'provider/Cart.dart';
-import 'package:flutter/cupertino.dart';
 
 void main() {
-  /// 将状态栏设置为白色
-//  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
-  _MyAppState createState() => _MyAppState();
+  @override
+  State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {

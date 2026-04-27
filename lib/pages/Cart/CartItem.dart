@@ -3,26 +3,27 @@ import 'package:provider/provider.dart';
 import '../../provider/Cart.dart';
 
 class CartItem extends StatefulWidget {
+  final Map<String, dynamic> _itemData;
+  final bool isEnable;
 
+  const CartItem(
+    this._itemData, {
+    Key? key,
+    this.isEnable = true,
+  }) : super(key: key);
 
-  /// 数据模型
-  Map _itemData;
-
-  bool isEnable;
-
-  CartItem(this._itemData, {Key key,this.isEnable = true}) : super(key: key);
-
-  _CartItemState createState() => _CartItemState();
+  @override
+  State<CartItem> createState() => _CartItemState();
 }
 
 class _CartItemState extends State<CartItem> {
-  @override
-  Map _itemData;
-  var cartProvider;
+  late Map<String, dynamic> _itemData;
+  late Cart cartProvider;
 
+  @override
   void initState() {
     super.initState();
-    this._itemData = widget._itemData;
+    _itemData = widget._itemData;
   }
 
   Widget _cartCenterNumber() {
@@ -38,7 +39,7 @@ class _CartItemState extends State<CartItem> {
             alignment: Alignment.center,
             width: 40,
             height: 20,
-            child: Text("${this._itemData["count"]}"),
+            child: Text("${_itemData["count"]}"),
             decoration: BoxDecoration(
               border: Border(
                   left: BorderSide(
@@ -59,15 +60,14 @@ class _CartItemState extends State<CartItem> {
   Widget _cartRightNumber() {
     return InkWell(
       onTap: () {
-        if(!widget.isEnable) {
+        if (!widget.isEnable) {
           print("禁止响应");
           return;
         }
         setState(() {
-
-          this._itemData["count"]++;
+          _itemData["count"]++;
         });
-        this.cartProvider.changeCartList();
+        cartProvider.changeCartList();
       },
       child: Container(
         decoration: BoxDecoration(
@@ -81,7 +81,7 @@ class _CartItemState extends State<CartItem> {
               alignment: Alignment.center,
               width: 20,
               height: 20,
-              child: Text("+"),
+              child: const Text("+"),
             ),
           ],
         ),
@@ -92,16 +92,16 @@ class _CartItemState extends State<CartItem> {
   Widget _cartLeftNumber() {
     return InkWell(
       onTap: () {
-        if(!widget.isEnable) {
+        if (!widget.isEnable) {
           print("禁止响应");
           return;
         }
-        if (this._itemData["count"] > 1) {
+        if (_itemData["count"] > 1) {
           setState(() {
-            this._itemData["count"]--;
+            _itemData["count"]--;
           });
         }
-        this.cartProvider.changeCartList();
+        cartProvider.changeCartList();
       },
       child: Container(
         decoration: BoxDecoration(
@@ -115,7 +115,7 @@ class _CartItemState extends State<CartItem> {
               alignment: Alignment.center,
               width: 20,
               height: 20,
-              child: Text("-"),
+              child: const Text("-"),
             ),
           ],
         ),
@@ -123,8 +123,9 @@ class _CartItemState extends State<CartItem> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
-    this.cartProvider = Provider.of<Cart>(context);
+    cartProvider = Provider.of<Cart>(context);
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

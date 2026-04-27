@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter doctor *)",
+      "Bash(flutter pub *)",
+      "Bash(flutter clean *)",
+      "Bash(flutter analyze *)",
+      "Bash(flutter build *)",
+      "Bash(flutter run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m '升级到Flutter 3.41.7 - 更新SDK版本和依赖，修复Null Safety问题 *)"
+    ]
+  }
+}

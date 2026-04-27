@@ -1,38 +1,36 @@
 class GHCategoryModel {
-  List<GHCategoryItemModel> results;
+  List<GHCategoryItemModel>? results;
 
   GHCategoryModel({this.results});
 
   GHCategoryModel.fromJson(Map<String, dynamic> json) {
     if (json['results'] != null) {
-      results = new List<GHCategoryItemModel>();
+      results = <GHCategoryItemModel>[];
       json['results'].forEach((v) {
-        results.add(new GHCategoryItemModel.fromJson(v));
+        results!.add(GHCategoryItemModel.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.results != null) {
-      data['result'] = this.results.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (results != null) {
+      data['result'] = results!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class GHCategoryItemModel {
+  String? categoryName;
+  String? type;
+  String? url;
 
-  String categoryName;   //所有的类型都继承 Object
-  String type;
-  String url;
-
-  GHCategoryItemModel(
-      {
-        this.categoryName,
-        this.type,
-        this.url,
-      });
+  GHCategoryItemModel({
+    this.categoryName,
+    this.type,
+    this.url,
+  });
 
   GHCategoryItemModel.fromJson(Map<String, dynamic> json) {
     categoryName = json['categoryName'];
@@ -41,12 +39,10 @@ class GHCategoryItemModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-
-    data['categoryName'] = this.categoryName;
-    data['url'] = this.url;
-    data['type'] = this.type;
-
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['categoryName'] = categoryName;
+    data['url'] = url;
+    data['type'] = type;
     return data;
   }
 }

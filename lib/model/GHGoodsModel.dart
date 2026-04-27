@@ -1,49 +1,50 @@
 class GHGoodsModel {
-  List<GHGoodsItemModel> results;
+  List<GHGoodsItemModel>? results;
 
   GHGoodsModel({this.results});
 
   GHGoodsModel.fromJson(Map<String, dynamic> json) {
     if (json['results'] != null) {
-      results = new List<GHGoodsItemModel>();
+      results = <GHGoodsItemModel>[];
       json['results'].forEach((v) {
-        results.add(new GHGoodsItemModel.fromJson(v));
+        results!.add(GHGoodsItemModel.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.results != null) {
-      data['results'] = this.results.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (results != null) {
+      data['results'] = results!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class GHGoodsItemModel {
-  String description;
-  String updatedAt;
-  String evaluate;
-  String objectId;
-  String createdAt;
-  String title;
-  String url;
-  int price;
-  int sales;
-  String isSelf;
+  String? description;
+  String? updatedAt;
+  String? evaluate;
+  String? objectId;
+  String? createdAt;
+  String? title;
+  String? url;
+  int? price;
+  int? sales;
+  String? isSelf;
 
-  GHGoodsItemModel(
-      {this.description,
-        this.updatedAt,
-        this.evaluate,
-        this.objectId,
-        this.createdAt,
-        this.title,
-        this.url,
-        this.sales,
-        this.isSelf,
-        this.price});
+  GHGoodsItemModel({
+    this.description,
+    this.updatedAt,
+    this.evaluate,
+    this.objectId,
+    this.createdAt,
+    this.title,
+    this.url,
+    this.sales,
+    this.isSelf,
+    this.price,
+  });
 
   GHGoodsItemModel.fromJson(Map<String, dynamic> json) {
     description = json['description'];
@@ -59,17 +60,17 @@ class GHGoodsItemModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['description'] = this.description;
-    data['updatedAt'] = this.updatedAt;
-    data['evaluate'] = this.evaluate;
-    data['objectId'] = this.objectId;
-    data['createdAt'] = this.createdAt;
-    data['title'] = this.title;
-    data['url'] = this.url;
-    data['sales'] = this.sales;
-    data['price'] = this.price;
-    data['isSelf'] = this.isSelf;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['description'] = description;
+    data['updatedAt'] = updatedAt;
+    data['evaluate'] = evaluate;
+    data['objectId'] = objectId;
+    data['createdAt'] = createdAt;
+    data['title'] = title;
+    data['url'] = url;
+    data['sales'] = sales;
+    data['price'] = price;
+    data['isSelf'] = isSelf;
     return data;
   }
 }

@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -22,24 +22,24 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
-  flutter_swiper: ^1.1.6
-  flutter_screenutil: ^2.1.0
-  dio: ^3.0.9
-  shared_preferences: ^0.5.3+1
-  flutter_webview_plugin: ^0.3.0
+  cupertino_icons: ^1.0.6
+  carousel_slider: ^4.2.1
+  flutter_screenutil: ^5.9.0
+  dio: ^5.4.0
+  shared_preferences: ^2.2.2
+  webview_flutter: ^4.4.2
 #  flutter_inappbrowser: 1.2.1
-  event_bus: ^1.1.0
-  provider: ^4.3.3
-  fluttertoast: ^3.1.0
-  sqflite: ^1.1.5
+  event_bus: ^2.0.0
+  provider: ^6.0.6
+  fluttertoast: ^8.1.4
+  sqflite: ^2.3.0
 #  city_pickers: ^0.2.0
-  common_utils: ^1.2.1
-  flutter_easyrefresh: ^2.1.6
-  transparent_image: ^1.0.0
+  common_utils: ^2.1.0
+#  flutter_easyrefresh: ^2.2.2
+  transparent_image: ^2.0.1
 #  image_picker: 0.6.7+2
 #  barcode_scan: ^3.0.1
-  tencent_im_plugin: ^0.2.33
+#  tencent_im_plugin: ^2.0.5
 #  sy_flutter_alipay: ^0.2.1
 #  sy_flutter_wechat: ^0.2.2
 
