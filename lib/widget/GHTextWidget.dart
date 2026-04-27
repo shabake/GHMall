@@ -2,61 +2,54 @@ import 'package:flutter/material.dart';
 
 /// 封装TextWidget
 class GHTextWidget extends StatelessWidget {
-  /// 占位文字
   final String text;
-
-  /// 点击事件
-  final Object onChanged;
-
-  /// 字号
+  final ValueChanged<String>? onChanged;
   final double fontSize;
-
-  /// 是否显示底部线条 默认显示
   final bool isShowBottomLine;
+  final TextEditingController? textEditingController;
 
-  final TextEditingController textEditingController;
+  const GHTextWidget(
+    this.text, {
+    Key? key,
+    this.onChanged,
+    this.fontSize = 14,
+    this.isShowBottomLine = true,
+    this.textEditingController,
+  }) : super(key: key);
 
   @override
-  GHTextWidget(this.text,
-      {Key key,
-      this.onChanged = null,
-      this.fontSize = 14,
-      this.isShowBottomLine = true,
-      this.textEditingController})
-      : super(key: key);
-
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(
-        width: 1,
-        color:
-            this.isShowBottomLine == true ? Colors.black12 : Colors.transparent,
-      ))),
+        border: Border(
+          bottom: BorderSide(
+            width: 1,
+            color: isShowBottomLine ? Colors.black12 : Colors.transparent,
+          ),
+        ),
+      ),
       height: 50,
       child: TextField(
-          controller: this.textEditingController,
-          style: TextStyle(
-            fontSize: this.fontSize,
+        controller: textEditingController,
+        style: TextStyle(fontSize: fontSize),
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          suffixIcon: InkWell(
+            onTap: () {
+              WidgetsBinding.instance.addPostFrameCallback(
+                (_) => textEditingController?.text = "",
+              );
+            },
+            child: const Icon(Icons.clear),
           ),
-          onChanged: this.onChanged,
-          decoration: InputDecoration(
-            suffixIcon: InkWell(
-              onTap: () {
-                WidgetsBinding.instance.addPostFrameCallback(
-                    (_) => this.textEditingController.text = "");
-              },
-              child: Icon(
-                (Icons.clear),
-              ),
-            ),
-            contentPadding: EdgeInsets.only(left: 0, top: 0),
-            hintText: this.text,
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide.none),
-          )),
+          contentPadding: const EdgeInsets.only(left: 0, top: 0),
+          hintText: text,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: BorderSide.none,
+          ),
+        ),
+      ),
     );
   }
 }

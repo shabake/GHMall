@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 
 class BaseDialog extends Dialog {
-  final Object cancelAction;
-
-  final Object sureAction;
-
-  //子控件
+  final VoidCallback? cancelAction;
+  final VoidCallback? sureAction;
   final Widget widget;
-
-  // 高
   final double height;
-
-  //宽
   final double width;
 
-  BaseDialog(this.widget, this.height, this.width,
-      {Key key, this.cancelAction, this.sureAction})
-      : super(key: key);
+  const BaseDialog(
+    this.widget,
+    this.height,
+    this.width, {
+    Key? key,
+    this.cancelAction,
+    this.sureAction,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -4,61 +4,58 @@ typedef clickCallback = void Function(int value);
 
 /// 显示数量子控件
 class GHCountItemWidger extends StatefulWidget {
-  /// 数量
-  int count;
+  final int? count;
+  final bool isEnable;
+  final clickCallback? addClick;
+  final clickCallback? subClick;
 
-  /// 是否可以点击
-  bool isEnable;
-
-  final clickCallback addClick;
-  final clickCallback subClick;
-
-  GHCountItemWidger({
-    Key key,
+  const GHCountItemWidger({
+    Key? key,
     this.isEnable = true,
     this.count,
     this.addClick,
     this.subClick,
   }) : super(key: key);
 
-  _GHCountItemWidgerState createState() => _GHCountItemWidgerState();
+  @override
+  State<GHCountItemWidger> createState() => _GHCountItemWidgerState();
 }
 
 class _GHCountItemWidgerState extends State<GHCountItemWidger> {
+  late int _count;
+
   @override
-
-  /// 数量
-  int _count;
-
   void initState() {
     super.initState();
-    this._count = widget.count;
+    _count = widget.count ?? 1;
   }
 
   Widget _centerNumber() {
     return Container(
       decoration: BoxDecoration(
-          border: Border.all(
-        width: 1,
-        color: Colors.black12,
-      )),
+        border: Border.all(
+          width: 1,
+          color: Colors.black12,
+        ),
+      ),
       child: Row(
         children: <Widget>[
           Container(
             alignment: Alignment.center,
             width: 40,
             height: 20,
-            child: Text("${this._count}"),
+            child: Text("$_count"),
             decoration: BoxDecoration(
               border: Border(
-                  left: BorderSide(
-                    width: 0.5,
-                    color: Colors.black12,
-                  ),
-                  right: BorderSide(
-                    width: 1,
-                    color: Colors.black12,
-                  )),
+                left: const BorderSide(
+                  width: 0.5,
+                  color: Colors.black12,
+                ),
+                right: const BorderSide(
+                  width: 1,
+                  color: Colors.black12,
+                ),
+              ),
             ),
           ),
         ],
@@ -75,23 +72,24 @@ class _GHCountItemWidgerState extends State<GHCountItemWidger> {
           return;
         }
         setState(() {
-          this._count++;
+          _count++;
         });
-        widget.addClick(this._count);
+        widget.addClick?.call(_count);
       },
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(
-          width: 1,
-          color: Colors.black12,
-        )),
+          border: Border.all(
+            width: 1,
+            color: Colors.black12,
+          ),
+        ),
         child: Row(
           children: <Widget>[
             Container(
               alignment: Alignment.center,
               width: 20,
               height: 20,
-              child: Text("+"),
+              child: const Text("+"),
             ),
           ],
         ),
@@ -106,28 +104,28 @@ class _GHCountItemWidgerState extends State<GHCountItemWidger> {
           print("禁止响应");
           return;
         }
-
-        if (this._count > 1) {
+        if (_count > 1) {
           setState(() {
-            this._count--;
+            _count--;
           });
         }
-        widget.subClick(this._count);
+        widget.subClick?.call(_count);
       },
       behavior: HitTestBehavior.opaque,
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(
-          width: 1,
-          color: Colors.black12,
-        )),
+          border: Border.all(
+            width: 1,
+            color: Colors.black12,
+          ),
+        ),
         child: Row(
           children: <Widget>[
             Container(
               alignment: Alignment.center,
               width: 20,
               height: 20,
-              child: Text("-"),
+              child: const Text("-"),
             ),
           ],
         ),
@@ -135,15 +133,16 @@ class _GHCountItemWidgerState extends State<GHCountItemWidger> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          this._leftNumber(),
-          this._centerNumber(),
-          this._rightNumber(),
+          _leftNumber(),
+          _centerNumber(),
+          _rightNumber(),
         ],
       ),
     );

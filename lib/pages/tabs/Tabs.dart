@@ -8,33 +8,19 @@ import 'GHShopCartPage.dart';
 
 /// tab
 class Tabs extends StatefulWidget {
-  Map arguments;
+  final Map<String, dynamic>? arguments;
 
-  Tabs({Key key, this.arguments}) : super(key: key);
+  const Tabs({Key? key, this.arguments}) : super(key: key);
 
-  _TabsState createState() => _TabsState();
+  @override
+  State<Tabs> createState() => _TabsState();
 }
 
 class _TabsState extends State<Tabs> {
   int _currentIndex = 0;
-  PageController _pageController;
+  late PageController _pageController;
 
-  @override
-  void initState() {
-    super.initState();
-
-    if (widget.arguments != null) {
-      this._currentIndex = widget.arguments["index"];
-    } else {
-      this._currentIndex = 0;
-    }
-    this._pageController = new PageController(initialPage: this._currentIndex);
-
-    GHSqflite sq = GHSqflite();
-    sq.create();
-  }
-
-  List<Widget> _pageList = [
+  final List<Widget> _pageList = const [
     GHHomePage(),
     GHCategoryPage(),
     GHShopCartPage(),
@@ -42,53 +28,54 @@ class _TabsState extends State<Tabs> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    if (widget.arguments != null) {
+      _currentIndex = widget.arguments!["index"] ?? 0;
+    } else {
+      _currentIndex = 0;
+    }
+    _pageController = PageController(initialPage: _currentIndex);
+    GHSqflite sq = GHSqflite();
+    sq.create();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ScreenAdaper.init(context);
     return Scaffold(
       body: PageView(
-        controller: this._pageController,
-        children: this._pageList,
-        physics: NeverScrollableScrollPhysics(), // 禁止滑动
+        controller: _pageController,
+        children: _pageList,
+        physics: const NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: this._currentIndex,
+        currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            this._currentIndex = index;
-            this._pageController.jumpToPage(index);
+            _currentIndex = index;
+            _pageController.jumpToPage(index);
           });
         },
         type: BottomNavigationBarType.fixed,
         fixedColor: Colors.red,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text(
-              "首页",
-              style: TextStyle(fontSize: 12),
-            ),
+            icon: const Icon(Icons.home),
+            label: "首页",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            title: Text(
-              "分类",
-              style: TextStyle(fontSize: 12),
-            ),
+            icon: const Icon(Icons.category),
+            label: "分类",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            title: Text(
-              "购物车",
-              style: TextStyle(fontSize: 12),
-            ),
+            icon: const Icon(Icons.shopping_cart),
+            label: "购物车",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text(
-              "我的",
-              style: TextStyle(fontSize: 12),
-            ),
-          )
+            icon: const Icon(Icons.person),
+            label: "我的",
+          ),
         ],
       ),
     );

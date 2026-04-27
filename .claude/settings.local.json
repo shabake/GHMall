@@ -8,7 +8,8 @@
       "Bash(flutter build *)",
       "Bash(flutter run *)",
       "Bash(git add *)",
-      "Bash(git commit -m '升级到Flutter 3.41.7 - 更新SDK版本和依赖，修复Null Safety问题 *)"
+      "Bash(git commit -m '升级到Flutter 3.41.7 - 更新SDK版本和依赖，修复Null Safety问题 *)",
+      "Bash(git commit -m '修复关键的Null Safety编译错误 *)"
     ]
   }
 }

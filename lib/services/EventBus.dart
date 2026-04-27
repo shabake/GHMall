@@ -3,18 +3,13 @@ import 'package:event_bus/event_bus.dart';
 EventBus eventBus = EventBus();
 
 class ProductContentEvent {
-  String str;
+  final String str;
 
-  ProductContentEvent(String str) {
-    this.str = str;
-  }
+  ProductContentEvent(this.str);
 }
 
-
 class LoginSuccessEvent {
-  String str;
+  final String str;
 
-  LoginSuccessEvent(String str) {
-    this.str = str;
-  }
+  LoginSuccessEvent(this.str);
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../services/ScreenAdaper.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+//import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../widget/LoadingWidget.dart';
 import '../../services/httptool.dart';
 import '../../model/GHCategoryModel.dart';
@@ -12,35 +12,23 @@ import '../../services/GHToast.dart';
 
 /// 分类
 class GHCategoryPage extends StatefulWidget {
-  GHCategoryPage({Key key}) : super(key: key);
+  const GHCategoryPage({Key? key}) : super(key: key);
 
-  _GHCategoryPageState createState() => _GHCategoryPageState();
+  @override
+  State<GHCategoryPage> createState() => _GHCategoryPageState();
 }
 
 class _GHCategoryPageState extends State<GHCategoryPage>
     with AutomaticKeepAliveClientMixin {
-
-  /// 左侧选择序号
   int _selectIndex = 0;
+  List<dynamic> _leftCateList = [];
+  List<dynamic> _urls = [];
+  late String _firstTitle;
+  List<dynamic> _firstGoods = [];
+  late String _secondTitle;
+  List<dynamic> _secondGoods = [];
 
-  List _leftCateList = [];
-
-  List _urls = [];
-
-  String _firstTitle;
-
-  /// 第一组商品
-  List _firstGoods = [];
-
-  String _secondTitle;
-
-  /// 第二组商品
-  List _secondGoods = [];
-
-//  final picker = ImagePicker();
   @override
-
-  /// 保持页面状态
   bool get wantKeepAlive => true;
 
   void initState() {

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+// import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter/material.dart';
 import '../services/ScreenAdaper.dart';
 import 'package:flutter/gestures.dart';
