@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ScreenAdaper {
   static init(context) {
-    ScreenUtil.init(context, width: 750, height: 1334);
+    ScreenUtil.init(context, designSize: const Size(750, 1334));
   }
 
   static height(double value) {
@@ -14,10 +15,10 @@ class ScreenAdaper {
   }
 
   static getScreenHeight() {
-    return ScreenUtil.screenHeight;
+    return ScreenUtil().screenHeight;
   }
 
   static getScreenWidth() {
-    return ScreenUtil.screenWidth;
+    return ScreenUtil().screenWidth;
   }
 }

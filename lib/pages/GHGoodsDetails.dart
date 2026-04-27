@@ -53,7 +53,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   /// 请求数据
   void _loadData() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/" + "shopGoodsList/${widget.arguments["id"]}";
+    var url = "/classes/" + "shopGoodsList/${widget.arguments!["id"]}";
     await HttpRequest.request(url, method: 'GET').then((value) {
       GHGoodDetailsModel goodDetailsModel = GHGoodDetailsModel.fromJson(value);
       setState(() {
@@ -64,22 +64,24 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   /// 请求地址 获取第一个地址
   void _getAddressList() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
+    var url = "/classes/shopAddress";
     var c = Uri.encodeComponent('-createdAt');
     url = url + '?' + "order=" + c;
     HttpRequest.request(url, method: 'GET').then((res) {
       var list = GHAddressModel.fromJson(res).results;
-      setState(() {;
-        this._addressList.add(list.first);
-      });
+      if (list != null && list.isNotEmpty) {
+        setState(() {
+          this._addressList.add(list.first);
+        });
+      }
     });
   }
 
   /// 加入到购物车
   void _addGood() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCartList";
+    var url = "/classes/shopCartList";
     Map<String, dynamic> params = {
-      "title": this._goodDetailsModel.title,
+      "title": this._goodDetailsModel.title ?? "",
       "price": this._goodDetailsModel.price,
       "seletecdStrings": this._seletecdStrings,
       "count": this._count,
@@ -88,7 +90,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
       "area": this._addressList.first.area,
       "detailsAddress": this._addressList.first.detailsAddress,
       "urls": this._goodDetailsModel.urls,
-      "url": this._goodDetailsModel.url,
+      "url": this._goodDetailsModel.url ?? "",
       "check": true,
       "goodId": this._goodDetailsModel.objectId,
       "userId": this._userList.first["objectId"],
@@ -186,23 +188,15 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
 
   /// 轮播图
   Widget _swiperWidget() {
+    // TODO: Replace with carousel_slider once properly integrated
     return Container(
       width: double.infinity,
       child: Container(
         height: ScreenAdaper.height(400),
-        child: Swiper(
-            itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () {},
-                child: Image.network(
-                  "https://upload-images.jianshu.io/upload_images/1419035-8348d9e1439d81a7.jpg",
-                  fit: BoxFit.fill,
-                ),
-              );
-            },
-            itemCount: 3,
-            pagination: new SwiperPagination(),
-            autoplay: true),
+        color: Colors.grey[300],
+        child: Center(
+          child: Text("Image Carousel"),
+        ),
       ),
     );
   }
@@ -267,7 +261,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                       width: 5,
                     )),
                     TextSpan(
-                        text: goodDetailsModel.title.length > 0 ? "${goodDetailsModel.title}" : "",
+                        text: (goodDetailsModel.title?.length ?? 0) > 0 ? "${goodDetailsModel.title}" : "",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -281,7 +275,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                 child: Text.rich(TextSpan(
                   children: <InlineSpan>[
                     TextSpan(
-                        text: goodDetailsModel.description.length > 0 ? "${goodDetailsModel.description}" : "",
+                        text: (goodDetailsModel.description?.length ?? 0) > 0 ? "${goodDetailsModel.description}" : "",
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.normal,
@@ -375,10 +369,10 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
             Container(
               //topTitles.asMap().keys.map((f)=>
               child: Row(
-                children: detailsModel.coupons.asMap().keys.map((f) {
+                children: (detailsModel.coupons?.asMap().keys ?? <int>[]).map((f) {
                   /// 处理text
                   String coupon = "";
-                  String text = detailsModel.coupons[f];
+                  String text = detailsModel.coupons?[f] ?? "";
                   if (text == "1") {
                     coupon = "满1000减50";
                   } else if (text == "2") {
@@ -1087,7 +1081,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                         width: ScreenAdaper.height(110),
                                         height: ScreenAdaper.height(110),
                                         child: Image.network(
-                                          goodDetailsModel.url,
+                                          goodDetailsModel.url ?? "",
                                         )),
                                     SizedBox(
                                       width: 10,
@@ -1115,7 +1109,7 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
                                         ),
                                         Container(
                                           child: Text(
-                                            goodDetailsModel.title,
+                                            goodDetailsModel.title ?? "",
                                           ),
                                         ),
                                       ],
@@ -1263,30 +1257,26 @@ class _GHGoodsDetailsState extends State<GHGoodsDetails> {
     return Scaffold(
         body: Stack(
       children: <Widget>[
-        EasyRefresh(
-          onRefresh: () async {},
-          child: CustomScrollView(
-            slivers: <Widget>[
-              SliverToBoxAdapter(),
-              SliverAppBar(
-                pinned: true,
-                brightness: Brightness.light,
-                expandedHeight: 200,
-                title: Text("商品详情"),
-                flexibleSpace: FlexibleSpaceBar(
-                  background: this._swiperWidget(),
-                ),
+        CustomScrollView(
+          slivers: <Widget>[
+            SliverToBoxAdapter(),
+            SliverAppBar(
+              pinned: true,
+              expandedHeight: 200,
+              title: Text("商品详情"),
+              flexibleSpace: FlexibleSpaceBar(
+                background: this._swiperWidget(),
               ),
-              SliverToBoxAdapter(
-                child: this._goodDetailsModel != null
-                    ? Container(
-                        /// 上方区域
-                        child: this._goodsDetails(this._goodDetailsModel),
-                      )
-                    : Text(''),
-              ),
-            ],
-          ),
+            ),
+            SliverToBoxAdapter(
+              child: this._goodDetailsModel != null
+                  ? Container(
+                      /// 上方区域
+                      child: this._goodsDetails(this._goodDetailsModel),
+                    )
+                  : Text(''),
+            ),
+          ],
         ),
         this._bottomToolBar(this._goodDetailsModel),
       ],

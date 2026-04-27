@@ -24,18 +24,21 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
 
   /// 获取地址
   void _getAddressList() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
+    var url = "/classes/shopAddress";
     await HttpRequest.request(url, method: 'GET').then((res) {
-      Results firstModel = new GHAddressModel.fromJson(res).results.first;
-      setState(() {
-        results = firstModel;
-      });
+      var list = GHAddressModel.fromJson(res).results;
+      if (list != null && list.isNotEmpty) {
+        Results firstModel = list.first;
+        setState(() {
+          results = firstModel;
+        });
+      }
     });
   }
 
   /// 获取订单详情
   void _getOrderDetails(String id) async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList/${id}";
+    var url = "/classes/shopOrderList/${id}";
     await HttpRequest.request(url, method: 'GET').then((res) {
       List _tempgoodList = res["goodList"];
       double _temptotal = res["total"];
@@ -162,7 +165,7 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
                             width: 100,
                             child: new FadeInImage.memoryNetwork(
                               placeholder: kTransparentImage,
-                              image: goodDetailsModel.url,
+                              image: goodDetailsModel.url ?? "",
                             ),
                           ),
                           Expanded(
@@ -182,7 +185,7 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
                                         Container(
                                           padding: EdgeInsets.only(bottom: 10),
                                           child: Text(
-                                            goodDetailsModel.title,
+                                            goodDetailsModel.title ?? "",
                                             style: TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.bold),
@@ -191,7 +194,7 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
                                         Container(
                                           color: Colors.black12,
                                           child: Text(
-                                            goodDetailsModel.seletecdStrings,
+                                            goodDetailsModel.seletecdStrings ?? "",
                                             style: TextStyle(
                                               fontSize: 12,
                                             ),
@@ -386,7 +389,7 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
                   behavior: HitTestBehavior.opaque,
                   onTap: () {
                     Navigator.pushNamed(context, '/OnlinePayments', arguments: {
-                      "id": widget.arguments["id"],
+                      "id": widget.arguments?["id"] ?? "",
                     });
                   },
                   child: Text(

@@ -9,7 +9,7 @@ class GHLoading {
 
   static bool isShow = false;
 
-  static Object dismiss;
+  static Object? dismiss;
 
   static showLoading(BuildContext context) {
     if (!isShow) {

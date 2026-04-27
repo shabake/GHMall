@@ -5,7 +5,7 @@ class GHRichTextPriceWidget extends StatelessWidget {
   double price = 0.0;
 
   @override
-  GHRichTextPriceWidget(this.price, {Key key}) : super(key: key);
+  GHRichTextPriceWidget(this.price, {Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
     return Container(

@@ -63,7 +63,7 @@ class _GHAddressEditState extends State<GHAddressEdit> {
   _addAddress(BuildContext context) {
 
     var url =
-        "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
+        "/classes/shopAddress";
     Map<String, dynamic> params ={
       'name':this._nameController.text,
       'phoneNumber':this._phoneNumberController.text,
@@ -83,7 +83,7 @@ class _GHAddressEditState extends State<GHAddressEdit> {
 
   _getAddress() {
     var url =
-        "https://a4cj1hm5.api.lncld.net/1.1/classes/addressDetails/${widget.arguments["objectId"]}";
+        "/classes/addressDetails/${widget.arguments!["objectId"]}";
     HttpRequest.request(url, method: 'GET').then((value) {
       print(value);
     });
@@ -91,7 +91,7 @@ class _GHAddressEditState extends State<GHAddressEdit> {
 
   _deletecdAddress(BuildContext context) {
     var url =
-        "https://a4cj1hm5.api.lncld.net/1.1/classes/addressDetails/${widget.arguments["objectId"]}";
+        "/classes/addressDetails/${widget.arguments!["objectId"]}";
     HttpRequest.request(url, method: 'DELETE').then((value) {
       GHToast.showTost("删除成功");
       Navigator.pop(context);

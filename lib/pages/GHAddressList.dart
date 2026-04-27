@@ -14,12 +14,12 @@ class GHAddressList extends StatefulWidget {
 }
 
 class _GHAddressListState extends State<GHAddressList> {
-  List<Results?> _list = [];
+  List<Results>? _list = [];
 
   _getAddressList() async {
     //addressDetails
     //shopAddress
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopAddress";
+    var url = "/classes/shopAddress";
     var c = Uri.encodeComponent('-createdAt');
     var d = Uri.encodeComponent('李');
 
@@ -33,7 +33,7 @@ class _GHAddressListState extends State<GHAddressList> {
     url = url + '?' + "order=" + c;
 
     HttpRequest.request(url, method: 'GET').then((res) {
-      var list = new GHAddressModel.fromJson(res).results;
+      var list = GHAddressModel.fromJson(res).results;
       setState(() {
         this._list = list;
       });
@@ -163,9 +163,9 @@ class _GHAddressListState extends State<GHAddressList> {
           },
           child: ListView.builder(
             itemBuilder: (context, index) {
-              return ListItem(_list[index]!);
+              return ListItem(_list![index]!);
             },
-            itemCount: _list.length,
+            itemCount: _list?.length ?? 0,
           ),
         ),
       ),

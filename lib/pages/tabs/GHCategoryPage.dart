@@ -38,19 +38,21 @@ class _GHCategoryPageState extends State<GHCategoryPage>
 
   /// 获取左侧分类
   _getLeftCateData() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCategory";
+    var url = "/classes/shopCategory";
     await HttpRequest.request(url, method: 'GET').then((value) {
-      var list = new GHCategoryModel.fromJson(value).results;
+      var list = GHCategoryModel.fromJson(value).results ?? [];
       setState(() {
         this._leftCateList = list;
       });
+      if (list.isNotEmpty) {
+        _getRightCateData(list[0].type);
+      }
     });
-    _getRightCateData(this._leftCateList[0].type);
   }
 
   /// 获取右侧分类
   _getRightCateData(type) async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopSecondCategory";
+    var url = "/classes/shopSecondCategory";
     //where={"type":"1"}
     /// urlEncode编码
     var actionString = {"type": type};
@@ -166,27 +168,25 @@ class _GHCategoryPageState extends State<GHCategoryPage>
 
   /// 轮播图
   Widget _swiperWidget() {
+    // TODO: Replace with carousel_slider once properly integrated
     if (this._urls.length == 0) {
       return LoadingWidget();
     }
     return Container(
       padding: EdgeInsets.all(10),
       height: 150,
-      child: Swiper(
-          key: UniqueKey(),
-          itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-              onTap: () {},
-              child: Image.network(
-                this._urls[index],
-                // pic
-                fit: BoxFit.cover,
-              ),
-            );
-          },
-          itemCount: this._urls.length,
-          pagination: new SwiperPagination(),
-          autoplay: false),
+      child: PageView.builder(
+        itemCount: this._urls.length,
+        itemBuilder: (BuildContext context, int index) {
+          return InkWell(
+            onTap: () {},
+            child: Image.network(
+              this._urls[index],
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -209,13 +209,13 @@ class _GHCategoryPageState extends State<GHCategoryPage>
                 padding: EdgeInsets.all(10),
                 child: new FadeInImage.memoryNetwork(
                   placeholder: kTransparentImage,
-                  image: categoryItemModel.url,
+                  image: categoryItemModel.url ?? "",
                 ),
               ),
               SizedBox(height: 5),
               Container(
                 child: Text(
-                  categoryItemModel.categoryName,
+                  categoryItemModel.categoryName ?? "",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                 ),
               )

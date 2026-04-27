@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../services/ScreenAdaper.dart';
 import '../../model/GHomeCarouselDataModel.dart';
 import '../../widget/LoadingWidget.dart';
@@ -11,7 +10,7 @@ import 'package:transparent_image/transparent_image.dart';
 
 /// 首页
 class GHHomePage extends StatefulWidget {
-  GHHomePage({Key key}) : super(key: key);
+  const GHHomePage({Key? key}) : super(key: key);
 
   _GHHomePageState createState() => _GHHomePageState();
 }
@@ -26,12 +25,25 @@ class _GHHomePageState extends State<GHHomePage> with AutomaticKeepAliveClientMi
   ///  热门推荐
   List _hotGoodsList = [];
 
+  /// 轮播图当前页
+  int _currentCarouselIndex = 0;
+
+  /// 轮播图控制器
+  late PageController _carouselController;
+
   /// 实现保持状态
   bool get wantKeepAlive => true;
 
   @override
+  void dispose() {
+    super.dispose();
+    _carouselController.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
+    _carouselController = PageController();
 
     /// 获取轮播图数据
     _getCarouselData();
@@ -45,9 +57,9 @@ class _GHHomePageState extends State<GHHomePage> with AutomaticKeepAliveClientMi
 
   //获取轮播图数据
   void _getCarouselData() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCarousel";
+    var url = "/classes/shopCarousel";
     await HttpRequest.request(url, method: 'GET').then((value) {
-      var list = new GHomeCarouselDataModel.fromJson(value).results;
+      var list = GHomeCarouselDataModel.fromJson(value).results ?? [];
       setState(() {
         this._carouselDataList = list;
       });
@@ -56,10 +68,10 @@ class _GHHomePageState extends State<GHHomePage> with AutomaticKeepAliveClientMi
 
   //获取猜你喜欢的数据
   void _getGuessLicktData() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopGuessLike";
+    var url = "/classes/shopGuessLike";
     await HttpRequest.request(url).then((value) {
       print(value);
-      var list = new GHGuessLikeModel.fromJson(value).results;
+      var list = GHGuessLikeModel.fromJson(value).results ?? [];
       setState(() {
         this._getGuessLikeList = list;
       });
@@ -68,9 +80,9 @@ class _GHHomePageState extends State<GHHomePage> with AutomaticKeepAliveClientMi
 
   //获取热门商品的数据
   void _getHotGoodsData() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopHotGoods";
+    var url = "/classes/shopHotGoods";
     await HttpRequest.request(url).then((value) {
-      var list = new GHHotGoodsModel.fromJson(value).results;
+      var list = GHHotGoodsModel.fromJson(value).results ?? [];
       setState(() {
         this._hotGoodsList = list;
       });
@@ -82,23 +94,56 @@ class _GHHomePageState extends State<GHHomePage> with AutomaticKeepAliveClientMi
     if (this._carouselDataList.length == 0) {
       return LoadingWidget();
     }
-    return Container(
-      height: ScreenAdaper.height(400),
-      width: double.infinity,
-      child: Swiper(
-          itemBuilder: (BuildContext context, int index) {
-            GHomeCarouselDataItemModel carouselModel = this._carouselDataList[index];
-            return GestureDetector(
-              onTap: () {},
-              child: Image.network(
-                carouselModel.url, // pic
-                fit: BoxFit.fill,
+    return Stack(
+      children: <Widget>[
+        Container(
+          height: ScreenAdaper.height(400),
+          width: double.infinity,
+          child: PageView.builder(
+            controller: _carouselController,
+            onPageChanged: (index) {
+              setState(() {
+                _currentCarouselIndex = index;
+              });
+            },
+            itemCount: this._carouselDataList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {},
+                child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: this._carouselDataList[index].url ?? "",
+                  fit: BoxFit.cover,
+                ),
+              );
+            },
+          ),
+        ),
+        Positioned(
+          bottom: 10,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                this._carouselDataList.length,
+                (index) => Container(
+                  width: 8,
+                  height: 8,
+                  margin: EdgeInsets.symmetric(horizontal: 4),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _currentCarouselIndex == index
+                        ? Colors.white
+                        : Colors.white54,
+                  ),
+                ),
               ),
-            );
-          },
-          itemCount: this._carouselDataList.length,
-          pagination: new SwiperPagination(),
-          autoplay: true),
+            ),
+          ),
+        )
+      ],
     );
   }
 
@@ -109,7 +154,7 @@ class _GHHomePageState extends State<GHHomePage> with AutomaticKeepAliveClientMi
       child: AspectRatio(
         aspectRatio: 3 / 2,
         child: Image.network(
-            "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2453876778,4252200680&fm=26&gp=0.jpg",
+            "https://q7.itc.cn/q_70/images03/20240927/e0cca33ed4ef428c9998fd0b4d48d3d7.jpeg",
             fit: BoxFit.fill),
       ),
     );
@@ -245,6 +290,9 @@ class _GHHomePageState extends State<GHHomePage> with AutomaticKeepAliveClientMi
 
   /// 热门商品
   Widget _guessLiketWidget() {
+    if (this._getGuessLikeList.length == 0) {
+      return LoadingWidget();
+    }
     return Container(
       height: ScreenAdaper.height(220),
       padding: EdgeInsets.only(left: 20, right: 20, bottom: 0, top: 10),
@@ -269,7 +317,7 @@ class _GHHomePageState extends State<GHHomePage> with AutomaticKeepAliveClientMi
                       margin: EdgeInsets.only(right: ScreenAdaper.width(21)),
                       child: new FadeInImage.memoryNetwork(
                         placeholder: kTransparentImage,
-                        image: itemModel.url,
+                        image: itemModel.url ?? "",
                       ),
                     ),
                     SizedBox(

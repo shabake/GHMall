@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="" />
+    <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/GHMall_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/GHMall_android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHAddressEdit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHAddressEdit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHAddressList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHAddressList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHCheckOutPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHCheckOutPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHGoodsList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHGoodsList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHLoginPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHLoginPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/GHOrderList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHOrderList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/Search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Search.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHHomePage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHHomePage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHShopCartPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHShopCartPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHUserPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHUserPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routers/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routers/router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/ScreenAdaper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/ScreenAdaper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/httptool.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/httptool.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/GHCustomAppbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/GHCustomAppbar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/GHLoading.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/GHLoading.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/GHRichTextPriceWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/GHRichTextPriceWidget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/LoadingWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/LoadingWidget.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_30" />
-  <component name="FavoritesManager">
-    <favorites_list name="GHMall" />
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_30" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -21,27 +52,32 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
   <component name="ProjectId" id="1fQ088UGSVjT7ukNUrTlRiRfSk1" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="dart.analysis.tool.window.force.activate" value="false" />
-    <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="dart.settings" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "io.flutter.project.isFirstOpen": "true",
+    "kotlin-language-version-configured": "true",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" singleton="false">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
@@ -108,17 +144,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/lib/main.dart</url>
-          <line>10</line>
+          <line>5</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart</url>
-          <line>300</line>
+          <line>288</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/lib/widget/GHButton.dart</url>
-          <line>6</line>
+          <line>4</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

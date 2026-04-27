@@ -6,11 +6,11 @@ import '../services/GHToast.dart';
 
 /// 在线支付
 class GHOnlinePayments extends StatefulWidget {
-  Map arguments;
+  final Map<String, dynamic>? arguments;
+
+  const GHOnlinePayments({Key? key, this.arguments}) : super(key: key);
 
   @override
-  GHOnlinePayments({Key key, this.arguments}) : super(key: key);
-
   _GHOnlinePaymentsState createState() => _GHOnlinePaymentsState();
 }
 
@@ -23,7 +23,7 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
 
   /// 获取订单详情
   void _getOrderDetails(String id) async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList/${id}";
+    var url = "/classes/shopOrderList/${id}";
     await HttpRequest.request(url, method: 'GET').then((res) {
       print(res);
       _goodList = res["goodList"];
@@ -39,7 +39,7 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
     Map<String, dynamic> params = {
       "payway": payway,
     };
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList/${id}";
+    var url = "/classes/shopOrderList/${id}";
     await HttpRequest.request(url, method: 'PUT', params: params).then((res) {
       String updatedAt = res["updatedAt"];
       if (updatedAt != null) {
@@ -73,7 +73,7 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
 
     print(maps);
 
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/batch";
+    var url = "/batch";
     Map<String, dynamic> params = {"requests": maps};
     HttpRequest.request(url, method: 'POST', params: params).then((value) {
       print(value);
@@ -91,7 +91,7 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
   @override
   void initState() {
     super.initState();
-    this._orderId = widget.arguments["id"];
+    this._orderId = widget.arguments?["id"] ?? "";
     this._getOrderDetails(this._orderId);
   }
 
@@ -221,7 +221,7 @@ class _GHOnlinePaymentsState extends State<GHOnlinePayments> {
               child: GHButton(
                 "确定",
                 tapAction: () {
-                  this._addPayway(widget.arguments["id"],
+                  this._addPayway(widget.arguments?["id"] ?? "",
                       this._seletecd == true ? "微信" : "支付宝");
                 },
               ),

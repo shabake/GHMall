@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 
 class HttpRequest {
-  static final BaseOptions options = BaseOptions(baseUrl: "");
+  static final BaseOptions options = BaseOptions(baseUrl: "https://api.leancloud.cn/1.1");
 
   static final Dio dio = Dio(options);
 
   static Future<T> request<T>(String url,
-      {String method, Map<String, dynamic> params, Interceptor inter}) async {
+      {String? method, Map<String, dynamic>? params, Interceptor? inter}) async {
     // 1.请求的单独配置
     Options options = Options(method: method);
     options.headers = httpHeaders;

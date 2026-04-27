@@ -5,14 +5,13 @@ import '../widget/GHCustomAppbar.dart';
 
 /// 搜索
 class SearchPage extends StatefulWidget {
-  SearchPage({Key key}) : super(key: key);
+  SearchPage({Key? key}) : super(key: key);
 
   _SearchPageState createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {
-  @override
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   /// 用户输入的关键字
   var _keywors;
@@ -104,7 +103,7 @@ class _SearchPageState extends State<SearchPage> {
             child: InkWell(
               onTap: () {
                 print("222");
-                _scaffoldKey.currentState.openDrawer();
+                _scaffoldKey.currentState?.openDrawer();
               },
               child: Text(
                 "搜索",

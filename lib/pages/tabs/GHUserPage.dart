@@ -8,8 +8,9 @@ import '../../widget/GHLoading.dart';
 import '../GHOrderList.dart';
 
 class GHUserPage extends StatefulWidget {
-  GHUserPage({Key key}) : super(key: key);
+  const GHUserPage({Key? key}) : super(key: key);
 
+  @override
   _GHUserPageState createState() => _GHUserPageState();
 }
 

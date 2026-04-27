@@ -15,7 +15,7 @@ class _GHOrderListPageState extends State<GHOrderListPage> {
 
   /// 获取订单列表数据
   void _getOrderList() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList";
+    var url = "/classes/shopOrderList";
     await HttpRequest.request(url, method: 'GET').then((value) {
       List results = value["results"];
       print(value);

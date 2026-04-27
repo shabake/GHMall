@@ -32,8 +32,8 @@ final routes = {
 /// 固定写法不需要改动
 var onGenerateRoute = (RouteSettings settings) {
 // 统一处理
-  final String name = settings.name;
-  final Function pageContentBuilder = routes[name];
+  final String? name = settings.name;
+  final Function? pageContentBuilder = name != null ? routes[name] : null;
   if (pageContentBuilder != null) {
     if (settings.arguments != null) {
       final Route route = MaterialPageRoute(

@@ -10,6 +10,8 @@ import '../../services/gh_sqflite.dart';
 
 /// 购物车
 class GHShopCartPage extends StatefulWidget {
+  const GHShopCartPage({Key? key}) : super(key: key);
+
   @override
   _GHShopCartPageState createState() => _GHShopCartPageState();
 }
@@ -53,7 +55,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
 
   /// 获取购物车列表
   void _getShopCartList() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCartList";
+    var url = "/classes/shopCartList";
     var c = Uri.encodeComponent('-createdAt');
     url = url + '?' + "order=" + c;
     HttpRequest.request(url, method: 'GET').then((res) {
@@ -69,7 +71,11 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
       for (var i = 0; i < _tempList.length; i++) {
         GHGoodDetailsModel goodDetailsModel = _tempList[i];
         if (goodDetailsModel.check == true) {
-          _tempTotal += goodDetailsModel.count * goodDetailsModel.price;
+          var price = goodDetailsModel.price;
+          var count = goodDetailsModel.count ?? 0;
+          if (price is num) {
+            _tempTotal += count * (price as num);
+          }
         } else {
           _tempIsAllCheck = false;
         }
@@ -85,9 +91,9 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
 
   /// 获取热门商品的数据
   void _getHotGoodsData() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopHotGoods";
+    var url = "/classes/shopHotGoods";
     await HttpRequest.request(url).then((value) {
-      var list = new GHHotGoodsModel.fromJson(value).results;
+      var list = GHHotGoodsModel.fromJson(value).results ?? [];
       setState(() {
         this._hotGoodsList = list;
       });
@@ -98,7 +104,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
   void _updateShopCartList(
       GHGoodDetailsModel goodDetailsModel, String goodId) async {
     var url =
-        "https://a4cj1hm5.api.lncld.net/1.1/classes/shopCartList/${goodId}";
+        "/classes/shopCartList/${goodId}";
     Map<String, dynamic> params = {
       "count": goodDetailsModel.count,
       "check": goodDetailsModel.check,
@@ -116,7 +122,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
 
   /// 创建订单
   void _createGoodOrder() async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/shopOrderList";
+    var url = "/classes/shopOrderList";
     List _jsons = [];
     for (var i = 0; i < this._shopCartList.length; i++) {
       GHGoodDetailsModel goodDetailsModel = this._shopCartList[i];
@@ -391,7 +397,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
   }
 
   /// 自定义appBar
-  Widget _appBar() {
+  PreferredSizeWidget _appBar() {
     return AppBar(
       title: Container(
         child: Row(
@@ -457,7 +463,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
       };
       maps.add(map);
     }
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/batch";
+    var url = "/batch";
 
     Map<String, dynamic> params = {"requests": maps};
 
@@ -599,10 +605,10 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                 child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        goodDetailsModel.check = !goodDetailsModel.check;
+                        goodDetailsModel.check = !(goodDetailsModel.check ?? false);
                       });
                       this._updateShopCartList(
-                          goodDetailsModel, goodDetailsModel.objectId);
+                          goodDetailsModel, goodDetailsModel.objectId ?? "");
                     },
                     child: goodDetailsModel.check == true
                         ? Image.asset('images/checkSelected.png')
@@ -631,7 +637,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                                 width: 100,
                                 child: new FadeInImage.memoryNetwork(
                                   placeholder: kTransparentImage,
-                                  image: goodDetailsModel.url,
+                                  image: goodDetailsModel.url ?? "",
                                 ),
                               ),
                               Expanded(
@@ -653,7 +659,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                                               padding:
                                                   EdgeInsets.only(bottom: 10),
                                               child: Text(
-                                                goodDetailsModel.title,
+                                                goodDetailsModel.title ?? "",
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight:
@@ -664,7 +670,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                                               color: Colors.black12,
                                               child: Text(
                                                 goodDetailsModel
-                                                    .seletecdStrings,
+                                                    .seletecdStrings ?? "",
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                 ),
@@ -715,7 +721,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                                                   this._updateShopCartList(
                                                       goodDetailsModel,
                                                       goodDetailsModel
-                                                          .objectId);
+                                                          .objectId ?? "");
                                                 },
                                                 subClick: (value) {
                                                   setState(() {
@@ -725,7 +731,7 @@ class _GHShopCartPageState extends State<GHShopCartPage> {
                                                   this._updateShopCartList(
                                                       goodDetailsModel,
                                                       goodDetailsModel
-                                                          .objectId);
+                                                          .objectId ?? "");
                                                 },
                                               ),
                                             )

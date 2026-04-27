@@ -13,7 +13,22 @@
       "Bash(cat)",
       "Bash(sed -i '' -f /tmp/fix_checkout.txt /Users/mac/Desktop/Project/GHMall/lib/pages/GHCheckOutPage.dart)",
       "Bash(sed -i '' -f /tmp/fix_addresslist.txt /Users/mac/Desktop/Project/GHMall/lib/pages/GHAddressList.dart)",
-      "Bash(git commit -m '修复大量Null Safety和UI问题 *)"
+      "Bash(git commit -m '修复大量Null Safety和UI问题 *)",
+      "Bash(chmod +x /tmp/fix_keys.sh)",
+      "Bash(/tmp/fix_keys.sh)",
+      "Bash(curl -s -X GET https://a4cj1hm5.api.lncld.net/1.1/classes/shopCarousel -H 'Content-Type: application/json' -H 'X-LC-Id: a4Cj1Hm5aMrdhob6xGw71B5A-gzGzoHsz' -H 'X-LC-Key: XQaL1tUQC0DCQxBA9fpoR21C')",
+      "Bash(curl -I -s \"https://a4cj1hm5.api.lncld.net/1.1/classes/shopCarousel\")",
+      "Bash(curl -s https://a4cj1hm5.api.lncld.net/1.1/classes/shopCarousel -H 'Content-Type: application/json' -H 'X-LC-Id: a4Cj1Hm5aMrdhob6xGw71B5A-gzGzoHsz' -H 'X-LC-Key: XQaL1tUQC0DCQxBA9fpoR21C')",
+      "Bash(curl -v https://a4cj1hm5.api.lncld.net/1.1/classes/shopCarousel -H 'Content-Type: application/json' -H 'X-LC-Id: a4Cj1Hm5aMrdhob6xGw71B5A-gzGzoHsz' -H 'X-LC-Key: XQaL1tUQC0DCQxBA9fpoR21C')",
+      "Bash(curl -s --noproxy '*' https://a4cj1hm5.api.lncld.net/1.1/classes/shopCarousel -H 'Content-Type: application/json' -H 'X-LC-Id: a4Cj1Hm5aMrdhob6xGw71B5A-gzGzoHsz' -H 'X-LC-Key: XQaL1tUQC0DCQxBA9fpoR21C')",
+      "Bash(ping -c 2 a4cj1hm5.api.lncld.net)",
+      "Bash(python3 /tmp/test_dns.py)",
+      "WebFetch(domain:docs.leancloud.cn)",
+      "Bash(xargs kill *)",
+      "Bash(tee /tmp/flutter_run.log)",
+      "Bash(flutter devices *)",
+      "Bash(xcrun xcode-select *)",
+      "Bash(xcrun instruments *)"
     ]
   }
 }

@@ -29,7 +29,7 @@ class _GHLoginPageState extends State<GHLoginPage> {
 
   /// 注册或登录
   void _login(String mobilePhoneNumber, String smsCode) async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/usersByMobilePhone";
+    var url = "/usersByMobilePhone";
     Map<String, dynamic> params = {
       "mobilePhoneNumber": "+86${mobilePhoneNumber}",
       "smsCode": smsCode,
@@ -58,7 +58,7 @@ class _GHLoginPageState extends State<GHLoginPage> {
 
   /// 请求验证码
   void _requestSmsCode(String mobilePhoneNumber) async {
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/requestSmsCode";
+    var url = "/requestSmsCode";
     Map<String, dynamic> params = {
       "mobilePhoneNumber": mobilePhoneNumber,
     };

@@ -158,28 +158,31 @@ class _GHGoodsListState extends State<GHGoodsList> {
     var jsonWherePrice = jsonEncode(wherePrice);
     var parameterWherePrice = Uri.encodeFull(jsonWherePrice);
 
-    var url = "https://a4cj1hm5.api.lncld.net/1.1/classes/" +
+    var url = "/classes/" +
         "shopGoodsList?limit=10&&skip=${this._skip}&&order=${this._isSales},${this._isPrice}&&where=${parameterWherePrice}";
 
     print(url);
     await HttpRequest.request(url, method: 'GET').then((value) {
-      List _goods = GHGoodsModel.fromJson(value).results;
+      List<dynamic>? _goods = GHGoodsModel.fromJson(value).results;
       List _items = [];
-      for (var item in _goods) {
-        _items.add(item);
+      if (_goods != null) {
+        for (var item in _goods) {
+          _items.add(item);
+        }
       }
 
       setState(() {
         this._list.addAll(_items);
       });
 
-      if (_goods.length == 10) {
-        this._controller.finishRefresh();
-      }
+      // TODO: Replace with proper refresh state management
+      // if (_goods.length == 10) {
+      //   this._controller.finishRefresh();
+      // }
 
-      if (_goods.length < 10) {
-        this._controller.finishLoad(success: true, noMore: true);
-      }
+      // if (_goods.length < 10) {
+      //   this._controller.finishLoad(success: true, noMore: true);
+      // }
       GHLoading.hideLoading(context);
     });
   }
@@ -215,7 +218,11 @@ class _GHGoodsListState extends State<GHGoodsList> {
         this._minPriceEditingController.text.length > 0) {
       _changeFilterStatus(3, "1");
     }
-    this._controller.callRefresh();
+    // TODO: Implement refresh mechanism
+    // this._controller.callRefresh();
+    _skip = 0;
+    this._list.clear();
+    _loadData();
   }
 
   /// 获取用户选中
@@ -244,7 +251,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
   }
 
   /// 侧滑每行的标题
-  Widget _sideSectionTitle(String title, [List list]) {
+  Widget _sideSectionTitle(String title, [List? list]) {
     List array = [];
     List test = [];
 
@@ -404,7 +411,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
     );
   }
 
-  Widget _sideTextItem([textEditingController, String hintText]) {
+  Widget _sideTextItem([textEditingController, String? hintText]) {
     return Container(
       alignment: Alignment.center,
       height: 30,
@@ -565,7 +572,8 @@ class _GHGoodsListState extends State<GHGoodsList> {
   void _getNewData() {
     this._skip = 0;
     this._list.clear();
-    this._controller.resetLoadState();
+    // TODO: Replace with proper refresh state management
+    // this._controller.resetLoadState();
     this._loadData();
   }
 
@@ -621,7 +629,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                       /// 如果是筛选，弹出抽屉
                       String id = value["id"];
                       if (id == "4") {
-                        this._scaffoldKey.currentState.openEndDrawer();
+                        this._scaffoldKey.currentState?.openEndDrawer();
                       }
 
                       if (id == "2") {
@@ -642,7 +650,9 @@ class _GHGoodsListState extends State<GHGoodsList> {
                         });
                         this._count = 0;
                         this._isSales = "-sales";
-                        this._controller.callRefresh();
+                        _skip = 0;
+                        this._list.clear();
+                        _loadData();
                       }
 
                       if (id == "1") {
@@ -664,7 +674,9 @@ class _GHGoodsListState extends State<GHGoodsList> {
                         });
                         this._count = 0;
                         this._isSales = "sales";
-                        this._controller.callRefresh();
+                        _skip = 0;
+                        this._list.clear();
+                        _loadData();
                       }
 
                       if (id == "3") {
@@ -690,7 +702,9 @@ class _GHGoodsListState extends State<GHGoodsList> {
                         });
                         this._isSales = "sales";
                         this._isSales = "";
-                        this._controller.callRefresh();
+                        _skip = 0;
+                        this._list.clear();
+                        _loadData();
                       }
                     },
                     child: Stack(
@@ -762,7 +776,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
   }
 
   /// 自定义导航条
-  Widget _customAppbar(context) {
+  PreferredSizeWidget _customAppbar(context) {
     final double topPadding = MediaQuery.of(context).padding.top;
     return GHCustomAppbar(
       contentHeight: topPadding + 20,
@@ -864,9 +878,9 @@ class _GHGoodsListState extends State<GHGoodsList> {
               Container(
                 height: 86,
                 width: 120,
-                child: new FadeInImage.memoryNetwork(
+                child: FadeInImage.memoryNetwork(
                   placeholder: kTransparentImage,
-                  image: goodsItemModel.url,
+                  image: goodsItemModel.url ?? "",
                 ),
               ),
               Expanded(
@@ -885,7 +899,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                         children: <Widget>[
                           Container(
                             child: Text(
-                              goodsItemModel.title,
+                              goodsItemModel.title ?? "",
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -896,7 +910,7 @@ class _GHGoodsListState extends State<GHGoodsList> {
                           ),
                           Container(
                             child: Text(
-                              goodsItemModel.description,
+                              goodsItemModel.description ?? "",
                               style: TextStyle(
                                   fontSize: 10, color: Colors.black38),
                             ),
@@ -1007,33 +1021,10 @@ class _GHGoodsListState extends State<GHGoodsList> {
   Widget _goodsList() {
     return Container(
         margin: EdgeInsets.only(top: ScreenAdaper.height(80)),
-        child: EasyRefresh.custom(
-          enableControlFinishRefresh: false,
-          enableControlFinishLoad: true,
-          firstRefresh: true,
-          shrinkWrap: true,
-          controller: this._controller,
-          slivers: <Widget>[
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return _goodsItem(this._list[index]);
-                },
-                childCount: this._list.length,
-              ),
-            ),
-          ],
-          onLoad: () async {
-            GHLoading.showLoading(context);
-            await Future.delayed(Duration(seconds: 1), () {
-              this._getMoreData();
-            });
-          },
-          onRefresh: () async {
-            GHLoading.showLoading(context);
-            await Future.delayed(Duration(seconds: 1), () {
-              this._getNewData();
-            });
+        child: ListView.builder(
+          itemCount: this._list.length,
+          itemBuilder: (context, index) {
+            return _goodsItem(this._list[index]);
           },
         ));
   }
