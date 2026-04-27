@@ -3,11 +3,11 @@ import '../services/Storage.dart';
 import 'package:flutter/material.dart';
 
 class Cart with ChangeNotifier {
-  List _cartList = [];
+  List<dynamic> _cartList = [];
   bool _isCheckAll = false;
   double _totalPrice = 0.0;
 
-  List get cartList => this._cartList;
+  List<dynamic> get cartList => this._cartList;
 
   bool get isCheckAll => this._isCheckAll;
 
@@ -17,9 +17,9 @@ class Cart with ChangeNotifier {
     this.init();
   }
 
-  init() async {
+  Future<void> init() async {
     try {
-      List cartListData = json.decode(await Storage.getString('cartList'));
+      List<dynamic> cartListData = json.decode(await Storage.getString('cartList') ?? '[]') as List<dynamic>;
       this._cartList = cartListData;
       print("初始化");
       print(cartListData);
@@ -31,22 +31,22 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
-  addList(value) {
+  void addList(dynamic value) {
     _cartList.add(value);
     notifyListeners();
   }
 
-  updataCartList() {
+  void updataCartList() {
     this.init();
   }
 
-  changeCartList() {
+  void changeCartList() {
     Storage.setString('cartList', json.encode(this._cartList));
     getTotalPrice();
     notifyListeners();
   }
 
-  check(value) {
+  void check(dynamic value) {
     for (var i = 0; i < this._cartList.length; i++) {
       this._cartList[i]["checked"] = value;
     }
@@ -58,8 +58,8 @@ class Cart with ChangeNotifier {
   }
 
   /// 判断全选按钮状态
-  isCheckAllMember() async {
-    List cartListData = json.decode(await Storage.getString('cartList'));
+  Future<void> isCheckAllMember() async {
+    List<dynamic> cartListData = json.decode(await Storage.getString('cartList') ?? '[]') as List<dynamic>;
     print(cartListData);
     if (cartListData.length > 0) {
       for (var i = 0; i < cartListData.length; i++) {
@@ -74,7 +74,7 @@ class Cart with ChangeNotifier {
     }
   }
 
-  itemChange(value) async {
+  Future<void> itemChange(dynamic value) async {
     for (var i = 0; i < this.cartList.length; i++) {
       String seletecAttr =
           this.cartList[i]["_id"] + this.cartList[i]['seletecAttr'];
@@ -90,14 +90,14 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
-  removeAllData() {
+  void removeAllData() {
     Storage.remove("cartList");
     getTotalPrice();
     this.cartList.clear();
     notifyListeners();
   }
 
-  getTotalPrice() {
+  void getTotalPrice() {
     double totalPrice = 0;
     for (var i = 0; i < this.cartList.length; i++) {
       if (this.cartList[i]["checked"] == true) {

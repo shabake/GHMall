@@ -8,9 +8,9 @@ void GHLog(Object message, StackTrace current) {
 class GHCustomTrace {
   final StackTrace _trace;
 
-  String fileName;
-  int lineNumber;
-  int columnNumber;
+  late String fileName;
+  late int lineNumber;
+  late int columnNumber;
 
   GHCustomTrace(this._trace) {
     _parseTrace();

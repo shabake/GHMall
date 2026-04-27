@@ -3,29 +3,29 @@ import 'dart:convert';
 import 'Storage.dart';
 
 class SearchServices {
-  static setHistoryData(keywords) async {
+  static Future<void> setHistoryData(String keywords) async {
     /*
           1、获取本地存储里面的数据  (searchList)
 
           2、判断本地存储是否有数据
 
-              2.1、如果有数据 
+              2.1、如果有数据
 
                     1、读取本地存储的数据
                     2、判断本地存储中有没有当前数据，
                         如果有不做操作、
-                        如果没有当前数据,本地存储的数据和当前数据拼接后重新写入           
+                        如果没有当前数据,本地存储的数据和当前数据拼接后重新写入
 
 
               2.2、如果没有数据
 
                     直接把当前数据放在数组中写入到本地存储
-      
-      
+
+
       */
 
     try {
-      List searchListData = json.decode(await Storage.getString('searchList'));
+      List<dynamic> searchListData = json.decode(await Storage.getString('searchList') ?? '[]') as List<dynamic>;
 
       print(searchListData);
       var hasData = searchListData.any((v) {
@@ -36,27 +36,31 @@ class SearchServices {
         await Storage.setString('searchList', json.encode(searchListData));
       }
     } catch (e) {
-      List tempList = new List();
-      tempList.add(keywords);
+      List<String> tempList = <String>[keywords];
       await Storage.setString('searchList', json.encode(tempList));
     }
   }
-  static getHistoryList() async{
-     try {
-      List searchListData = json.decode(await Storage.getString('searchList'));
+
+  static Future<List<dynamic>> getHistoryList() async {
+    try {
+      List<dynamic> searchListData = json.decode(await Storage.getString('searchList') ?? '[]') as List<dynamic>;
       return searchListData;
     } catch (e) {
       return [];
     }
   }
 
-  static clearHistoryList() async{    
-      await Storage.remove('searchList');
-  }
-  static removeHistoryData(keywords) async{    
-      List searchListData = json.decode(await Storage.getString('searchList'));
-      searchListData.remove(keywords);
-      await Storage.setString('searchList', json.encode(searchListData));
+  static Future<void> clearHistoryList() async {
+    await Storage.remove('searchList');
   }
 
+  static Future<void> removeHistoryData(String keywords) async {
+    try {
+      List<dynamic> searchListData = json.decode(await Storage.getString('searchList') ?? '[]') as List<dynamic>;
+      searchListData.remove(keywords);
+      await Storage.setString('searchList', json.encode(searchListData));
+    } catch (e) {
+      print('Error removing history data: $e');
+    }
+  }
 }

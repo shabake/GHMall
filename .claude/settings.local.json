@@ -28,7 +28,10 @@
       "Bash(tee /tmp/flutter_run.log)",
       "Bash(flutter devices *)",
       "Bash(xcrun xcode-select *)",
-      "Bash(xcrun instruments *)"
+      "Bash(xcrun instruments *)",
+      "Bash(tee /tmp/flutter_errors.log)",
+      "Bash(pkill -f \"flutter run\")",
+      "Bash(tee /tmp/flutter_check.log)"
     ]
   }
 }

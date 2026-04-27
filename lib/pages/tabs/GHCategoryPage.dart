@@ -23,9 +23,9 @@ class _GHCategoryPageState extends State<GHCategoryPage>
   int _selectIndex = 0;
   List<dynamic> _leftCateList = [];
   List<dynamic> _urls = [];
-  late String _firstTitle;
+  String? _firstTitle;
   List<dynamic> _firstGoods = [];
-  late String _secondTitle;
+  String? _secondTitle;
   List<dynamic> _secondGoods = [];
 
   @override
@@ -224,7 +224,10 @@ class _GHCategoryPageState extends State<GHCategoryPage>
         ));
   }
 
-  Widget _firstWidget(String title, List list, BuildContext context) {
+  Widget _firstWidget(String? title, List list, BuildContext context) {
+    if (title == null || title.isEmpty) {
+      return SizedBox.shrink();
+    }
     return ListView(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
@@ -262,12 +265,8 @@ class _GHCategoryPageState extends State<GHCategoryPage>
       child: ListView(
         children: <Widget>[
           _swiperWidget(),
-          this._firstTitle == null
-              ? Text("")
-              : _firstWidget(this._firstTitle, this._firstGoods, context),
-          this._secondTitle == null
-              ? Text("")
-              : _firstWidget(this._secondTitle, this._secondGoods, context),
+          _firstWidget(this._firstTitle, this._firstGoods, context),
+          _firstWidget(this._secondTitle, this._secondGoods, context),
         ],
       ),
     );

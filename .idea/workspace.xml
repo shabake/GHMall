@@ -6,32 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cb658833-ff62-4a3f-9ab2-21cf63ea070b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/GHMall_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/GHMall_android.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHAddressEdit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHAddressEdit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHAddressList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHAddressList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHCheckOutPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHCheckOutPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHGoodsDetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHGoodsList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHGoodsList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHLoginPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHLoginPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHOnlinePayments.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/GHOrderList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/GHOrderList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/Search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Search.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHHomePage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHHomePage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHShopCartPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHShopCartPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/tabs/GHUserPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/tabs/GHUserPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routers/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routers/router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/ScreenAdaper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/ScreenAdaper.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/httptool.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/httptool.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/GHCustomAppbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/GHCustomAppbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/GHLoading.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/GHLoading.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/GHRichTextPriceWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/GHRichTextPriceWidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/LoadingWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/LoadingWidget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/GHLog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/GHLog.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/SearchServices.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/SearchServices.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/Storage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/Storage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,15 +44,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Flutter.main.dart.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "master",
     "io.flutter.project.isFirstOpen": "true",
+    "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
     "show.migrate.to.gradle.popup": "false"
   }
@@ -97,44 +79,6 @@
     </task>
     <servers />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="408" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1614828444079">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state x="408" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614828444079" />
-    <state width="1398" height="137" key="GridCell.Tab.0.bottom" timestamp="1617949378742">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state width="1724" height="309" key="GridCell.Tab.0.bottom/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045697" />
-    <state width="1398" height="137" key="GridCell.Tab.0.bottom/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1617949378742" />
-    <state width="1398" height="137" key="GridCell.Tab.0.center" timestamp="1617949378741">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state width="1724" height="309" key="GridCell.Tab.0.center/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045696" />
-    <state width="1398" height="137" key="GridCell.Tab.0.center/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1617949378741" />
-    <state width="1398" height="137" key="GridCell.Tab.0.left" timestamp="1617949378740">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state width="1724" height="309" key="GridCell.Tab.0.left/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045696" />
-    <state width="1398" height="137" key="GridCell.Tab.0.left/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1617949378740" />
-    <state width="1398" height="137" key="GridCell.Tab.0.right" timestamp="1617949378741">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state width="1724" height="309" key="GridCell.Tab.0.right/0.23.1440.796/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1609817045697" />
-    <state width="1398" height="137" key="GridCell.Tab.0.right/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1617949378741" />
-    <state x="100" y="123" width="1240" height="588" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1614838133736">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state x="100" y="123" width="1240" height="588" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614838133736" />
-    <state x="257" y="239" width="697" height="486" key="find.popup" timestamp="1614838308405">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state x="257" y="239" width="697" height="486" key="find.popup/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614838308405" />
-    <state x="385" y="188" key="run.anything.popup" timestamp="1614838121698">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state x="385" y="188" key="run.anything.popup/0.23.1440.805/-1920.23.1920.1057@0.23.1440.805" timestamp="1614838121698" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -149,7 +93,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/lib/pages/tabs/GHCategoryPage.dart</url>
-          <line>288</line>
+          <line>287</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
