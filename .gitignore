@@ -3,6 +3,8 @@
 # Files and directories created by pub
 .dart_tool/
 .packages
+.pub-cache/
+.pub/
 build/
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
@@ -23,3 +25,58 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+
+# Flutter
+.flutter/
+.fvm/
+fvm_config.json
+
+# iOS/macOS
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Podfile.lock
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Flutter/ephemeral/
+
+# Android
+android/.gradle/
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/.idea/
+android/app/debug/
+android/app/profile/
+android/app/release/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.swn
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+*.lcov
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+.gradle/
+**/*.jks
+**/*.cer
+
+# Local files
+.claude/
+*.log

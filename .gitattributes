@@ -1,0 +1,50 @@
+# Auto detect text files and normalize line endings to LF
+* text=auto
+
+# Dart files
+*.dart text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Windows batch files
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Gradle files
+*.gradle text eol=lf
+gradlew text eol=lf
+gradlew.bat text eol=crlf
+
+# JSON
+*.json text eol=lf
+
+# YAML
+*.yaml text eol=lf
+*.yml text eol=lf
+
+# Markdown
+*.md text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.zip binary
+*.tar binary
+*.gz binary
+
+# Java
+*.java text eol=lf
+
+# Swift
+*.swift text eol=lf
+
+# Kotlin
+*.kt text eol=lf
+*.kts text eol=lf
+
+# XML
+*.xml text eol=lf
