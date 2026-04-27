@@ -9,19 +9,18 @@ import '../widget/GHRichTextPriceWidget.dart';
 
 /// 订单详情
 class GHCheckOutPage extends StatefulWidget {
-  final Map arguments;
+  final Map<String, dynamic>? arguments;
+
+  const GHCheckOutPage({Key? key, this.arguments}) : super(key: key);
 
   @override
-  GHCheckOutPage({Key key, this.arguments}) : super(key: key);
-
-  _GHCheckOutPageState createState() => _GHCheckOutPageState();
+  State<GHCheckOutPage> createState() => _GHCheckOutPageState();
 }
 
 class _GHCheckOutPageState extends State<GHCheckOutPage> {
-  List _goodList = [];
-
+  List<dynamic> _goodList = [];
   double _total = 0;
-  Results results;
+  Results? results;
 
   /// 获取地址
   void _getAddressList() async {
@@ -57,8 +56,10 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
   @override
   void initState() {
     super.initState();
-    this._getAddressList();
-    this._getOrderDetails(widget.arguments["id"]);
+    _getAddressList();
+    if (widget.arguments != null) {
+      _getOrderDetails(widget.arguments!["id"] ?? "");
+    }
   }
 
   /// 地址
@@ -86,7 +87,7 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
                                 Container(
                                   width: 50,
                                   child: Text(
-                                    results.name,
+                                    results!.name ?? "",
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: 18,
@@ -99,7 +100,7 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
                                 ),
                                 Container(
                                   child: Text(
-                                    results.phone,
+                                    results!.phone ?? "",
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
@@ -111,11 +112,11 @@ class _GHCheckOutPageState extends State<GHCheckOutPage> {
                           Container(
                             width: ScreenAdaper.getScreenWidth() - 20 - 20 - 30,
                             child: Text(
-                              results.province +
-                                  results.city +
-                                  results.area +
-                                  results.detailsAddress,
-                              style: TextStyle(
+                              (results!.province ?? "") +
+                                  (results!.city ?? "") +
+                                  (results!.area ?? "") +
+                                  (results!.detailsAddress ?? ""),
+                              style: const TextStyle(
                                   fontSize: 14, color: Colors.black54),
                             ),
                           ),

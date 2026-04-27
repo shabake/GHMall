@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import '../services/ScreenAdaper.dart';
 import '../services/httptool.dart';
-import 'package:common_utils/common_utils.dart';
+//import 'package:common_utils/common_utils.dart';
 import '../model/GHAddressModel.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
+//import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 /// 收货地址列表
 class GHAddressList extends StatefulWidget {
+  const GHAddressList({Key? key}) : super(key: key);
+
   @override
-  _GHAddressListState createState() => _GHAddressListState();
+  State<GHAddressList> createState() => _GHAddressListState();
 }
 
 class _GHAddressListState extends State<GHAddressList> {
-  /// 地址列表
-  var _list = [];
-
-  GlobalKey _easyRefreshKey = new GlobalKey();
+  List<Results?> _list = [];
 
   _getAddressList() async {
     //addressDetails
@@ -41,17 +40,19 @@ class _GHAddressListState extends State<GHAddressList> {
     });
   }
 
+  @override
   void initState() {
     super.initState();
-    this._easyRefreshKey.currentState;
+    _getAddressList();
   }
 
+  @override
   void deactivate() {
-    // 返回到当前页刷新
-    var bool = ModalRoute.of(context).isCurrent;
-    if (bool) {
-      this._getAddressList();
+    final bool isCurrent = ModalRoute.of(context)?.isCurrent ?? false;
+    if (isCurrent) {
+      _getAddressList();
     }
+    super.deactivate();
   }
 
   Widget ListItem(Results results) {
@@ -76,7 +77,7 @@ class _GHAddressListState extends State<GHAddressList> {
                               Container(
                                 width:50,
                                 child: Text(
-                                  results.name,
+                                  results.name ?? "",
                                   overflow: TextOverflow.ellipsis,
                                   style:TextStyle(
                                     fontSize: 18,
@@ -89,7 +90,7 @@ class _GHAddressListState extends State<GHAddressList> {
                               ),
                               Container(
                                 child: Text(
-                                  results.phone,
+                                  results.phone ?? "",
                                   style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -99,11 +100,11 @@ class _GHAddressListState extends State<GHAddressList> {
                         Container(
                           width: ScreenAdaper.getScreenWidth() - 20 - 20 - 30,
                           child: Text(
-                            results.province +
-                                results.city +
-                                results.area +
-                                results.detailsAddress,
-                            style: TextStyle(fontSize: 14, color: Colors.black54),
+                            (results.province ?? "") +
+                                (results.city ?? "") +
+                                (results.area ?? "") +
+                                (results.detailsAddress ?? ""),
+                            style: const TextStyle(fontSize: 14, color: Colors.black54),
                           ),
                         ),
 
@@ -115,10 +116,10 @@ class _GHAddressListState extends State<GHAddressList> {
 
                   onTap: () {
                     Navigator.pushNamed(context, '/GHAddressEdit', arguments: {
-                      'name': "${results.name}",
+                      'name': "${results.name ?? ""}",
                       'zone': "${results.zone}",
-                      'detailsAddress': "${results.detailsAddress}",
-                      'phoneNumber': results.phone,
+                      'detailsAddress': "${results.detailsAddress ?? ""}",
+                      'phoneNumber': results.phone ?? "",
                       'objectId': results.objectId,
                     });
                   },
@@ -155,23 +156,19 @@ class _GHAddressListState extends State<GHAddressList> {
         title: Text("地址管理"),
       ),
       body: Container(
-          padding: EdgeInsets.all(20),
-          child: EasyRefresh(
-            firstRefresh: true,
-            key:_easyRefreshKey,
-            onRefresh: () async {
-              await this._getAddressList();
+        padding: const EdgeInsets.all(20),
+        child: RefreshIndicator(
+          onRefresh: () async {
+            await _getAddressList();
+          },
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return ListItem(_list[index]!);
             },
-            onLoad: () async {
-              await this._getAddressList();
-            },
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return ListItem(this._list[index]);
-              },
-              itemCount: this._list.length,
-            ),
-          )),
+            itemCount: _list.length,
+          ),
+        ),
+      ),
     );
   }
 }

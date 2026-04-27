@@ -9,7 +9,11 @@
       "Bash(flutter run *)",
       "Bash(git add *)",
       "Bash(git commit -m '升级到Flutter 3.41.7 - 更新SDK版本和依赖，修复Null Safety问题 *)",
-      "Bash(git commit -m '修复关键的Null Safety编译错误 *)"
+      "Bash(git commit -m '修复关键的Null Safety编译错误 *)",
+      "Bash(cat)",
+      "Bash(sed -i '' -f /tmp/fix_checkout.txt /Users/mac/Desktop/Project/GHMall/lib/pages/GHCheckOutPage.dart)",
+      "Bash(sed -i '' -f /tmp/fix_addresslist.txt /Users/mac/Desktop/Project/GHMall/lib/pages/GHAddressList.dart)",
+      "Bash(git commit -m '修复大量Null Safety和UI问题 *)"
     ]
   }
 }

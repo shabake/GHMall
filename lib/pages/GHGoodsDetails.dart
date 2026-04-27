@@ -5,50 +5,39 @@ import '../services/ScreenAdaper.dart';
 import 'package:flutter/gestures.dart';
 import '../services/httptool.dart';
 import '../model/GHGoodDetailsModel.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
+//import 'package:flutter_easyrefresh/easy_refresh.dart';
 import '../model/GHAddressModel.dart';
 import '../widget/GHCountItemWidget.dart';
 import '../widget/GHLoading.dart';
 import '../services/gh_sqflite.dart';
 
 class GHGoodsDetails extends StatefulWidget {
-  Map arguments;
+  final Map<String, dynamic>? arguments;
+
+  const GHGoodsDetails({Key? key, this.arguments}) : super(key: key);
 
   @override
-  _GHGoodsDetailsState createState() => _GHGoodsDetailsState();
-
-  GHGoodsDetails({Key key, this.arguments}) : super(key: key);
+  State<GHGoodsDetails> createState() => _GHGoodsDetailsState();
 }
 
 class _GHGoodsDetailsState extends State<GHGoodsDetails> {
-  List _userList = [];
-
-  /// 滚动控制器
-  ScrollController _scrollController = new ScrollController();
-
-  /// 用户选择数量
+  List<dynamic> _userList = [];
+  late ScrollController _scrollController;
   int _count = 1;
-
-  /// 用户选择的规格型号
   String _seletecdStrings = "";
-
-  /// 优惠券
-  List coupons = [];
-
-  /// 商品详情模型
-  GHGoodDetailsModel _goodDetailsModel;
-
-  /// 地址模型数组
-  List _addressList = [];
+  List<dynamic> coupons = [];
+  late GHGoodDetailsModel _goodDetailsModel;
+  List<dynamic> _addressList = [];
 
   @override
   void initState() {
     super.initState();
-    this._loadData();
-    this._getAddressList();
-    this._scrollController.addListener(() {});
-    this._getSeletecdList();
-    this._getUserInfo();
+    _scrollController = ScrollController();
+    _loadData();
+    _getAddressList();
+    _scrollController.addListener(() {});
+    _getSeletecdList();
+    _getUserInfo();
   }
 
   /// 获取用户信息

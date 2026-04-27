@@ -9,51 +9,37 @@ import '../services/GHToast.dart';
 
 /// 编辑/新增收货地址
 class GHAddressEdit extends StatefulWidget {
-  final Map arguments;
+  final Map<String, dynamic>? arguments;
+
+  const GHAddressEdit({Key? key, this.arguments}) : super(key: key);
 
   @override
-  GHAddressEdit({Key key, this.arguments}) : super(key: key);
-  _GHAddressEditState createState() => _GHAddressEditState();
+  State<GHAddressEdit> createState() => _GHAddressEditState();
 }
 
 class _GHAddressEditState extends State<GHAddressEdit> {
-  /// 收件人姓名
   String _name = "";
-
-  /// 收货人电话
   String _phoneNumber = "";
-
-  /// 省份
   String _province = "省";
-
-  /// 市
   String _city = "市";
-
-  /// 区
   String _area = "区";
-
-  /// 省编码
   String _locationCode = "110000";
-
-  /// 详细地址
   String _detailsAddress = "";
-
-  /// 完整地址
   String _fullAddress = "";
 
-  TextEditingController _addressController = new TextEditingController();
-  TextEditingController _nameController = new TextEditingController();
-  TextEditingController _phoneNumberController = new TextEditingController();
-  TextEditingController _detailsAddressController = new TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _detailsAddressController = TextEditingController();
+  final FocusNode _contentFocusNode = FocusNode();
 
-  FocusNode _contentFocusNode = FocusNode();
-
+  @override
   void initState() {
     super.initState();
     if (widget.arguments != null) {
-      this._nameController.text = widget.arguments["name"];
-      this._phoneNumberController.text = widget.arguments["phoneNumber"];
-      this._addressController.text = widget.arguments["address"];
+      _nameController.text = widget.arguments!["name"] ?? "";
+      _phoneNumberController.text = widget.arguments!["phoneNumber"] ?? "";
+      _addressController.text = widget.arguments!["address"] ?? "";
     }
   }
 
@@ -143,7 +129,6 @@ class _GHAddressEditState extends State<GHAddressEdit> {
   }
 
   @override
-
   Widget build(BuildContext context) {
     ScreenAdaper.init(context);
     return Scaffold(

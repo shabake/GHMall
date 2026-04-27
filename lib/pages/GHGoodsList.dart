@@ -5,33 +5,27 @@ import '../services/httptool.dart';
 import '../widget/GHCustomAppbar.dart';
 import '../model/GHGoodsModel.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
+//import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'dart:convert';
 import '../widget/GHLoading.dart';
 
 /// 商品列表
 class GHGoodsList extends StatefulWidget {
-  Map arguments;
+  final Map<String, dynamic>? arguments;
 
-  GHGoodsList({Key key, this.arguments}) : super(key: key);
+  const GHGoodsList({Key? key, this.arguments}) : super(key: key);
 
-  _GHGoodsListState createState() => _GHGoodsListState();
+  @override
+  State<GHGoodsList> createState() => _GHGoodsListState();
 }
 
 class _GHGoodsListState extends State<GHGoodsList> {
-  /// 最低价
-  TextEditingController _minPriceEditingController =
-      new TextEditingController();
-
-  /// 最高价
-  TextEditingController _maxPriceEditingController =
-      new TextEditingController();
-
-  //Scaffold key 用于打开侧滑筛选菜单
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
-  //用于上拉分页 listview 的控制器
-  EasyRefreshController _controller = EasyRefreshController();
+  final TextEditingController _minPriceEditingController =
+      TextEditingController();
+  final TextEditingController _maxPriceEditingController =
+      TextEditingController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  //final EasyRefreshController _controller = EasyRefreshController();
 
   /// 分页
   int _skip = 0;
